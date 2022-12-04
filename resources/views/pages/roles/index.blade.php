@@ -28,6 +28,7 @@
                                             <th>Nombre</th>
                                             <th>Guard</th>
                                             <th>Fecha de creación</th>
+                                            <th>Permisos</th>
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
@@ -37,6 +38,13 @@
                                                 <td>{{ $rol->name }}</td>
                                                 <td>{{ $rol->guard_name }}</td>
                                                 <td>{{ $rol->created_at }}</td>
+                                                <td>
+                                                    @forelse ($rol->permissions as $permission)
+                                                        <span class="badge badge-info">{{ $permission->name}}</span>
+                                                    @empty
+                                                    <span class="badge badge-danger">No tiene permisos</span>
+                                                    @endforelse
+                                                </td>
                                                 <td class="td-actions text-right">
 
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
