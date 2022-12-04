@@ -43,7 +43,7 @@ class PermissionController extends Controller
         //
         Permission::create($request->only('name'));
 
-        return redirect()->route('pages.permissions.index');
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -52,9 +52,10 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permissions)
     {
         //
+        return view('pages.permissions.show', compact('permissions'));
     }
 
     /**
@@ -63,9 +64,10 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
         //
+        return view('pages.permissions.edit', compact('permission'));
     }
 
     /**
@@ -75,9 +77,12 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
         //
+        $permission->update($request->only('name'));
+
+        return redirect()->route('permission.index');
     }
 
     /**
@@ -86,8 +91,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
         //
+        $permission->delete();
+
+        return redirect()->route('permission.index');
     }
 }

@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            
+
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Permisos</h4>
                                 <p class="card-category">Permisos registrados</p>
@@ -39,19 +39,19 @@
                                                 <td>{{ $permission->created_at }}</td>
                                                 <td class="td-actions text-right">
 
-                                                    <a href="" class="btn btn-info"><i class="fas fa-user-alt"></i></a>
+                                                    <a href="{{ route('permission.show', $permission->id) }}" class="btn btn-info"><i class="fas fa-user-alt"></i></a>
 
 
-                                                    <a href="" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 
-
-                                                    <form action="" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit" rel="tooltip">
-                                                        <i class="fas fa-trash"></i>
+                                                            <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
+
 
                                                 </td>
                                             </tr>
