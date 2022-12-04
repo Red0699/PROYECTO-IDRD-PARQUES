@@ -18,7 +18,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
+                        <a class="nav-link" href="{{ route('user.index') }}">
                             <i class="fas fa-users text-purple"></i> {{ __('Usuarios') }}
                         </a>
                     </li>
