@@ -57,7 +57,7 @@
                         <!--Footer-->
                         <div class="card-footer ml-auto mr-auto">
                             <button type="submit" class="btn btn-primary">Guardar</button>
-                            <a href="/permission" class="btn btn-light">Volver</a>
+                            <a href="/rol" class="btn btn-light">Volver</a>
                         </div>
                         <!--End footer-->
                     </div>

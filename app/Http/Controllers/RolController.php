@@ -71,7 +71,9 @@ class RolController extends Controller
     public function edit(Role $rol)
     {
         //
-        return view('pages.roles.edit', compact('rol'));
+        $permissions = Permission::all()->pluck('name', 'id');
+        $rol->load('permissions');
+        return view('pages.roles.edit', compact('rol', 'permissions'));
     }
 
     /**
@@ -85,6 +87,7 @@ class RolController extends Controller
     {
         //
         $rol->update($request->only('name'));
+        $rol->permissions()->sync($request->input('permissions', []));
 
         return redirect()->route('rol.index');
     }
