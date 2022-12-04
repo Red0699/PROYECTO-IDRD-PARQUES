@@ -51,9 +51,9 @@
                                                 <td>{{ $user->created_at }}</td>
                                                 <td class="td-actions text-right">
 
-                                                    <a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('userEdit.edit', $user->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
 
-                                                    <form action="" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit" rel="tooltip">
