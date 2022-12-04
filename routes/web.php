@@ -33,8 +33,11 @@ Route::group(['middleware' => 'auth'], function () {
 	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
-	Route::resource('permission', 'App\Http\Controllers\PermissionController', ['except' => ['edit']]);
+	Route::resource('permission', 'App\Http\Controllers\PermissionController', ['except' => ['edit', 'show']]);
 	Route::get('permissionEdit/{permission}', ['as' => 'permissionEdit.edit', 'uses' => 'App\Http\Controllers\PermissionController@edit']);
+
+	Route::resource('rol', 'App\Http\Controllers\RolController', ['except' => ['edit', 'show']]);
+	Route::get('rolEdit/{rol}', ['as' => 'rolEdit.edit', 'uses' => 'App\Http\Controllers\RolController@edit']);
 
 	//Route::get('permissions', [PermissionController::class, 'index'])->name('permissions');
 });

@@ -10,14 +10,14 @@
                         <div class="card">
 
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Permisos</h4>
-                                <p class="card-category">Permisos registrados</p>
+                                <h4 class="card-title">Roles</h4>
+                                <p class="card-category">Roles registrados</p>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-right">
 
-                                        <a type="button" class="btn btn-primary" href="{{ url('/permission/create') }}">Añadir Permisos</a>
+                                        <a type="button" class="btn btn-primary" href="{{ url('/rol/create') }}">Añadir Rol</a>
 
                                     </div>
                                 </div>
@@ -31,17 +31,17 @@
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
-                                            @forelse ($permissions as $permission)
+                                            @forelse ($roles as $rol)
                                             <tr>
-                                                <td>{{ $permission->id }}</td>
-                                                <td>{{ $permission->name }}</td>
-                                                <td>{{ $permission->guard_name }}</td>
-                                                <td>{{ $permission->created_at }}</td>
+                                                <td>{{ $rol->id }}</td>
+                                                <td>{{ $rol->name }}</td>
+                                                <td>{{ $rol->guard_name }}</td>
+                                                <td>{{ $rol->created_at }}</td>
                                                 <td class="td-actions text-right">
 
-                                                    <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
 
-                                                    <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit" rel="tooltip">
