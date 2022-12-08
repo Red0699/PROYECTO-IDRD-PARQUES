@@ -34,7 +34,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         
-        $user = User::create($request->only('name', 'email', 'password'));
+        $user = User::create($request->only('name', 'email') + [
+            'password' => bcrypt($request->input('password')),
+        ]);
 
         $roles = $request->input('roles', []);
 
@@ -53,16 +55,36 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $user->update($request->only('name', 'email', 'password'));
+        $data = $request->only('name', 'email');
+        $password=$request->input('password');
+
+        if($password)
+            $data['password'] = bcrypt($password);
+        // if(trim($request->password)=='')
+        // {
+        //     $data=$request->except('password');
+        // }
+        // else{
+        //     $data=$request->all();
+        //     $data['password']=bcrypt($request->password);
+        // }
+
+        $user->update($data);
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
         return redirect()->route('user.index');
+
     }
 
     public function destroy(User $user)
     {
-        $user->delete();
 
-        return redirect()->route('user.index');
+        if (auth()->user()->id == $user->id) {
+            return redirect()->route('user.index');
+        }
+
+        $user->delete();
+        return back()->with('success', 'Usuario eliminado correctamente');
+        
     }
 }
