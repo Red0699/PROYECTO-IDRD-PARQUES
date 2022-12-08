@@ -17,12 +17,13 @@
                             <i class="ni ni-tv-2 text-purple"></i> {{ __('Inicio') }}
                         </a>
                     </li>
+                    @can('user_index')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.index') }}">
                             <i class="fas fa-users text-purple"></i> {{ __('Usuarios') }}
                         </a>
                     </li>
-                    
+                    @endcan
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('icons') }}">
@@ -35,24 +36,29 @@
                         </a>
                     </li>
                     
+
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
                             <span class="nav-link-text">{{ __('Configuraciones') }}</span>
                         </a>
-
+                        
                         <div class="collapse show" id="navbar2-items">
                             <ul class="nav nav-sm flex-column ">
+                                @can('permission_index')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('permission.index') }}">
                                         {{ __('Permisos') }}
                                     </a>
                                 </li>
+                                @endcan
+                                @can('role_index')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('rol.index') }}">
                                         {{ __('Roles') }}
                                     </a>
                                 </li>
+                                @endcan
                             </ul>
                         </div>
                     </li>

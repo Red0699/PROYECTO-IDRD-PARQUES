@@ -16,13 +16,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-right">
-
+                                        @can('role_create')
                                         <a type="button" class="btn btn-primary" href="{{ url('/rol/create') }}">Añadir Rol</a>
-
+                                        @endcan
                                     </div>
                                 </div>
                                 <div class="table-responsive m-2">
-                                    <table class="table">
+                                    <table class="table" id="rolTable">
                                         <thead class="thead-light">
                                             <th>ID</th>
                                             <th>Nombre</th>
@@ -46,9 +46,10 @@
                                                     @endforelse
                                                 </td>
                                                 <td class="td-actions text-right">
-
+                                                    @can('role_edit')
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-
+                                                    @endcan
+                                                    @can('role_destroy')
                                                     <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
@@ -56,7 +57,7 @@
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                                    
+                                                    @endcan
                                                 </td>
                                             </tr>
                                             @empty
@@ -77,4 +78,7 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection

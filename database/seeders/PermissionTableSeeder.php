@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 
 class PermissionTableSeeder extends Seeder
 {
@@ -17,8 +18,28 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::unprepared("
-            
-        ");
+        $permissions = [
+            'permission_index',
+            'permission_create',
+            'permission_edit',
+            'permission_destroy',
+
+            'role_index',
+            'role_create',
+            'role_edit',
+            'role_destroy',
+
+            'user_index',
+            'user_create',
+            'user_show',
+            'user_edit',
+            'user_destroy'
+        ];
+
+        foreach($permissions as $permission){
+            Permission::create([
+                'name' => $permission
+            ]);
+        }
     }
 }
