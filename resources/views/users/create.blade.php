@@ -39,6 +39,21 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="row">
+                                <label for="rol" class="col-sm-2 col-form-label">Seleccione un Rol</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <select name="roles" id="rol" class="form-control">
+                                            @foreach ($roles as $rol)
+                                                <option value="{{ $rol->id }}">
+                                                    {{ $rol->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <!--Footer-->

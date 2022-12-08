@@ -28,6 +28,7 @@
                                             <th>Foto</th>
                                             <th>Nombre</th>
                                             <th>Correo</th>
+                                            <th>Rol</th>
                                             <th>Fecha de creación</th>
                                             <th class="text-right">Acciones</th>
                                         </thead>
@@ -48,6 +49,13 @@
                                                 @endif
                                                 <td>{{ $user->name }}</td>
                                                 <th>{{ $user->email }}</th>
+                                                <td>
+                                                    @forelse ($user->roles as $role)
+                                                    {{ $role->name }}
+                                                    @empty
+                                                    <span class="badge badge-danger">Sin rol</span>
+                                                    @endforelse
+                                                </td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td class="td-actions text-right">
 

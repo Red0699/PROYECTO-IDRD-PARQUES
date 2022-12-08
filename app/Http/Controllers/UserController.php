@@ -24,26 +24,33 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Role::all()->pluck('name', 'id');
+        $roles = Role::all();
         return view('users.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
-        User::create($request->only('name', 'email', 'password'));
+        $user = User::create($request->only('name', 'email', 'password'));
+
+        $roles = $request->input('roles', []);
+
+        $user->syncRoles($roles);
 
         return redirect()->route('user.index');
     }
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::all();
+        $user->load('roles');
+        return view('users.edit', compact('user', 'roles'));
     }
 
     public function update(Request $request, User $user)
     {
         $user->update($request->only('name', 'email', 'password'));
-
+        $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
         return redirect()->route('user.index');
     }
 

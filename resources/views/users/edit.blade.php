@@ -36,6 +36,25 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <label for="rol" class="col-sm-2 col-form-label">Seleccione un Rol</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group">
+                                        <select class="form-control" name="roles">
+                                        <option value="">-- Seleccione --</option>
+                                            @foreach ($roles as $rol)
+                                            
+                                            @if ($user->roles == $rol)
+                                            <option value="{{$rol->id}}" selected>{{$rol->name}}</option>
+                                            @else
+                                            <option value="{{$user->id}}">{{$rol->name}}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!--Footer-->
                         <div class="card-footer ml-auto mr-auto">
