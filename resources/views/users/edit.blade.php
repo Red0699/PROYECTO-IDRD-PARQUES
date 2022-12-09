@@ -45,10 +45,10 @@
                                         <option value="">-- Seleccione --</option>
                                             @foreach ($roles as $rol)
                                             
-                                            @if ($user->roles == $rol)
+                                            @if ($user->roles[0]->id == $rol->id)
                                             <option value="{{$rol->id}}" selected>{{$rol->name}}</option>
                                             @else
-                                            <option value="{{$user->id}}">{{$rol->name}}</option>
+                                            <option value="{{$rol->id}}">{{$rol->name}}</option>
                                             @endif
                                             @endforeach
                                         </select>
