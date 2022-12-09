@@ -52,6 +52,6 @@ class ProfileController extends Controller
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('La contraseña se ha actualizado correctamente.'));
+        return back()->withPasswordStatus(__('La contraseña se ha actualizado.'));
     }
 }

@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 	 Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
 	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+	
 
 	Route::resource('permission', 'App\Http\Controllers\PermissionController', ['except' => ['edit', 'show']]);
 	Route::get('permissionEdit/{permission}', ['as' => 'permissionEdit.edit', 'uses' => 'App\Http\Controllers\PermissionController@edit']);
