@@ -18,7 +18,11 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    @if(auth()->user()->photo == null)
+                                    <img src="../assets/img/theme/default-user-image.png" class="rounded-circle">
+                                    @else
+                                    <img src="{{ auth()->user()->photo }}" class="img-fluid rounded-circle avatar-lg" >
+                                    @endif
                                 </a>
                             </div>
                         </div>

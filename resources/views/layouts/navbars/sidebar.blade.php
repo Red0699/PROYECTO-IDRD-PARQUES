@@ -26,6 +26,24 @@
                     @endcan
 
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="fas fa-tree text-purple"></i> {{ __('Parques') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="fas fa-warehouse text-purple"></i></i> {{ __('Inventarios') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="fas fa-archive text-purple"></i> {{ __('Diagnosticos') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('icons') }}">
                             <i class="ni ni-planet text-purple"></i> {{ __('Icons') }}
                         </a>
@@ -35,14 +53,14 @@
                             <i class="ni ni-pin-3 text-purple"></i> {{ __('Mapas') }}
                         </a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
                             <span class="nav-link-text">{{ __('Configuraciones') }}</span>
                         </a>
-                        
+
                         <div class="collapse show" id="navbar2-items">
                             <ul class="nav nav-sm flex-column ">
                                 @can('permission_index')
@@ -62,7 +80,7 @@
                             </ul>
                         </div>
                     </li>
-                    
+
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

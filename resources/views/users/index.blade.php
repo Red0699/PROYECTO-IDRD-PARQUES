@@ -44,9 +44,9 @@
                                                 </td>
                                                 @else
                                                 <td>
-                                                <span class="avatar avatar-sm rounded-circle">
-                                                    <img src="{{$user->photo}}" alt="">
-                                                </span>
+
+                                                    <img src="{{ $user->photo }}" class="img-fluid rounded-circle avatar-sm">
+
                                                 </td>
                                                 @endif
                                                 <td>{{ $user->name }}</td>
