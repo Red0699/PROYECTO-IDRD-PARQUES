@@ -12,11 +12,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
-                            <span class="avatar avatar-sm rounded-circle">
+                            <span class="avatar avatar-sm rounded-circle img-fluid">
                                 @if(auth()->user()->photo == null)
                                 <img src="../assets/img/theme/default-user-image.png" alt="">
                                 @else
-                                <img src="{{asset('storage').'/'.$user->photo}}" alt="">
+                                <img src="{{ auth()->user()->photo }}" alt="" class="photoImage">
                                 @endif
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
@@ -45,3 +45,10 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .photoImage img{
+        width: 100%;
+        height: auto;
+    }
+</style>

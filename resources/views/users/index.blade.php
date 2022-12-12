@@ -44,7 +44,9 @@
                                                 </td>
                                                 @else
                                                 <td>
-                                                    <img src="{{asset('storage').'/'.$user->photo}}" alt="">
+                                                <span class="avatar avatar-sm rounded-circle">
+                                                    <img src="{{$user->photo}}" alt="">
+                                                </span>
                                                 </td>
                                                 @endif
                                                 <td>{{ $user->name }}</td>
