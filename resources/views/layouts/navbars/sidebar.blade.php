@@ -17,7 +17,7 @@
                             <i class="ni ni-tv-2 text-purple"></i> {{ __('Inicio') }}
                         </a>
                     </li>
-                    @can('user_index')
+                    @can('users_module')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user.index') }}">
                             <i class="fas fa-users text-purple"></i> {{ __('Usuarios') }}
@@ -54,7 +54,7 @@
                         </a>
                     </li>
 
-
+                    @can('role_index')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
@@ -70,16 +70,17 @@
                                     </a>
                                 </li>
                                 @endcan
-                                @can('role_index')
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('rol.index') }}">
                                         {{ __('Roles') }}
                                     </a>
                                 </li>
-                                @endcan
+                                
                             </ul>
                         </div>
                     </li>
+                    @endcan
 
                 </ul>
                 <!-- Divider -->

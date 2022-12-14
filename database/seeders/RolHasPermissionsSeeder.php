@@ -23,7 +23,8 @@ class RolHasPermissionsSeeder extends Seeder
         //Funcionario
         $funcionario_permissions = $admin_permissions->filter(function($permission){
             return substr($permission->name, 0, 5) != 'permission_'
-            && substr($permission->name, 0, 5) != 'role_';
+            && substr($permission->name, 0, 5) != 'role_'
+            && substr($permission->name, 0, 5) != 'users_';
         });
 
         Role::find(2)->permissions()->sync($funcionario_permissions);
