@@ -29,29 +29,29 @@
                                             <th>Foto</th>
                                             <th>Localidad</th>
                                             <th>Dirección</th>
-                                            <th>Tipo de Parque</th>
-                                            <th>Fecha de creación</th>
+                                            <th>Escala</th>
+                                            <th>Fecha de actualización</th>
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
                                             @forelse ($parques as $parque)
-                                            <td>{{ $parque->nombreParque }}</td>
+
                                             <tr>
-                                                @if($parque->photo == null)
+                                                <td>{{ $parque->nombreParque }}</td>
+                                                @if($parque->photo == null)+6km
+                                                m, 
                                                 <td>
-                                                    <span class="avatar avatar-sm rounded-circle">
-                                                        <img src="../assets/img/theme/default-user-image.png" alt="">
-                                                    </span>
+                                                    <span class="badge badge-danger">Sin Foto</span>
                                                 </td>
                                                 @else
                                                 <td>
-                                                    <img src="{{ $parque->photo }}" class="img-fluid rounded-circle avatar-sm">
+                                                    <img src="{{ $parque->photo }}" alt="" width="100">
                                                 </td>
                                                 @endif
                                                 <th>{{ $parque->localidad }}</th>
                                                 <th>{{ $parque->direccion }}</th>
-                                                <th>{{ $parque->tipoParque }}</th>
-                                                <td>{{ $parque->created_at }}</td>
+                                                <th>{{ $parque->escala }}</th>
+                                                <td>{{ $parque->updated_at }}</td>
                                                 <td class="td-actions text-right">
                                                     <a href="{{ route('userEdit.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('user.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">

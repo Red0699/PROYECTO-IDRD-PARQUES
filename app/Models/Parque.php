@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Parque extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombreParque',
+        'localidad',
+        'area',
+        'escala',
+        'estrato',
+        'direccion',
+        'foto'
+    ];
 }

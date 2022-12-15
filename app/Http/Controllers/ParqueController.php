@@ -29,6 +29,7 @@ class ParqueController extends Controller
     public function create()
     {
         //
+        return view('pages.parques.create');
     }
 
     /**
@@ -40,6 +41,16 @@ class ParqueController extends Controller
     public function store(Request $request)
     {
         //
+        Parque::create($request->only(
+            'nombreParque', 
+            'localidad', 
+            'area',
+            'escala',
+            'estrato',
+            'direccion'
+        ));
+
+        return redirect()->route('parque.index');
     }
 
     /**
