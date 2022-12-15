@@ -26,7 +26,7 @@
                     @endcan
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
+                        <a class="nav-link" href="{{ route('parque.index') }}">
                             <i class="fas fa-tree text-purple"></i> {{ __('Parques') }}
                         </a>
                     </li>

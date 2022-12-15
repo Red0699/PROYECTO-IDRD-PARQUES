@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('area');
             $table->string('escala');
             $table->integer('estrato');
+            $table->string('tipoParque');
             $table->string('direccion');
             $table->string('foto')->nullable();
             $table->timestamps();
