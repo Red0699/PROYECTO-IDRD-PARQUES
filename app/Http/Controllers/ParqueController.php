@@ -17,7 +17,7 @@ class ParqueController extends Controller
     public function index()
     {
         //
-        abort_if(Gate::denies('users_module'), 403);
+        abort_if(Gate::denies('parks_module'), 403);
         $parques = Parque::all();
         return view('pages.parques.index', compact('parques'));
     }
@@ -41,16 +41,6 @@ class ParqueController extends Controller
      */
     public function store(ParqueRequest $request)
     {
-        /*
-        $request->validate([
-            'nombreParque' => 'required | min:5',
-            'localidad' => 'required',
-            'area' => 'required',
-            'escala' => 'required',
-            'estrato' => 'required',
-            'direccion' => 'required | min: 5'
-        ]);
-        */
         //
         Parque::create($request->only(
             'nombreParque', 
@@ -84,6 +74,8 @@ class ParqueController extends Controller
     public function edit(Parque $parque)
     {
         //
+        abort_if(Gate::denies('parks_module'), 403);
+        return view('pages.parques.edit', compact('parque'));
     }
 
     /**
@@ -93,9 +85,19 @@ class ParqueController extends Controller
      * @param  \App\Models\Parque  $parque
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parque $parque)
+    public function update(ParqueRequest $request, Parque $parque)
     {
         //
+        $parque->update($request->only(
+            'nombreParque', 
+            'localidad', 
+            'area',
+            'escala',
+            'estrato',
+            'direccion'
+        ));
+
+        return redirect()->route('parque.index');
     }
 
     /**
@@ -107,5 +109,8 @@ class ParqueController extends Controller
     public function destroy(Parque $parque)
     {
         //
+        $parque->delete();
+
+        return redirect()->route('parque.index');
     }
 }

@@ -53,8 +53,8 @@
                                                 <th>{{ $parque->escala }}</th>
                                                 <td>{{ $parque->updated_at }}</td>
                                                 <td class="td-actions text-right">
-                                                    <a href="{{ route('userEdit.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                                                    <form action="{{ route('user.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <a href="{{ route('parqueEdit.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                    <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit" rel="tooltip">

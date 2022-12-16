@@ -26,27 +26,27 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-localidad">{{ __('Localidad') }}</label>
                         <select name="localidad" id="localidad" class="form-control">
-                            <option value="" selected>Seleccione una opción</option>
-                            <option value="1">Antonio Nariño</option>
-                            <option value="2">Barrios Unidos</option>
-                            <option value="3">Bosa</option>
-                            <option value="4">Chapinero</option>
-                            <option value="5">Ciudad Bolívar</option>
-                            <option value="6">Engativá</option>
-                            <option value="7">Fontibón</option>
-                            <option value="8">Kennedy</option>
-                            <option value="9">La Candelaria</option>
-                            <option value="10">Los Mártires</option>
-                            <option value="11">Puente Aranda</option>
-                            <option value="12">Rafael Uribe Uribe</option>
-                            <option value="13">San Cristóbal</option>
-                            <option value="14">Santa Fe</option>
-                            <option value="15">Suba</option>
-                            <option value="16">Sumapaz</option>
-                            <option value="17">Teusaquillo</option>
-                            <option value="18">Tunjuelito</option>
-                            <option value="19">Usaquén</option>
-                            <option value="20">Usme</option>
+                        <option value="" selected>Seleccione una opción</option>
+                            <option value="Antonio Nariño">Antonio Nariño</option>
+                            <option value="Barrios Unidos">Barrios Unidos</option>
+                            <option value="Bosa">Bosa</option>
+                            <option value="Chapinero">Chapinero</option>
+                            <option value="Ciudad Bolívar">Ciudad Bolívar</option>
+                            <option value="Engativá">Engativá</option>
+                            <option value="Fontibón">Fontibón</option>
+                            <option value="Kennedy">Kennedy</option>
+                            <option value="La Candelaria">La Candelaria</option>
+                            <option value="Los Mártires">Los Mártires</option>
+                            <option value="Puente Aranda">Puente Aranda</option>
+                            <option value="Rafael Uribe Uribe">Rafael Uribe Uribe</option>
+                            <option value="San Cristóbal">San Cristóbal</option>
+                            <option value="Santa Fe">Santa Fe</option>
+                            <option value="Suba">Suba</option>
+                            <option value="Sumapaz">Sumapaz</option>
+                            <option value="Teusaquillo">Teusaquillo</option>
+                            <option value="Tunjuelito">Tunjuelito</option>
+                            <option value="Usaquén">Usaquén</option>
+                            <option value="Usme">Usme</option>
                         </select>
                         @if ($errors->has('localidad'))
                         <span class="error text-danger" for="input-localidad">{{ $errors->first('localidad') }}</span>
@@ -67,12 +67,12 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="input-escala">{{ __('Escala') }}</label>
                                 <select name="escala" id="escala" class="form-control">
-                                    <option value="" selected>Seleccione una opción</option>
-                                    <option value="1">Parque de Bolsillo</option>
-                                    <option value="2">Parque Metropolitano</option>
-                                    <option value="3">Parque Vecinal</option>
-                                    <option value="4">Parque Zonal</option>
-                                    <option value="5">Parque Regional</option>
+                                <option value="" selected>Seleccione una opción</option>
+                                    <option value="Parque de Bolsillo">Parque de Bolsillo</option>
+                                    <option value="Parque Metropolitano">Parque Metropolitano</option>
+                                    <option value="Parque Vecinal">Parque Vecinal</option>
+                                    <option value="Parque Zonal">Parque Zonal</option>
+                                    <option value="Parque Regional">Parque Regional</option>
                                 </select>
                                 @if ($errors->has('escala'))
                                 <span class="error text-danger" for="input-escala">{{ $errors->first('escala') }}</span>
