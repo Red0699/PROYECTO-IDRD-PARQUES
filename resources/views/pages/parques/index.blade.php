@@ -53,7 +53,7 @@
                                                 <th>{{ $parque->escala }}</th>
                                                 
                                                 <td class="td-actions text-right">
-                                                    <a href="{{ route('parqueEdit.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('parque.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')

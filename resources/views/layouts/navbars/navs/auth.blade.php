@@ -15,10 +15,10 @@
 
                             @if(auth()->user()->photo == null)
                             <span class="avatar avatar-sm rounded-circle img-fluid">
-                                <img src="../assets/img/theme/default-user-image.png" alt="">
+                                <img src="{{ asset('assets') }}/img/theme/default-user-image.png" alt="">
                             </span>
                             @else
-                            <img src="{{ auth()->user()->photo }}" alt="" class="img-fluid avatar-sm rounded-circle">
+                            <img src="{{ asset(auth()->user()->photo) }}" alt="" class="img-fluid avatar-sm rounded-circle">
                             @endif
 
                             <div class="media-body  ml-2  d-none d-lg-block">
