@@ -105,7 +105,7 @@ class ParqueController extends Controller
     public function destroy(Parque $parque)
     {
         //
-        Storage::delete('public/images/parques/'.$parque->foto);
+        //Storage::delete('public/images/parques/'.$parque->foto);
         $parque->delete();
         return redirect()->route('parque.index');
     }
