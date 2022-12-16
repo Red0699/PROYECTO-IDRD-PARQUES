@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ParqueRequest;
 use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -38,8 +39,18 @@ class ParqueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ParqueRequest $request)
     {
+        /*
+        $request->validate([
+            'nombreParque' => 'required | min:5',
+            'localidad' => 'required',
+            'area' => 'required',
+            'escala' => 'required',
+            'estrato' => 'required',
+            'direccion' => 'required | min: 5'
+        ]);
+        */
         //
         Parque::create($request->only(
             'nombreParque', 

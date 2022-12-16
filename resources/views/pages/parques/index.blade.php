@@ -38,8 +38,8 @@
 
                                             <tr>
                                                 <td>{{ $parque->nombreParque }}</td>
-                                                @if($parque->photo == null)+6km
-                                                m, 
+                                                @if($parque->photo == null)
+                                                
                                                 <td>
                                                     <span class="badge badge-danger">Sin Foto</span>
                                                 </td>

@@ -10,19 +10,23 @@
             </div>
         </div>
         <div class="card-body">
+
             <form method="post" action="{{ route('parque.store') }}" autocomplete="off" enctype="multipart/form-data">
                 @csrf
 
                 <div class="pl-lg-3">
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Nombre del Parque') }}</label>
-                        <input type="text" name="nombreParque" class="form-control" placeholder="{{ __('Nombre') }}" autofocus>
+                        <input type="text" name="nombreParque" class="form-control" placeholder="{{ __('Nombre') }}" autofocus value="{{ old('nombreParque') }}">
+                        @if ($errors->has('nombreParque'))
+                        <span class="error text-danger" for="input-nombreParque">{{ $errors->first('nombreParque') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label class="form-control-label" for="input-localidad">{{ __('Localidad') }}</label>
                         <select name="localidad" id="localidad" class="form-control">
-                            <option selected>Seleccione una opción</option>
+                            <option value="" selected>Seleccione una opción</option>
                             <option value="1">Antonio Nariño</option>
                             <option value="2">Barrios Unidos</option>
                             <option value="3">Bosa</option>
@@ -44,26 +48,35 @@
                             <option value="19">Usaquén</option>
                             <option value="20">Usme</option>
                         </select>
+                        @if ($errors->has('localidad'))
+                        <span class="error text-danger" for="input-localidad">{{ $errors->first('localidad') }}</span>
+                        @endif
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-area">{{ __('Area en m') }}<sup>2</sup></label>
-                                <input type="number" name="area" id="input-area" class="form-control" placeholder="{{ __('Area del Parque') }}" autofocus>
+                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area') }}" autofocus>
+                                @if ($errors->has('area'))
+                                <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-escala">{{ __('Escala') }}</label>
                                 <select name="escala" id="escala" class="form-control">
-                                    <option selected>Seleccione una opción</option>
+                                    <option value="" selected>Seleccione una opción</option>
                                     <option value="1">Parque de Bolsillo</option>
                                     <option value="2">Parque Metropolitano</option>
                                     <option value="3">Parque Vecinal</option>
                                     <option value="4">Parque Zonal</option>
                                     <option value="5">Parque Regional</option>
                                 </select>
+                                @if ($errors->has('escala'))
+                                <span class="error text-danger" for="input-escala">{{ $errors->first('escala') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -71,23 +84,29 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-estrato">{{ __('Estrato') }}</label>
                         <select name="estrato" id="estrato" class="form-control">
-                            <option selected>Seleccione una opción</option>
+                            <option value="" selected>Seleccione una opción</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+                        @if ($errors->has('estrato'))
+                        <span class ="error text-danger" for="input-estrato">{{ $errors->first('estrato') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label class="form-control-label" for="input-direccion">{{ __('Dirección') }}</label>
-                        <input type="text" name="direccion" id="input-direccion" class="form-control" placeholder="{{ __('Dirección del Parque') }}" autofocus>
+                        <input type="text" name="direccion" id="input-direccion" class="form-control" placeholder="{{ __('Dirección del Parque') }}" value="{{ old('direccion') }}" autofocus>
+                        @if ($errors->has('direccion'))
+                        <span class ="error text-danger" for="input-direccion">{{ $errors->first('direccion') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label class="form-control-label" for="input-foto">{{ __('Cargar Foto') }}</label>
-                        <input type="file" name="foto" class="form-control" id="photo">
+                        <input type="file" name="foto" class="form-control" id="photo" value="{{ old('foto') }}">
                     </div>
 
                     <div class="text-center">
