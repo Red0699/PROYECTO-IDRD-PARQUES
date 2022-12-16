@@ -6,7 +6,7 @@ use App\Http\Requests\ParqueRequest;
 use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Support\Facades\Storage;
 class ParqueController extends Controller
 {
     /**
@@ -41,15 +41,13 @@ class ParqueController extends Controller
      */
     public function store(ParqueRequest $request)
     {
+        $data = $request->validated();
+        if(isset($data["foto"])){
+            $data["foto"] = $filename = time().".".$data["foto"]->extension();
+            $request->foto->move(public_path("images/parques"), $filename);
+        }
         //
-        Parque::create($request->only(
-            'nombreParque', 
-            'localidad', 
-            'area',
-            'escala',
-            'estrato',
-            'direccion'
-        ));
+        Parque::create($data);
 
         return redirect()->route('parque.index');
     }
@@ -87,15 +85,13 @@ class ParqueController extends Controller
      */
     public function update(ParqueRequest $request, Parque $parque)
     {
-        //
-        $parque->update($request->only(
-            'nombreParque', 
-            'localidad', 
-            'area',
-            'escala',
-            'estrato',
-            'direccion'
-        ));
+        $data = $request->validated();
+        if(isset($data["foto"])){
+            $data["foto"] = $filename = time().".".$data["foto"]->extension();
+            $request->foto->move(public_path("images/parques"), $filename);
+        }
+
+        $parque->update($data);
 
         return redirect()->route('parque.index');
     }
@@ -109,8 +105,8 @@ class ParqueController extends Controller
     public function destroy(Parque $parque)
     {
         //
+        Storage::delete('public/images/parques/'.$parque->foto);
         $parque->delete();
-
         return redirect()->route('parque.index');
     }
 }

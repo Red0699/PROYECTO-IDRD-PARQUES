@@ -107,6 +107,9 @@
                     <div class="form-group">
                         <label class="form-control-label" for="input-foto">{{ __('Cargar Foto') }}</label>
                         <input type="file" name="foto" class="form-control" id="photo" value="{{ old('foto') }}">
+                        @if ($errors->has('foto'))
+                        <span class ="error text-danger" for="input-foto">{{ $errors->first('foto') }}</span>
+                        @endif
                     </div>
 
                     <div class="text-center">

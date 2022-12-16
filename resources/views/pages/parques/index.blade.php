@@ -30,7 +30,7 @@
                                             <th>Localidad</th>
                                             <th>Dirección</th>
                                             <th>Escala</th>
-                                            <th>Fecha de actualización</th>
+                                            
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
@@ -38,20 +38,20 @@
 
                                             <tr>
                                                 <td>{{ $parque->nombreParque }}</td>
-                                                @if($parque->photo == null)
+                                                @if($parque->foto == null)
                                                 
                                                 <td>
                                                     <span class="badge badge-danger">Sin Foto</span>
                                                 </td>
                                                 @else
                                                 <td>
-                                                    <img src="{{ $parque->photo }}" alt="" width="100">
+                                                    <img src=" {{ asset('images/parques').'/'.$parque->foto }} " alt="" width="100">
                                                 </td>
                                                 @endif
                                                 <th>{{ $parque->localidad }}</th>
                                                 <th>{{ $parque->direccion }}</th>
                                                 <th>{{ $parque->escala }}</th>
-                                                <td>{{ $parque->updated_at }}</td>
+                                                
                                                 <td class="td-actions text-right">
                                                     <a href="{{ route('parqueEdit.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">

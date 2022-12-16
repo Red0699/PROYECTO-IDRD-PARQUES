@@ -30,7 +30,8 @@ class ParqueRequest extends FormRequest
             'area' => 'required',
             'escala' => 'required',
             'estrato' => 'required',
-            'direccion' => 'required | min: 5'
+            'direccion' => 'required | min: 5',
+            'foto' => "mimes:jpeg,png,jpg"
         ];
     }
 
@@ -44,7 +45,9 @@ class ParqueRequest extends FormRequest
             'direccion.required' => 'El campo es requerido',
 
             'nombreParque.min' => 'El campo debe tener al menos :min caracteres',
-            'direccion.min' => 'El campo debe tener al menos :min caracteres'
+            'direccion.min' => 'El campo debe tener al menos :min caracteres',
+
+            'foto.mimes' => 'El archivo debe ser tipo JPG, JPEG, PNG'
         ];
     }
 }
