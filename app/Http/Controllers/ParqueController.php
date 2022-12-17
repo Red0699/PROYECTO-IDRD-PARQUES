@@ -7,6 +7,7 @@ use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use File;
 class ParqueController extends Controller
 {
     /**
@@ -85,10 +86,23 @@ class ParqueController extends Controller
      */
     public function update(ParqueRequest $request, Parque $parque)
     {
+        
         $data = $request->validated();
+        
+        
+        //dd($fileFoto);
         if(isset($data["foto"])){
+            $fileFoto = Parque::findOrFail($parque->id);
+            //$ruta = asset('images/parques').'/'.$fileFoto->foto;
+            $ruta = public_path().'/images/parques/'.$fileFoto->foto;
+            //dd($fileFoto->foto);
+            
+            //Storage::delete($ruta);
+            unlink($ruta);
             $data["foto"] = $filename = time().".".$data["foto"]->extension();
             $request->foto->move(public_path("images/parques"), $filename);
+
+            //$data["foto"] = $request->file('foto')->store('uploads','public');
         }
 
         $parque->update($data);
@@ -105,7 +119,11 @@ class ParqueController extends Controller
     public function destroy(Parque $parque)
     {
         //
-        //Storage::delete('public/images/parques/'.$parque->foto);
+        //dd($parque->foto);
+        if(isset($parque->foto)){
+            $ruta = public_path().'/images/parques/'.$parque->foto;
+            unlink($ruta);
+        }
         $parque->delete();
         return redirect()->route('parque.index');
     }

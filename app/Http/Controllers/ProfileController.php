@@ -65,15 +65,16 @@ class ProfileController extends Controller
         if (auth()->user()->id == 1) {
             return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
         }
-        $datos = request()->except('_token','_method');
+        //$datos = request()->except('_token','_method');
 
-        $user = User::find(auth()->user()->id);
+        $user = User::findOrFail(auth()->user()->id);
         //$user = $datos; 
 
         if($request->hasFile('photo')){
+            $ruta = public_path().'/assets/img/featureds/users/'.$user->foto;
+            unlink($ruta);
             $file = $request->file('photo');
-            $userData = User::findOrFail(auth()->user()->id);
-            Storage::delete('public/'.$userData->photo);
+            //$userData = User::findOrFail(auth()->user()->id);
             $destinationPath = 'assets/img/featureds/users/';
             $filename = $file->getClientOriginalName();
             $uploadSuccess = $request->file('photo')->move($destinationPath, $filename);
