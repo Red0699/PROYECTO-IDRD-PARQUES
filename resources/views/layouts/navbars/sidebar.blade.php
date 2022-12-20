@@ -43,11 +43,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('icons') }}">
-                            <i class="ni ni-planet text-purple"></i> {{ __('Icons') }}
-                        </a>
-                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('map') }}">
                             <i class="ni ni-pin-3 text-purple"></i> {{ __('Mapas') }}
