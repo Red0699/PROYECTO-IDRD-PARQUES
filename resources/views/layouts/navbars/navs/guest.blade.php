@@ -1,7 +1,26 @@
+<style>
+    .ni {
+        display: inline-block;
+        font: normal normal normal 14px/1 NucleoIcons;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .ni.circle {
+        padding: 0.33333333em;
+        vertical-align: -16%;
+        background-color: #542c86;
+        border-radius: 50%;
+    }
+</style>
+
+
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/white.png" />
+            <img src="{{ asset('argon') }}/img/brand/logo.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,27 +45,27 @@
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('home') }}">
-                        <i class="ni ni-planet"></i>
-                        <span class="nav-link-inner--text">{{ __('Dashboard') }}</span>
+                    <a class="nav-link nav-link-icon" href="/">
+                        <i class="ni ni-planet circle"></i>
+                        <span class="nav-link-inner--text">{{ __('Inicio') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('register') }}">
-                        <i class="ni ni-circle-08"></i>
-                        <span class="nav-link-inner--text">{{ __('Register') }}</span>
+                        <i class="ni ni-circle-08 circle"></i>
+                        <span class="nav-link-inner--text">{{ __('Registro') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('login') }}">
-                        <i class="ni ni-key-25"></i>
+                        <i class="ni ni-key-25 circle"></i>
                         <span class="nav-link-inner--text">{{ __('Login') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-inner--text">{{ __('Profile') }}</span>
+                        <i class="ni ni-single-02 circle"></i>
+                        <span class="nav-link-inner--text">{{ __('Ver perfil') }}</span>
                     </a>
                 </li>
             </ul>
