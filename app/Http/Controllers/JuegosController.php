@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JuegosRequest;
 use App\Models\Juegos;
+use App\Models\Parque;
 use Illuminate\Http\Request;
 
 class JuegosController extends Controller
@@ -28,7 +29,8 @@ class JuegosController extends Controller
     public function create()
     {
         //
-        return view('pages\inventario\juegos\create');
+        $parques = Parque::all();
+        return view('pages\inventario\juegos\create', compact('parques'));
     }
 
     /**
@@ -65,7 +67,8 @@ class JuegosController extends Controller
     public function edit(Juegos $juego)
     {
         //
-        return view('pages\inventario\juegos\edit', compact('juego'));
+        $parques = Parque::all();
+        return view('pages\inventario\juegos\edit', compact('juego', 'parques'));
     }
 
     /**

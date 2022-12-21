@@ -36,8 +36,27 @@ class JuegosRequest extends FormRequest
             'ancho' => 'required',
             'area' => 'required',
             'materialsuperficie' => 'required',
-            'descripcion'=> 'required',
+            'descripcion' => 'required',
             'estado' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'idParque.required' => 'Debe seleccionar una opción',
+            'tipojuego.required' => 'Debe seleccionar una opción',
+            'iluminacion.required' => 'Debe seleccionar una opción',
+            'material.required' => 'Debe seleccionar una opción',
+            'altura.required' => 'Debe seleccionar una opción',
+            'cerramiento.required' => 'Debe seleccionar una opción',
+            'reservable.required' => 'Debe seleccionar una opción',
+            'largo.required' => 'El campo no debe estar vacío',
+            'ancho.required' => 'El campo no debe estar vacío',
+            'area.required' => 'El campo no debe estar vacío',
+            'materialsuperficie.required' => 'Debe seleccionar una opción',
+            'descripcion.required' => 'El campo no debe estar vacío',
+            'estado.required' => 'Debe seleccionar una opción'
         ];
     }
 }
