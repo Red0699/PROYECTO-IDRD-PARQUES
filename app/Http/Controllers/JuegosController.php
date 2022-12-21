@@ -62,9 +62,10 @@ class JuegosController extends Controller
      * @param  \App\Models\Juegos  $juegos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Juegos $juegos)
+    public function edit(Juegos $juego)
     {
         //
+        return view('pages\inventario\juegos\edit', compact('juego'));
     }
 
     /**
@@ -74,9 +75,13 @@ class JuegosController extends Controller
      * @param  \App\Models\Juegos  $juegos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Juegos $juegos)
+    public function update(JuegosRequest $request, Juegos $juego)
     {
         //
+        $data = $request->validated();
+        $juego->update($data);
+
+        return redirect()->route('juegos.index');
     }
 
     /**
