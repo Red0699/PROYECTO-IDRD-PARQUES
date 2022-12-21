@@ -16,6 +16,8 @@ class JuegosController extends Controller
     public function index()
     {
         //
+        $juegos = Juegos::all();
+        return view('pages\inventario\juegos\index', compact('juegos'));
     }
 
     /**
@@ -40,7 +42,7 @@ class JuegosController extends Controller
         //
         $data = $request->validated();
         Juegos::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('juegos.index');
     }
 
     /**
@@ -86,5 +88,7 @@ class JuegosController extends Controller
     public function destroy(Juegos $juegos)
     {
         //
+        $juegos->delete();
+        return redirect()->route('juegos.index');
     }
 }
