@@ -19,7 +19,9 @@
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <!-- <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/argon.css?v=1.2.0" type="text/css">
+    
     
 </head>
 
@@ -46,7 +48,7 @@
     @stack('js')
 
     <!-- Argon JS -->
-    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.2.0"></script>
 </body>
 
 </html>

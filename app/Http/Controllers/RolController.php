@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
-class PermissionController extends Controller
+class RolController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,10 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('permission_index'), 403);
         //
-        $permissions = Permission::all();
+        $roles = Role::all();
 
-        return view('pages.permissions.index', compact('permissions'));
-
+        return view('pages.roles.index', compact('roles'));
     }
 
     /**
@@ -30,9 +28,10 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        abort_if(Gate::denies('permission_create'), 403);
         //
-        return view('pages.permissions.create');
+        $permissions = Permission::all()->pluck('name', 'id');
+
+        return view('pages.roles.create', compact('permissions'));
     }
 
     /**
@@ -44,9 +43,12 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         //
-        Permission::create($request->only('name'));
+        
+        $rol = Role::create($request->only('name'));
 
-        return redirect()->route('permission.index');
+        $rol->permissions()->sync($request->input('permissions', []));
+
+        return redirect()->route('rol.index');
     }
 
     /**
@@ -55,10 +57,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Permission $permissions)
+    public function show($id)
     {
         //
-        return view('pages.permissions.show', compact('permissions'));
     }
 
     /**
@@ -67,11 +68,12 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit(Role $rol)
     {
         //
-        abort_if(Gate::denies('permission_edit'), 403);
-        return view('pages.permissions.edit', compact('permission'));
+        $permissions = Permission::all()->pluck('name', 'id');
+        $rol->load('permissions');
+        return view('pages.roles.edit', compact('rol', 'permissions'));
     }
 
     /**
@@ -81,12 +83,13 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, Role $rol)
     {
         //
-        $permission->update($request->only('name'));
+        $rol->update($request->only('name'));
+        $rol->permissions()->sync($request->input('permissions', []));
 
-        return redirect()->route('permission.index');
+        return redirect()->route('rol.index');
     }
 
     /**
@@ -95,12 +98,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy(Role $rol)
     {
         //
-        abort_if(Gate::denies('permission_destroy'), 403);
-        $permission->delete();
+        $rol->delete();
 
-        return redirect()->route('permission.index');
+        return redirect()->route('rol.index');
     }
 }

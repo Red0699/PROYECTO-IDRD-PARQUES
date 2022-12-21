@@ -17,44 +17,39 @@
                             <i class="ni ni-tv-2 text-purple"></i> {{ __('Inicio') }}
                         </a>
                     </li>
+                    @can('users_module')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
+                        <a class="nav-link" href="{{ route('user.index') }}">
                             <i class="fas fa-users text-purple"></i> {{ __('Usuarios') }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                            <i class="fab fa-laravel text-purple" style="color: #f4645f;"></i>
-                            <span class="nav-link-text">{{ __('Laravel Examples') }}</span>
-                        </a>
+                    @endcan
 
-                        <div class="collapse show" id="navbar-examples">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('profile.edit') }}">
-                                        {{ __('User profile') }}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.index') }}">
-                                        {{ __('User Management') }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('parque.index') }}">
+                            <i class="fas fa-tree text-purple"></i> {{ __('Parques') }}
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('icons') }}">
-                            <i class="ni ni-planet text-purple"></i> {{ __('Icons') }}
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="fas fa-warehouse text-purple"></i></i> {{ __('Inventarios') }}
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">
+                            <i class="fas fa-archive text-purple"></i> {{ __('Diagnosticos') }}
+                        </a>
+                    </li>
+
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('map') }}">
                             <i class="ni ni-pin-3 text-purple"></i> {{ __('Mapas') }}
                         </a>
                     </li>
-                    
+
+                    @can('role_index')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
@@ -63,20 +58,25 @@
 
                         <div class="collapse show" id="navbar2-items">
                             <ul class="nav nav-sm flex-column ">
+                                @can('permission_index')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('permission.index') }}">
                                         {{ __('Permisos') }}
                                     </a>
                                 </li>
+                                @endcan
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('user.index') }}">
+                                    <a class="nav-link" href="{{ route('rol.index') }}">
                                         {{ __('Roles') }}
                                     </a>
                                 </li>
+                                
                             </ul>
                         </div>
                     </li>
-                    
+                    @endcan
+
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">

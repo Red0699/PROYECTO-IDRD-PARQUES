@@ -12,9 +12,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
-                            <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+
+                            @if(auth()->user()->photo == null)
+                            <span class="avatar avatar-sm rounded-circle img-fluid">
+                                <img src="{{ asset('assets') }}/img/theme/default-user-image.png" alt="">
                             </span>
+                            @else
+                            <img src="{{ asset(auth()->user()->photo) }}" alt="" class="img-fluid avatar-sm rounded-circle">
+                            @endif
+
                             <div class="media-body  ml-2  d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>
                             </div>
@@ -41,3 +47,10 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .photoImage img {
+        width: 100%;
+        height: auto;
+    }
+</style>

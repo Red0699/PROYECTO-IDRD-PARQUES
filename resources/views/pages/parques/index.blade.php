@@ -10,46 +10,58 @@
                         <div class="card">
 
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Permisos</h4>
-                                <p class="card-category">Permisos registrados</p>
+                                <h4 class="card-title">Parques</h4>
+                                <p class="card-category">Parques registrados</p>
+                                <div class="col-12 text-right">
+
+                                    <a type="button" class="btn btn-primary" href="{{ url('/parque/create') }}">Añadir Parque</a>
+
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-12 text-right">
-                                        @can('permission_create')
-                                        <a type="button" class="btn btn-primary" href="{{ url('/permission/create') }}">Añadir Permisos</a>
-                                        @endcan
-                                    </div>
+
                                 </div>
                                 <div class="table-responsive m-2">
-                                    <table class="table" id="permissionTable">
+                                    <table class="table" id="parqueTable">
                                         <thead class="thead-light">
-                                            <th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Guard</th>
-                                            <th>Fecha de creación</th>
+                                            <th>Foto</th>
+                                            <th>Localidad</th>
+                                            <th>Dirección</th>
+                                            <th>Escala</th>
+                                            
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
-                                            @forelse ($permissions as $permission)
+                                            @forelse ($parques as $parque)
+
                                             <tr>
-                                                <td>{{ $permission->id }}</td>
-                                                <td>{{ $permission->name }}</td>
-                                                <td>{{ $permission->guard_name }}</td>
-                                                <td>{{ $permission->created_at }}</td>
+                                                <td>{{ $parque->nombreParque }}</td>
+                                                @if($parque->foto == null)
+                                                
+                                                <td>
+                                                    <span class="badge badge-danger">Sin Foto</span>
+                                                </td>
+                                                @else
+                                                <td>
+                                                    <img src=" {{ asset('images/parques').'/'.$parque->foto }} " alt="" width="100">
+                                                </td>
+                                                @endif
+                                                <th>{{ $parque->localidad }}</th>
+                                                <th>{{ $parque->direccion }}</th>
+                                                <th>{{ $parque->escala }}</th>
+                                                
                                                 <td class="td-actions text-right">
-                                                    @can('permission_edit')
-                                                    <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                                    @endcan
-                                                    @can('permission_destroy')
-                                                    <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <a href="{{ route('parque.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                    <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                                    @endcan
+
                                                 </td>
                                             </tr>
                                             @empty
@@ -62,7 +74,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -70,6 +82,7 @@
         </div>
     </div>
 </div>
+
 
 @push('js')
 
@@ -86,7 +99,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#permissionTable').DataTable({
+        $('#parqueTable').DataTable({
             dom: 'Bfrtip',
             buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
             language: {
@@ -94,7 +107,7 @@
                 zeroRecords: 'No hay registros para mostrar',
                 info: 'Mostrando página _PAGE_ de _PAGES_',
                 infoEmpty: 'No hay registros...',
-                infoFiltered: '(Filtrando _MAX_ registros disponibles)',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
                 sSearch: 'Buscar',
                 'paginate': {
                     'previous': '<i class="fas fa-light fa-arrow-left"></i>',
@@ -108,5 +121,7 @@
     });
 </script>
 @endpush
+
+
 
 @endsection
