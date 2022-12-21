@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JuegosRequest;
 use App\Models\Juegos;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,7 @@ class JuegosController extends Controller
     public function create()
     {
         //
+        return view('pages\inventario\juegos\create');
     }
 
     /**
@@ -33,9 +35,12 @@ class JuegosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JuegosRequest $request)
     {
         //
+        $data = $request->validated();
+        Juegos::create($data);
+        return redirect()->route('parque.index');
     }
 
     /**
