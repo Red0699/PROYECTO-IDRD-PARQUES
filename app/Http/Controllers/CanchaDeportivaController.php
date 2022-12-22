@@ -14,7 +14,8 @@ class CanchaDeportivaController extends Controller
      */
     public function index()
     {
-        //
+        $juegos = CanchaDeportiva::all();
+        return view('pages\inventario\canchadeportivas\index', compact('canchadeportivas'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CanchaDeportivaController extends Controller
      */
     public function create()
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\canchadeportivas\create', compact('parques'));
     }
 
     /**
@@ -35,7 +37,9 @@ class CanchaDeportivaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validated();
+        CanchaDeportiva::create($data);
+        return redirect()->route('canchadeportivas.index');
     }
 
     /**
@@ -57,7 +61,8 @@ class CanchaDeportivaController extends Controller
      */
     public function edit(cancha_deportiva $cancha_deportiva)
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\canchadeportivas\edit', compact('canchadeportivas', 'parques'));
     }
 
     /**
@@ -69,7 +74,10 @@ class CanchaDeportivaController extends Controller
      */
     public function update(Request $request, cancha_deportiva $cancha_deportiva)
     {
-        //
+        $data = $request->validated();
+        $cancha_deportiva->update($data);
+
+        return redirect()->route('canchadeportivas.index');
     }
 
     /**
@@ -80,6 +88,7 @@ class CanchaDeportivaController extends Controller
      */
     public function destroy(cancha_deportiva $cancha_deportiva)
     {
-        //
+        $cancha_deportiva->delete();
+        return redirect()->route('canchadeportivas.index');
     }
 }
