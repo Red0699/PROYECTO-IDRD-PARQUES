@@ -17,7 +17,7 @@ class CanchaDeportivaController extends Controller
     public function index()
     {
         $canchas = cancha_deportiva::all();
-        return view('pages\inventario\canchadeportivas\index', compact('canchadeportivas'));
+        return view('pages\inventario\canchas\index', compact('canchas'));
     }
 
     /**
@@ -88,9 +88,9 @@ class CanchaDeportivaController extends Controller
      * @param  \App\Models\cancha_deportiva  $cancha_deportiva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cancha_deportiva $cancha_deportiva)
+    public function destroy(cancha_deportiva $cancha)
     {
-        $cancha_deportiva->delete();
-        return redirect()->route('canchadeportivas.index');
+        $cancha->delete();
+        return redirect()->route('cancha.index');
     }
 }
