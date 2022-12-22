@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Route::get('permissions', [PermissionController::class, 'index'])->name('permissions');
 	Route::resource('juegos', 'App\Http\Controllers\JuegosController');
+
+	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');
 	
 });
 

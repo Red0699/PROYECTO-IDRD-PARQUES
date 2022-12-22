@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\cancha_deportiva;
+use App\Http\Requests\CanchaRequest;
 use Illuminate\Http\Request;
+use App\Models\Parque;
 
 class CanchaDeportivaController extends Controller
 {
@@ -14,7 +16,7 @@ class CanchaDeportivaController extends Controller
      */
     public function index()
     {
-        $juegos = CanchaDeportiva::all();
+        $canchas = cancha_deportiva::all();
         return view('pages\inventario\canchadeportivas\index', compact('canchadeportivas'));
     }
 
@@ -26,7 +28,7 @@ class CanchaDeportivaController extends Controller
     public function create()
     {
         $parques = Parque::all();
-        return view('pages\inventario\canchadeportivas\create', compact('parques'));
+        return view('pages\inventario\canchas\create', compact('parques'));
     }
 
     /**
@@ -35,11 +37,11 @@ class CanchaDeportivaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CanchaRequest $request)
     {
         $data = $request->validated();
-        CanchaDeportiva::create($data);
-        return redirect()->route('canchadeportivas.index');
+        cancha_deportiva::create($data);
+        return redirect()->route('parque.index');
     }
 
     /**
