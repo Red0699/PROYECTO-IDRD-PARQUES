@@ -44,10 +44,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('rol', 'App\Http\Controllers\RolController', ['except' => ['edit', 'show']]);
 	Route::get('rolEdit/{rol}', ['as' => 'rolEdit.edit', 'uses' => 'App\Http\Controllers\RolController@edit']);
 
-Route::resource('parque', 'App\Http\Controllers\ParqueController', ['except' => ['edit']]);
-Route::get('parque/{parque}/editar', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
+	Route::resource('parque', 'App\Http\Controllers\ParqueController', ['except' => ['edit']]);
+	Route::get('parque/{parque}/editar', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
 	//Route::get('parqueEdit/{parque}', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
 
 	//Route::get('permissions', [PermissionController::class, 'index'])->name('permissions');
+	Route::resource('juegos', 'App\Http\Controllers\JuegosController');
+	
 });
 
