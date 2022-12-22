@@ -61,10 +61,10 @@ class CanchaDeportivaController extends Controller
      * @param  \App\Models\cancha_deportiva  $cancha_deportiva
      * @return \Illuminate\Http\Response
      */
-    public function edit(cancha_deportiva $cancha_deportiva)
+    public function edit(cancha_deportiva $cancha)
     {
         $parques = Parque::all();
-        return view('pages\inventario\canchadeportivas\edit', compact('canchadeportivas', 'parques'));
+        return view('pages\inventario\canchas\edit', compact('cancha', 'parques'));
     }
 
     /**
@@ -74,12 +74,12 @@ class CanchaDeportivaController extends Controller
      * @param  \App\Models\cancha_deportiva  $cancha_deportiva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cancha_deportiva $cancha_deportiva)
+    public function update(CanchaRequest $request, cancha_deportiva $cancha)
     {
         $data = $request->validated();
-        $cancha_deportiva->update($data);
+        $cancha->update($data);
 
-        return redirect()->route('canchadeportivas.index');
+        return redirect()->route('cancha.index');
     }
 
     /**
