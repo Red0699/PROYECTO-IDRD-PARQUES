@@ -18,4 +18,8 @@ class Parque extends Model
         'direccion',
         'foto'
     ];
+
+    public function juego(){
+        return $this->hasMany('App\Models\Juegos');
+    }
 }
