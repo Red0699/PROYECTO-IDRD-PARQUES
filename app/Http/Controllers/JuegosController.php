@@ -93,10 +93,10 @@ class JuegosController extends Controller
      * @param  \App\Models\Juegos  $juegos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Juegos $juegos)
+    public function destroy(Juegos $juego)
     {
         //
-        $juegos->delete();
+        $juego->delete();
         return redirect()->route('juegos.index');
     }
 }

@@ -22,4 +22,8 @@ class Parque extends Model
     public function juego(){
         return $this->hasMany('App\Models\Juegos');
     }
+
+    public function cancha(){
+        return $this->hasMany('App\Models\cancha_deportiva');
+    }
 }

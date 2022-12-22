@@ -6,7 +6,7 @@
     <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
             <div class="row align-items-center">
-                <h3 class="mb-0">{{ __('edicion de Cancha Deportiva') }}</h3>
+                <h3 class="mb-0">{{ __('Edición de Cancha Deportiva') }}</h3>
             </div>
         </div>
         <div class="card-body">
@@ -93,7 +93,7 @@
 
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('camerino') }}</label>
+                                <label class="form-control-label">{{ __('Camerino') }}</label>
                                 <select name="camerino" id="camerino" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('camerino',$cancha->camerino) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('Descripcion') }}</label>
+                        <label class="form-control-label">{{ __('Descripción') }}</label>
                         <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion',$cancha->descripcion) }}" autofocus></input>
                         @if ($errors->has('descripcion'))
                         <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
@@ -186,7 +186,7 @@
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/juegos" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="/cancha" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>
