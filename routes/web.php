@@ -46,9 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('parque', 'App\Http\Controllers\ParqueController', ['except' => ['edit']]);
 	Route::get('parque/{parque}/editar', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
-	//Route::get('parqueEdit/{parque}', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
 
-	//Route::get('permissions', [PermissionController::class, 'index'])->name('permissions');
+	Route::get('inventario', function () {return view('pages.inventario.main');})->name('inventario');
+
 	Route::resource('juegos', 'App\Http\Controllers\JuegosController');
 
 	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');

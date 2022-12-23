@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="content py-5">
     <div class="container-fluid">
         <div class="row">
@@ -128,4 +126,3 @@
 
 
 
-@endsection

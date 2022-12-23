@@ -32,7 +32,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
+                        <a class="nav-link" href="{{ route('inventario') }}">
                             <i class="fas fa-warehouse text-purple"></i></i> {{ __('Inventarios') }}
                         </a>
                     </li>
