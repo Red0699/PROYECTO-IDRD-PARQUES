@@ -32,9 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
-	 Route::get('map', function () {return view('pages.mapas.view');})->name('map');
-	 Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
-	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
+	Route::get('map', function () {return view('pages.mapas.view');})->name('map');
+	Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
+	Route::get('table-list', function () {return view('pages.tables');})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 	Route::put('profile/photo', ['as' => 'profile.photo', 'uses' => 'App\Http\Controllers\ProfileController@photo']);
 	
@@ -47,12 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('parque', 'App\Http\Controllers\ParqueController', ['except' => ['edit']]);
 	Route::get('parque/{parque}/editar', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
 
-	Route::get('inventario', function () {return view('pages.inventario.main');})->name('inventario');
+	Route::get('inventario', 'App\Http\Controllers\InventarioController@index')->name('inventario');
 
 	Route::resource('juegos', 'App\Http\Controllers\JuegosController');
-
 	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');
-
 	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController');
 	
 });
