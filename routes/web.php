@@ -17,7 +17,7 @@ use App\Http\Controllers\PermissionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 
@@ -31,13 +31,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('userEdit/{user}', ['as' => 'userEdit.edit', 'uses' => 'App\Http\Controllers\UserController@edit']);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-	Route::get('upgrade', function () {return view('pages.upgrade');})->name('upgrade'); 
-	 Route::get('map', function () {return view('pages.mapas.view');})->name('map');
-	 Route::get('icons', function () {return view('pages.icons');})->name('icons'); 
-	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
+	Route::get('upgrade', function () {
+		return view('pages.upgrade');
+	})->name('upgrade');
+	Route::get('map', function () {
+		return view('pages.mapas.view');
+	})->name('map');
+	Route::get('icons', function () {
+		return view('pages.icons');
+	})->name('icons');
+	Route::get('table-list', function () {
+		return view('pages.tables');
+	})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 	Route::put('profile/photo', ['as' => 'profile.photo', 'uses' => 'App\Http\Controllers\ProfileController@photo']);
-	
+
 	Route::resource('permission', 'App\Http\Controllers\PermissionController', ['except' => ['edit', 'show']]);
 	Route::get('permissionEdit/{permission}', ['as' => 'permissionEdit.edit', 'uses' => 'App\Http\Controllers\PermissionController@edit']);
 
@@ -54,6 +62,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');
 
 	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController');
-	
-});
 
+	Route::resource('escenario', 'App\Http\Controllers\EscenarioController');
+});

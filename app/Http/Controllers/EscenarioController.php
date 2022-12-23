@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\escenario;
 use Illuminate\Http\Request;
+use App\Models\Parque;
+use App\Http\Requests\EscenarioRequest;
 
 class EscenarioController extends Controller
 {
@@ -14,7 +16,8 @@ class EscenarioController extends Controller
      */
     public function index()
     {
-        //
+        $escenarios = escenario::all();
+        return view('pages\inventario\escenario\index', compact('escenarios'));
     }
 
     /**
@@ -24,7 +27,8 @@ class EscenarioController extends Controller
      */
     public function create()
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\escenario\create', compact('parques'));
     }
 
     /**
@@ -33,9 +37,11 @@ class EscenarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EscenarioRequest $request)
     {
-        //
+        $data = $request->validated();
+        escenario::create($data);
+        return redirect()->route('parque.index');
     }
 
     /**

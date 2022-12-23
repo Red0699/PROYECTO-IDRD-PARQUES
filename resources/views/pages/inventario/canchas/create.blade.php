@@ -35,7 +35,7 @@
                             <option value="squash" {{ old('tipocancha') == 'squash' ? 'selected' : '' }}>squash</option>
                             <option value="tablero" {{ old('tipocancha') == 'tablero' ? 'selected' : '' }}>tablero</option>
                             <option value="tejo" {{ old('tipocancha') == 'tejo' ? 'selected' : '' }}>tejo</option>
-                            
+
                         </select>
                         @if ($errors->has('tipocancha'))
                         <span class="error text-danger" for="input-tipocancha">{{ $errors->first('tipocancha') }}</span>
