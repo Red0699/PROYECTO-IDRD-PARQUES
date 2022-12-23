@@ -13,20 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cancha_deportivas', function (Blueprint $table) {
+        Schema::create('equipamientos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_parque');
-            $table->string('tipocancha');
-            $table->float('ancho');
+            $table->unsignedBigInteger('idparque');
+            $table->string('modulo');
             $table->float('largo');
+            $table->float('ancho');
             $table->float('area');
-            $table->string('material');
-            $table->string('iluminacion');
-            $table->string('cerramiento');
-            $table->string('camerino');
+            $table->string('luz');
+            $table->string('agua');
+            $table->string('gas');
             $table->string('descripcion');
             $table->string('estado');
-            $table->foreign("id_parque")
+            $table->foreign("idparque")
             ->references("id")
             ->on("parques")
             ->onDelete("cascade");
@@ -41,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cancha_deportivas');
+        Schema::dropIfExists('equipamientos');
     }
 };
