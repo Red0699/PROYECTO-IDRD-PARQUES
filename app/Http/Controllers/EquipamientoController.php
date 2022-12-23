@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\equipamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\EquipamientoRequest;
+use App\Models\Parque;
 
 class EquipamientoController extends Controller
 {
@@ -14,7 +16,8 @@ class EquipamientoController extends Controller
      */
     public function index()
     {
-        //
+        $equipamientos = equipamiento::all();
+        return view('pages\inventario\equipamiento\index', compact('equipamientos'));
     }
 
     /**
@@ -24,7 +27,8 @@ class EquipamientoController extends Controller
      */
     public function create()
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\equipamiento\create', compact('parques'));
     }
 
     /**
@@ -33,9 +37,11 @@ class EquipamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EquipamientoRequest $request)
     {
-        //
+        $data = $request->validated();
+        equipamiento::create($data);
+        return redirect()->route('parque.index');
     }
 
     /**
@@ -57,7 +63,8 @@ class EquipamientoController extends Controller
      */
     public function edit(equipamiento $equipamiento)
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\equipamiento\edit', compact('equipamiento', 'parques'));
     }
 
     /**
@@ -67,9 +74,12 @@ class EquipamientoController extends Controller
      * @param  \App\Models\equipamiento  $equipamiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, equipamiento $equipamiento)
+    public function update(EquipamientoRequest $request, equipamiento $equipamiento)
     {
-        //
+        $data = $request->validated();
+        $equipamiento->update($data);
+
+        return redirect()->route('equipamiento.index');
     }
 
     /**
@@ -80,6 +90,7 @@ class EquipamientoController extends Controller
      */
     public function destroy(equipamiento $equipamiento)
     {
-        //
+        $equipamiento->delete();
+        return redirect()->route('equipamiento.index');
     }
 }
