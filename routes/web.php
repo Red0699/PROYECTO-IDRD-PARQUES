@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('juegos', 'App\Http\Controllers\JuegosController');
 
 	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');
+
+	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController');
 	
 });
 
