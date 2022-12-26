@@ -24,7 +24,7 @@ class EscenarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'idparque' => 'required',
+            'id_parque' => 'required',
             'tipoescenariodeportivo' => 'required',
             'largo' => 'required',
             'ancho' => 'required',
@@ -33,7 +33,7 @@ class EscenarioRequest extends FormRequest
             'agua' => 'required',
             'gas' => 'required',
             'cerramiento' => 'required',
-            'camerino' => 'required',
+            'camerinos' => 'required',
             'nbaños' => 'required',
             'descripcion' => 'required',
             'estado' => 'required'
@@ -42,7 +42,7 @@ class EscenarioRequest extends FormRequest
     public function messages()
     {
         return [
-            'idparque.required' => 'Debe seleccionar una opción',
+            'id_parque.required' => 'Debe seleccionar una opción',
             'tipoescenariodeportivo.required' => 'Debe seleccionar una opción',
             'largo.required' => 'Debe digitar un valor',
             'ancho.required' => 'Debe digitar un valor ',
@@ -50,7 +50,7 @@ class EscenarioRequest extends FormRequest
             'luz.required' => 'Debe seleccionar una opción',
             'agua.required' => 'Debe seleccionar una opción',
             'gas.required' => 'Debe seleccionar una opción',
-            'camerino.required' => 'Debe seleccionar una opción',
+            'camerinos.required' => 'Debe seleccionar una opción',
             'cerramiento.required' => 'Debe seleccionar una opción',
             'nbaños.required' => 'El campo no debe estar vacío',
             'descripcion.required' => 'El campo no debe estar vacío',

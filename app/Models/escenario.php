@@ -9,7 +9,7 @@ class escenario extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'idparque',
+        'id_parque',
         'tipoescenariodeportivo',
         'largo',
         'ancho',

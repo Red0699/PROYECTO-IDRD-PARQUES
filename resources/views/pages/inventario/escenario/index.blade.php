@@ -51,7 +51,7 @@
                                                 <th>{{ $escenario->agua }}</th>
                                                 <th>{{ $escenario->gas }}</th>
                                                 <th>{{ $escenario->cerramiento }}</th>
-                                                <th>{{ $escenario->camerino }}</th>
+                                                <th>{{ $escenario->camerinos }}</th>
                                                 <th>{{ $escenario->nbaños }}</th>
                                                 <th>{{ $escenario->descripcion }}</th>
                                                 <th>{{ $escenario->estado }}</th>

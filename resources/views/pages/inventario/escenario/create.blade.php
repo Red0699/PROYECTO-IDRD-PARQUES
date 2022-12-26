@@ -17,21 +17,34 @@
                 <div class="pl-lg-3">
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Tipo de escenario deportivo') }}</label>
-                        <select name="tipojuego" id="tipojuego" class="form-control">
+                        <select name="tipoescenariodeportivo" id="tipoescenariodeportivo" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="Animales" {{ old('tipojuego') == 'Animales' ? 'selected' : '' }}>Animales</option>
-
-
+                            <option value="aula multiple" {{ old('tipoescenariodeportivo') == 'aula multiple' ? 'selected' : '' }}>aula multiple</option>
+                            <option value="bolera" {{ old('tipoescenariodeportivo') == 'bolera' ? 'selected' : '' }}>bolera</option>
+                            <option value="coliseo" {{ old('tipoescenariodeportivo') == 'coliseo' ? 'selected' : '' }}>coliseo</option>
+                            <option value="coliseo auxiliar" {{ old('tipoescenariodeportivo') == 'coliseo auxiliar' ? 'selected' : '' }}>coliseo auxiliar</option>
+                            <option value="coliceo cubierto" {{ old('tipoescenariodeportivo') == 'coliceo cubierto' ? 'selected' : '' }}>coliceo cubierto</option>
+                            <option value="dunt" {{ old('tipoescenariodeportivo') == 'dunt' ? 'selected' : '' }}>dunt</option>
+                            <option value="estadio de atletismo" {{ old('tipoescenariodeportivo') == 'estadio de atletismo' ? 'selected' : '' }}>estadio de atletismo</option>
+                            <option value="estadio de beisbol" {{ old('tipoescenariodeportivo') == 'estadio de beisbol' ? 'selected' : '' }}>estadio de beisbol</option>
+                            <option value="gimnasio aire libre" {{ old('tipoescenariodeportivo') == 'gimnasio aire libre' ? 'selected' : '' }}>gimnasio aire libre</option>
+                            <option value="golfito" {{ old('tipoescenariodeportivo') == 'golfito' ? 'selected' : '' }}>golfito</option>
+                            <option value="hookey" {{ old('tipoescenariodeportivo') == 'hookey' ? 'selected' : '' }}>hookey</option>
+                            <option value="lago" {{ old('tipoescenariodeportivo') == 'lago' ? 'selected' : '' }}>lago</option>
+                            <option value="media torta" {{ old('tipoescenariodeportivo') == 'media torta' ? 'selected' : '' }}>media torta</option>
+                            <option value="patinaje reacreativo" {{ old('tipoescenariodeportivo') == 'patinaje reacreativo' ? 'selected' : '' }}>patinaje reacreativo</option>
+                            <option value="patinodromo" {{ old('tipoescenariodeportivo') == 'patinodromo' ? 'selected' : '' }}>patinodromo</option>
+                            <option value="patinaje extremo" {{ old('tipoescenariodeportivo') == 'patinaje extremo' ? 'selected' : '' }}>patinaje extremo</option>
                         </select>
-                        @if ($errors->has('tipojuego'))
-                        <span class="error text-danger" for="input-tipojuego">{{ $errors->first('tipojuego') }}</span>
+                        @if ($errors->has('tipoescenariodeportivo'))
+                        <span class="error text-danger" for="input-tipoescenariodeportivo">{{ $errors->first('tipoescenariodeportivo') }}</span>
                         @endif
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Largo en metros') }}</label>
+                                <label class="form-control-label" for="input-largo">{{ __('Largo en metros') }}</label>
                                 <input type="number" name="largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo') }}" autofocus>
                                 @if ($errors->has('largo'))
                                 <span class="error text-danger" for="input-largo">{{ $errors->first('largo') }}</span>
@@ -51,14 +64,15 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area') }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('area en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" class="form-control" placeholder="{{ __('area del Parque') }}" value="{{ old('area') }}" autofocus>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -104,14 +118,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-control-label">{{ __('camerino') }}</label>
-                            <select name="camerino" id="camerino" class="form-control">
+                            <label class="form-control-label">{{ __('camerinos') }}</label>
+                            <select name="camerinos" id="camerinos" class="form-control">
                                 <option value="" selected>Seleccione una opción</option>
-                                <option value="Si" {{ old('camerino') == 'Si' ? 'selected' : '' }}>Si</option>
-                                <option value="No" {{ old('camerino') == 'No' ? 'selected' : '' }}>No</option>
+                                <option value="Si" {{ old('camerinos') == 'Si' ? 'selected' : '' }}>Si</option>
+                                <option value="No" {{ old('camerinos') == 'No' ? 'selected' : '' }}>No</option>
                             </select>
-                            @if ($errors->has('camerino'))
-                            <span class="error text-danger" for="input-camerino">{{ $errors->first('camerino') }}</span>
+                            @if ($errors->has('camerinos'))
+                            <span class="error text-danger" for="input-camerinos">{{ $errors->first('camerinos') }}</span>
                             @endif
                         </div>
                     </div>
@@ -129,8 +143,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-control-label" for="input-nbaños">{{ __('numero de baños') }}<sup>2</sup></label>
+                        <input type="number" name="nbaños" class="form-control" placeholder="{{ __('nbaños del Parque') }}" value="{{ old('nbaños') }}" autofocus>
+                        @if ($errors->has('area'))
+                        <span class="error text-danger" for="input-nbaños">{{ $errors->first('nbaños') }}</span>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <label class="form-control-label">{{ __('Descripcion') }}</label>
-                        <textarea type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion') }}" autofocus></textarea>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion') }}" autofocus>
                         @if ($errors->has('descripcion'))
                         <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                         @endif
@@ -151,14 +172,14 @@
 
                     <div class="form-group">
                         <label class="form-control-label">{{ __('ID del Parque') }}</label>
-                        <select name="idParque" id="idParque" class="form-control">
+                        <select name="id_parque" id="id_parque" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
                             @foreach($parques as $parque)
-                            <option value="{{ $parque->id }}" {{ old('idParque') == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
+                            <option value="{{ $parque->id }}" {{ old('id_parque') == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
                             @endforeach
                         </select>
-                        @if ($errors->has('idParque'))
-                        <span class="error text-danger" for="input-estado">{{ $errors->first('idParque') }}</span>
+                        @if ($errors->has('id_parque'))
+                        <span class="error text-danger" for="input-estado">{{ $errors->first('id_parque') }}</span>
                         @endif
                     </div>
 
@@ -166,11 +187,14 @@
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
                         <a href="/juegos" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
-                </div>
-            </form>
 
+                </div>
+
+            </form>
         </div>
+
     </div>
 </div>
+
 
 @endsection

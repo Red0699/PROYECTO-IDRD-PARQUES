@@ -63,7 +63,8 @@ class EscenarioController extends Controller
      */
     public function edit(escenario $escenario)
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\escenario\edit', compact('escenario', 'parques'));
     }
 
     /**
@@ -73,9 +74,12 @@ class EscenarioController extends Controller
      * @param  \App\Models\escenario  $escenario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, escenario $escenario)
+    public function update(EscenarioRequest $request, escenario $escenario)
     {
-        //
+        $data = $request->validated();
+        $escenario->update($data);
+
+        return redirect()->route('escenario.index');
     }
 
     /**
@@ -86,6 +90,7 @@ class EscenarioController extends Controller
      */
     public function destroy(escenario $escenario)
     {
-        //
+        $escenario->delete();
+        return redirect()->route('escenario.index');
     }
 }
