@@ -25,7 +25,7 @@ class JuegosRequest extends FormRequest
     {
         return [
             //
-            'idParque' => 'required',
+            //'idParque' => 'required',
             'tipojuego' => 'required',
             'iluminacion' => 'required',
             'material' => 'required',
@@ -44,7 +44,7 @@ class JuegosRequest extends FormRequest
     public function messages()
     {
         return [
-            'idParque.required' => 'Debe seleccionar una opción',
+            //'idParque.required' => 'Debe seleccionar una opción',
             'tipojuego.required' => 'Debe seleccionar una opción',
             'iluminacion.required' => 'Debe seleccionar una opción',
             'material.required' => 'Debe seleccionar una opción',

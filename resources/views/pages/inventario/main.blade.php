@@ -19,20 +19,26 @@
                         <div class="card borde">
 
                             <div class="card-body">
-                                <div class="row ">
-                                    <div class="col-6">
-                                        <select name="id" id="id" class="form-control">
-                                            <option value="" selected>Seleccione una opción</option>
-                                            @foreach($parques as $parque)
-                                            <option value="{{ $parque->id }}" {{ old('id') == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                                            @endforeach
-                                        </select>
+                                <form action="{{ route('inventario') }}" method="get">
+                                    @csrf
+                                    <div class="row ">
+
+
+                                        <div class="col-6">
+                                            <select name="id" id="id" class="form-control">
+                                                <option value="0" selected>Seleccione una opción</option>
+                                                @foreach($parques as $parque)
+                                                <option value="{{ $parque->id }}" {{ $dataTemp == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary">Buscar</button>
+                                        </div>
 
                                     </div>
-                                    <div class="col">
-                                        <button class="btn btn-primary">Buscar</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
 
                         </div>

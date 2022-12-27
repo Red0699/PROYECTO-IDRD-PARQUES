@@ -3,7 +3,7 @@
     <p class="card-category">Juegos registrados</p>
     <div class="col-12 text-right">
 
-        <a type="button" class="btn btn-primary" href="{{ url('/juegos/create') }}">Añadir Juego</a>
+        <a type="button" class="btn btn-primary" href="{{ route('juegos.create', $parque->id) }}">Añadir Juego</a>
 
     </div>
 </div>

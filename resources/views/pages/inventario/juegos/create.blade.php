@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
 
-            <form method="post" action="{{ route('juegos.store') }}" autocomplete="off">
+            <form method="post" action="{{ route('juegos.store', $parque->id) }}" autocomplete="off">
                 @csrf
 
                 <div class="pl-lg-3">
@@ -215,26 +215,12 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label">{{ __('ID del Parque') }}</label>
-                        <select name="idParque" id="idParque" class="form-control">
-                            <option value="" selected>Seleccione una opción</option>
-                            @foreach($parques as $parque)
-                            <option value="{{ $parque->id }}" {{ old('idParque') == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('idParque'))
-                        <span class="error text-danger" for="input-estado">{{ $errors->first('idParque') }}</span>
-                        @endif
-                    </div>
-
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/juegos" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="{{ route('inventario') }}" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

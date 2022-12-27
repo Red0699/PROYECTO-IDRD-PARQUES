@@ -26,11 +26,10 @@ class JuegosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Parque $parque)
     {
         //
-        $parques = Parque::all();
-        return view('pages\inventario\juegos\create', compact('parques'));
+        return view('pages\inventario\juegos\create', compact('parque'));
     }
 
     /**
@@ -39,12 +38,14 @@ class JuegosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JuegosRequest $request)
+    public function store(JuegosRequest $request, Parque $parque)
     {
         //
         $data = $request->validated();
+        $data['idParque'] = $parque->id;
+        //dd($parque->id);
         Juegos::create($data);
-        return redirect()->route('juegos.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -64,11 +65,10 @@ class JuegosController extends Controller
      * @param  \App\Models\Juegos  $juegos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Juegos $juego)
+    public function edit(Juegos $juego, Parque $parque)
     {
         //
-        $parques = Parque::all();
-        return view('pages\inventario\juegos\edit', compact('juego', 'parques'));
+        return view('pages\inventario\juegos\edit', compact('juego', 'parque'));
     }
 
     /**
@@ -84,7 +84,7 @@ class JuegosController extends Controller
         $data = $request->validated();
         $juego->update($data);
 
-        return redirect()->route('juegos.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -97,6 +97,6 @@ class JuegosController extends Controller
     {
         //
         $juego->delete();
-        return redirect()->route('juegos.index');
+        return redirect()->route('inventario');
     }
 }
