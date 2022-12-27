@@ -25,10 +25,10 @@ class EscenarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Parque $parque)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\escenario\create', compact('parques'));
+        
+        return view('pages\inventario\escenario\create', compact('parque'));
     }
 
     /**
@@ -37,11 +37,12 @@ class EscenarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EscenarioRequest $request)
+    public function store(EscenarioRequest $request, Parque $parque)
     {
         $data = $request->validated();
+        $data['id_parque'] = $parque->id;
         escenario::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -63,8 +64,8 @@ class EscenarioController extends Controller
      */
     public function edit(escenario $escenario)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\escenario\edit', compact('escenario', 'parques'));
+        
+        return view('pages\inventario\escenario\edit', compact('escenario'));
     }
 
     /**
@@ -79,7 +80,7 @@ class EscenarioController extends Controller
         $data = $request->validated();
         $escenario->update($data);
 
-        return redirect()->route('escenario.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -91,6 +92,6 @@ class EscenarioController extends Controller
     public function destroy(escenario $escenario)
     {
         $escenario->delete();
-        return redirect()->route('escenario.index');
+        return redirect()->route('inventario');
     }
 }

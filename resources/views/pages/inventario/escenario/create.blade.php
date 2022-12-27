@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
 
-            <form method="post" action="{{ route('escenario.store') }}" autocomplete="off">
+            <form method="post" action="{{ route('escenario.store', $parque->id) }}" autocomplete="off">
                 @csrf
 
                 <div class="pl-lg-3">
@@ -117,16 +117,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-control-label">{{ __('camerinos') }}</label>
-                            <select name="camerinos" id="camerinos" class="form-control">
-                                <option value="" selected>Seleccione una opción</option>
-                                <option value="Si" {{ old('camerinos') == 'Si' ? 'selected' : '' }}>Si</option>
-                                <option value="No" {{ old('camerinos') == 'No' ? 'selected' : '' }}>No</option>
-                            </select>
-                            @if ($errors->has('camerinos'))
-                            <span class="error text-danger" for="input-camerinos">{{ $errors->first('camerinos') }}</span>
-                            @endif
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">{{ __('camerinos') }}</label>
+                                <select name="camerinos" id="camerinos" class="form-control">
+                                    <option value="" selected>Seleccione una opción</option>
+                                    <option value="Si" {{ old('camerinos') == 'Si' ? 'selected' : '' }}>Si</option>
+                                    <option value="No" {{ old('camerinos') == 'No' ? 'selected' : '' }}>No</option>
+                                </select>
+                                @if ($errors->has('camerinos'))
+                                <span class="error text-danger" for="input-camerinos">{{ $errors->first('camerinos') }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -143,7 +145,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-control-label" for="input-nbaños">{{ __('numero de baños') }}<sup>2</sup></label>
+                        <label class="form-control-label" for="input-nbaños">{{ __('numero de baños') }}</label>
                         <input type="number" name="nbaños" class="form-control" placeholder="{{ __('nbaños del Parque') }}" value="{{ old('nbaños') }}" autofocus>
                         @if ($errors->has('area'))
                         <span class="error text-danger" for="input-nbaños">{{ $errors->first('nbaños') }}</span>
@@ -170,22 +172,9 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label">{{ __('ID del Parque') }}</label>
-                        <select name="id_parque" id="id_parque" class="form-control">
-                            <option value="" selected>Seleccione una opción</option>
-                            @foreach($parques as $parque)
-                            <option value="{{ $parque->id }}" {{ old('id_parque') == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('id_parque'))
-                        <span class="error text-danger" for="input-estado">{{ $errors->first('id_parque') }}</span>
-                        @endif
-                    </div>
-
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/juegos" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="/inventario" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
 
                 </div>

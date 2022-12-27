@@ -24,7 +24,7 @@ class MobiliarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'idparque' => 'required',
+            //'idparque' => 'required',
             'tipomobiliario' => 'required',
             'material' => 'required',
             'longitud' => 'required',
@@ -35,7 +35,7 @@ class MobiliarioRequest extends FormRequest
     public function messages()
     {
         return [
-            'idparque.required' => 'Debe seleccionar una opción',
+            //'idparque.required' => 'Debe seleccionar una opción',
             'tipomobiliario.required' => 'Debe seleccionar una opción',
             'material.required' => 'Debe seleccionar una opción',
             'longitud.required' => 'El campo no debe estar vacío',

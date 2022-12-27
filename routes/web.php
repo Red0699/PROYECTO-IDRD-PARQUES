@@ -63,8 +63,19 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('juegos/create/{parque}', ['as' => 'juegos.create', 'uses' => 'App\Http\Controllers\JuegosController@create']);
 	Route::post('juegos/{parque}', ['as' => 'juegos.store', 'uses' => 'App\Http\Controllers\JuegosController@store']);
 
-	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController');
-	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController');
-	Route::resource('escenario', 'App\Http\Controllers\EscenarioController');
-	Route::resource('mobiliario', 'App\Http\Controllers\MobiliarioController');
+	Route::resource('cancha', 'App\Http\Controllers\CanchaDeportivaController', ['except' => ['create', 'store']]);
+	Route::get('cancha/create/{parque}', ['as' => 'cancha.create', 'uses' => 'App\Http\Controllers\CanchaDeportivaController@create']);
+	Route::post('cancha/{parque}', ['as' => 'cancha.store', 'uses' => 'App\Http\Controllers\CanchaDeportivaController@store']);
+
+	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController', ['except' => ['create', 'store']]);
+	Route::get('equipamiento/create/{parque}', ['as' => 'equipamiento.create', 'uses' => 'App\Http\Controllers\EquipamientoController@create']);
+	Route::post('equipamiento/{parque}', ['as' => 'equipamiento.store', 'uses' => 'App\Http\Controllers\EquipamientoController@store']);
+
+	Route::resource('escenario', 'App\Http\Controllers\EscenarioController', ['except' => ['create', 'store']]);
+	Route::get('escenario/create/{parque}', ['as' => 'escenario.create', 'uses' => 'App\Http\Controllers\EscenarioController@create']);
+	Route::post('escenario/{parque}', ['as' => 'escenario.store', 'uses' => 'App\Http\Controllers\EscenarioController@store']);
+
+	Route::resource('mobiliario', 'App\Http\Controllers\MobiliarioController', ['except' => ['create', 'store']]);
+	Route::get('mobiliario/create/{parque}', ['as' => 'mobiliario.create', 'uses' => 'App\Http\Controllers\MobiliarioController@create']);
+	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 });

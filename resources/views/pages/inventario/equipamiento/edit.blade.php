@@ -136,21 +136,10 @@
                         <span class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label class="form-control-label">{{ __('ID del Parque') }}</label>
-                        <select name="idparque" id="idparque" class="form-control">
-                            <option value="" selected>Seleccione una opción</option>
-                            @foreach($parques as $parque)
-                            <option value="{{ $parque->id }}" {{ old('idparque',$equipamiento->idparque) == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('idparque'))
-                        <span class="error text-danger" for="input-estado">{{ $errors->first('idparque') }}</span>
-                        @endif
-                    </div>
+                    
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/equipamiento" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="/inventario" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>

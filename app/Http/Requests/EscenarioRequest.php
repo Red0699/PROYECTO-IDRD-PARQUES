@@ -24,7 +24,7 @@ class EscenarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_parque' => 'required',
+            //'id_parque' => 'required',
             'tipoescenariodeportivo' => 'required',
             'largo' => 'required',
             'ancho' => 'required',
@@ -42,7 +42,7 @@ class EscenarioRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_parque.required' => 'Debe seleccionar una opción',
+            //'id_parque.required' => 'Debe seleccionar una opción',
             'tipoescenariodeportivo.required' => 'Debe seleccionar una opción',
             'largo.required' => 'Debe digitar un valor',
             'ancho.required' => 'Debe digitar un valor ',
@@ -56,5 +56,5 @@ class EscenarioRequest extends FormRequest
             'descripcion.required' => 'El campo no debe estar vacío',
             'estado.required' => 'Debe seleccionar una opción'
         ];
-}
+    }
 }

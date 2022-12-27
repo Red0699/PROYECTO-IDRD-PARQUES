@@ -25,10 +25,9 @@ class EquipamientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Parque $parque)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\equipamiento\create', compact('parques'));
+        return view('pages\inventario\equipamiento\create', compact('parque'));
     }
 
     /**
@@ -37,11 +36,12 @@ class EquipamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EquipamientoRequest $request)
+    public function store(EquipamientoRequest $request, Parque $parque)
     {
         $data = $request->validated();
+        $data['idparque'] = $parque->id;
         equipamiento::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -63,8 +63,7 @@ class EquipamientoController extends Controller
      */
     public function edit(equipamiento $equipamiento)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\equipamiento\edit', compact('equipamiento', 'parques'));
+        return view('pages\inventario\equipamiento\edit', compact('equipamiento'));
     }
 
     /**
@@ -79,7 +78,7 @@ class EquipamientoController extends Controller
         $data = $request->validated();
         $equipamiento->update($data);
 
-        return redirect()->route('equipamiento.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -91,6 +90,6 @@ class EquipamientoController extends Controller
     public function destroy(equipamiento $equipamiento)
     {
         $equipamiento->delete();
-        return redirect()->route('equipamiento.index');
+        return redirect()->route('inventario');
     }
 }

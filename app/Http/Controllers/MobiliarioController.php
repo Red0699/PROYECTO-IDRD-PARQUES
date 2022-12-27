@@ -25,10 +25,10 @@ class MobiliarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Parque $parque)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\mobiliario\create', compact('parques'));
+        
+        return view('pages\inventario\mobiliario\create', compact('parque'));
     }
 
     /**
@@ -37,11 +37,12 @@ class MobiliarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MobiliarioRequest $request)
+    public function store(MobiliarioRequest $request, Parque $parque)
     {
         $data = $request->validated();
+        $data['idparque'] = $parque->id;
         mobiliario::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -63,8 +64,7 @@ class MobiliarioController extends Controller
      */
     public function edit(mobiliario $mobiliario)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\mobiliario\edit', compact('mobiliario', 'parques'));
+        return view('pages\inventario\mobiliario\edit', compact('mobiliario'));
     }
 
     /**
@@ -79,7 +79,7 @@ class MobiliarioController extends Controller
         $data = $request->validated();
         $mobiliario->update($data);
 
-        return redirect()->route('mobiliario.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -91,6 +91,6 @@ class MobiliarioController extends Controller
     public function destroy(mobiliario $mobiliario)
     {
         $mobiliario->delete();
-        return redirect()->route('mobiliario.index');
+        return redirect()->route('inventario');
     }
 }

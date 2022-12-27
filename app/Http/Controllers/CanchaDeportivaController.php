@@ -25,10 +25,10 @@ class CanchaDeportivaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Parque $parque)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\canchas\create', compact('parques'));
+        
+        return view('pages\inventario\canchas\create', compact('parque'));
     }
 
     /**
@@ -37,11 +37,12 @@ class CanchaDeportivaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CanchaRequest $request)
+    public function store(CanchaRequest $request, Parque $parque)
     {
         $data = $request->validated();
+        $data['id_parque'] = $parque->id;
         cancha_deportiva::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -63,8 +64,8 @@ class CanchaDeportivaController extends Controller
      */
     public function edit(cancha_deportiva $cancha)
     {
-        $parques = Parque::all();
-        return view('pages\inventario\canchas\edit', compact('cancha', 'parques'));
+        //$parques = Parque::all();
+        return view('pages\inventario\canchas\edit', compact('cancha'));
     }
 
     /**
@@ -79,7 +80,7 @@ class CanchaDeportivaController extends Controller
         $data = $request->validated();
         $cancha->update($data);
 
-        return redirect()->route('cancha.index');
+        return redirect()->route('inventario');
     }
 
     /**
@@ -91,6 +92,6 @@ class CanchaDeportivaController extends Controller
     public function destroy(cancha_deportiva $cancha)
     {
         $cancha->delete();
-        return redirect()->route('cancha.index');
+        return redirect()->route('inventario');
     }
 }

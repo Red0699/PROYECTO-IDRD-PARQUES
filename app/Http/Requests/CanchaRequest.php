@@ -24,7 +24,7 @@ class CanchaRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_parque' => 'required',
+           // 'id_parque' => 'required',
             'tipocancha' => 'required',
             'iluminacion' => 'required',
             'material' => 'required',
@@ -40,7 +40,7 @@ class CanchaRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_parque.required' => 'Debe seleccionar una opción',
+            //'id_parque.required' => 'Debe seleccionar una opción',
             'tipocancha.required' => 'Debe seleccionar una opción',
             'iluminacion.required' => 'Debe seleccionar una opción',
             'material.required' => 'Debe seleccionar una opción',

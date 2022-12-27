@@ -106,7 +106,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Cerramiento') }}</label>
                         <select name="cerramiento" id="cerramiento" class="form-control">
@@ -118,7 +117,6 @@
                         <span class="error text-danger" for="input-cerramiento">{{ $errors->first('cerramiento') }}</span>
                         @endif
                     </div>
-
 
                     <div class="row">
                         <div class="col">
@@ -162,7 +160,7 @@
                         <label class="form-control-label">{{ __('Estado') }}</label>
                         <select name="estado" id="estado" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="Bueno" {{ old('estado') == 'Bueno' ? 'selected' : '' }}>Bueno</option>
+                            <option value="Bueno" {{ old('estado',$cancha->estado) == 'Bueno' ? 'selected' : '' }}>Bueno</option>
                             <option value="En Mantenimiento" {{ old('estado',$cancha->estado) == 'En Mantenimiento' ? 'selected' : '' }}>En Mantenimiento</option>
                             <option value="Fuera de Servicio" {{ old('estado',$cancha->estado) == 'Fuera de Servicio' ? 'selected' : '' }}>Fuera de Servicio</option>
                         </select>
@@ -171,22 +169,9 @@
                         @endif
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-control-label">{{ __('ID del Parque') }}</label>
-                        <select name="id_parque" id="id_parque" class="form-control">
-                            <option value="" selected>Seleccione una opción</option>
-                            @foreach($parques as $parque)
-                            <option value="{{ $parque->id }}" {{ old('id_parque',$cancha->id_parque) == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('id_parque'))
-                        <span class="error text-danger" for="input-estado">{{ $errors->first('id_parque') }}</span>
-                        @endif
-                    </div>
-
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/cancha" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="/inventario" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>

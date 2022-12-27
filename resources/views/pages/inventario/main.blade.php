@@ -13,6 +13,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+
                 <!-- Card de Busqueda -->
                 <div class="row">
                     <div class="col-md-12">
@@ -76,16 +77,16 @@
                                             @include('pages/inventario/juegos/index')
                                         </div>
                                         <div class="tab-pane fade" id="canchas" role="tabpanel" aria-labelledby="canchas-tab">
-
+                                            @include('pages/inventario/canchas/index')
                                         </div>
                                         <div class="tab-pane fade" id="equipamientos" role="tabpanel" aria-labelledby="equipamientos-tab">
-
+                                            @include('pages/inventario/equipamiento/index')
                                         </div>
                                         <div class="tab-pane fade" id="mobiliarios" role="tabpanel" aria-labelledby="mobiliarios-tab">
-
+                                            @include('pages/inventario/mobiliario/index')
                                         </div>
                                         <div class="tab-pane fade" id="escenarios" role="tabpanel" aria-labelledby="escenarios-tab">
-
+                                            @include('pages/inventario/escenario/index')
                                         </div>
                                     </div>
                                 </div>

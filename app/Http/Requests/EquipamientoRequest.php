@@ -24,7 +24,7 @@ class EquipamientoRequest extends FormRequest
     public function rules()
     {
         return [
-            'idparque' => 'required',
+            //'idparque' => 'required',
             'modulo' => 'required',
             'largo' => 'required',
             'ancho' => 'required',
@@ -39,7 +39,7 @@ class EquipamientoRequest extends FormRequest
     public function messages()
     {
         return [
-            'idparque.required' => 'Debe seleccionar una opción',
+            //'idparque.required' => 'Debe seleccionar una opción',
             'modulo.required' => 'Debe seleccionar una opción',
             'largo.required' => 'Debe digitar un valor',
             'ancho.required' => 'Debe digitar un valor ',
