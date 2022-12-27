@@ -69,4 +69,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('equipamiento', 'App\Http\Controllers\EquipamientoController');
 
 	Route::resource('escenario', 'App\Http\Controllers\EscenarioController');
+
+	Route::resource('mobiliario', 'App\Http\Controllers\MobiliarioController');
 });
