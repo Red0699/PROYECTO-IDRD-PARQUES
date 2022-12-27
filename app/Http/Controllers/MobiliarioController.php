@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\mobiliario;
 use Illuminate\Http\Request;
+use App\Models\Parque;
+use App\Http\Requests\MobiliarioRequest;
 
 class MobiliarioController extends Controller
 {
@@ -14,7 +16,8 @@ class MobiliarioController extends Controller
      */
     public function index()
     {
-        //
+        $mobiliarios = mobiliario::all();
+        return view('pages\inventario\mobiliario\index', compact('mobiliarios'));
     }
 
     /**
@@ -24,7 +27,8 @@ class MobiliarioController extends Controller
      */
     public function create()
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\mobiliario\create', compact('parques'));
     }
 
     /**
@@ -33,9 +37,11 @@ class MobiliarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MobiliarioRequest $request)
     {
-        //
+        $data = $request->validated();
+        mobiliario::create($data);
+        return redirect()->route('parque.index');
     }
 
     /**
@@ -57,7 +63,8 @@ class MobiliarioController extends Controller
      */
     public function edit(mobiliario $mobiliario)
     {
-        //
+        $parques = Parque::all();
+        return view('pages\inventario\mobiliario\edit', compact('mobiliario', 'parques'));
     }
 
     /**
@@ -67,9 +74,12 @@ class MobiliarioController extends Controller
      * @param  \App\Models\mobiliario  $mobiliario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mobiliario $mobiliario)
+    public function update(MobiliarioRequest $request, mobiliario $mobiliario)
     {
-        //
+        $data = $request->validated();
+        $mobiliario->update($data);
+
+        return redirect()->route('mobiliario.index');
     }
 
     /**
@@ -80,6 +90,7 @@ class MobiliarioController extends Controller
      */
     public function destroy(mobiliario $mobiliario)
     {
-        //
+        $mobiliario->delete();
+        return redirect()->route('mobiliario.index');
     }
 }
