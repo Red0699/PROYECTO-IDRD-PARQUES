@@ -42,7 +42,7 @@ class EscenarioController extends Controller
         $data = $request->validated();
         $data['id_parque'] = $parque->id;
         escenario::create($data);
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $parque->id);
     }
 
     /**
@@ -80,7 +80,7 @@ class EscenarioController extends Controller
         $data = $request->validated();
         $escenario->update($data);
 
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $escenario->id_parque);
     }
 
     /**
@@ -91,7 +91,8 @@ class EscenarioController extends Controller
      */
     public function destroy(escenario $escenario)
     {
+        $dataId = $escenario->id_parque;
         $escenario->delete();
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $dataId);
     }
 }

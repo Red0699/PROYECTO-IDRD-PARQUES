@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Implementos Inventarios
 	Route::get('inventario', 'App\Http\Controllers\InventarioController@index')->name('inventario');
+	Route::get('inventario/{parque}', ['as' => 'inventario.busqueda', 'uses' => 'App\Http\Controllers\InventarioController@busqueda']);
 
 	Route::resource('juegos', 'App\Http\Controllers\JuegosController', ['except' => ['create', 'store']]);
 	Route::get('juegos/create/{parque}', ['as' => 'juegos.create', 'uses' => 'App\Http\Controllers\JuegosController@create']);

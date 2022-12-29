@@ -91,7 +91,7 @@
                         <label class="form-control-label">{{ __('estado') }}</label>
                         <select name="estado" id="estado" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="Bueno" {{ old('estado') == 'Bueno' ? 'selected' : '' }}>Bueno</option>
+                            <option value="Bueno" {{ old('estado',$mobiliario->estado) == 'Bueno' ? 'selected' : '' }}>Bueno</option>
                             <option value="En Mantenimiento" {{ old('estado',$mobiliario->estado) == 'En Mantenimiento' ? 'selected' : '' }}>En Mantenimiento</option>
                             <option value="Fuera de Servicio" {{ old('estado',$mobiliario->estado) == 'Fuera de Servicio' ? 'selected' : '' }}>Fuera de Servicio</option>
                         </select>
@@ -102,7 +102,7 @@
 
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/inventario" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="{{ route('inventario.busqueda', $mobiliario->idparque) }}" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>

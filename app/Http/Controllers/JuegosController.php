@@ -45,7 +45,7 @@ class JuegosController extends Controller
         $data['idParque'] = $parque->id;
         //dd($parque->id);
         Juegos::create($data);
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $parque->id);
     }
 
     /**
@@ -84,7 +84,7 @@ class JuegosController extends Controller
         $data = $request->validated();
         $juego->update($data);
 
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $juego->idParque);
     }
 
     /**
@@ -96,7 +96,8 @@ class JuegosController extends Controller
     public function destroy(Juegos $juego)
     {
         //
+        $dataId = $juego->idParque;
         $juego->delete();
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $dataId);
     }
 }

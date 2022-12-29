@@ -139,7 +139,7 @@
                     
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
-                        <a href="/inventario" class="btn bg-purple text-white mt-4">Volver</a>
+                        <a href="{{ route('inventario.busqueda', $equipamiento->idparque) }}" class="btn bg-purple text-white mt-4">Volver</a>
                     </div>
                 </div>
             </form>

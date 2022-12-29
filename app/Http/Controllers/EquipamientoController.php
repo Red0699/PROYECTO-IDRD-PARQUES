@@ -41,7 +41,7 @@ class EquipamientoController extends Controller
         $data = $request->validated();
         $data['idparque'] = $parque->id;
         equipamiento::create($data);
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $parque->id);
     }
 
     /**
@@ -78,7 +78,7 @@ class EquipamientoController extends Controller
         $data = $request->validated();
         $equipamiento->update($data);
 
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $equipamiento->idparque);
     }
 
     /**
@@ -89,7 +89,8 @@ class EquipamientoController extends Controller
      */
     public function destroy(equipamiento $equipamiento)
     {
+        $dataId = $equipamiento->idparque;
         $equipamiento->delete();
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $dataId);
     }
 }

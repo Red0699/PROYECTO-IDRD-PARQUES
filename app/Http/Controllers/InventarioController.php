@@ -16,7 +16,23 @@ class InventarioController extends Controller
     //
     public function index(Request $request)
     {
-        $data = $request->get('id');
+        
+        if($request->id == null){
+            $data = Parque::all()->pluck('id')->sortBy('id')->first();
+            //dd($data);
+            return redirect()->route('inventario.busqueda', $data);
+        }else{
+            $data = $request->get('id');
+            return redirect()->route('inventario.busqueda', $data);
+        }
+        
+        //dd($request->id);
+            
+    }
+    
+    public function busqueda(Parque $parque)
+    {
+        $data = $parque->id;
         $parques = Parque::all();
         $juegos = Juegos::all()->where('idParque', '=', $data);
         $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);

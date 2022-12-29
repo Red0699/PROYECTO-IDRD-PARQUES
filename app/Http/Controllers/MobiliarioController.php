@@ -42,7 +42,7 @@ class MobiliarioController extends Controller
         $data = $request->validated();
         $data['idparque'] = $parque->id;
         mobiliario::create($data);
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $parque->id);
     }
 
     /**
@@ -79,7 +79,7 @@ class MobiliarioController extends Controller
         $data = $request->validated();
         $mobiliario->update($data);
 
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $mobiliario->idparque);
     }
 
     /**
@@ -90,7 +90,8 @@ class MobiliarioController extends Controller
      */
     public function destroy(mobiliario $mobiliario)
     {
+        $dataId = $mobiliario->idparque;
         $mobiliario->delete();
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $dataId);
     }
 }
