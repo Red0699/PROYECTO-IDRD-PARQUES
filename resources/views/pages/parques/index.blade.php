@@ -30,7 +30,7 @@
                                             <th>Localidad</th>
                                             <th>Dirección</th>
                                             <th>Escala</th>
-                                            
+
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody class="list">
@@ -39,7 +39,7 @@
                                             <tr>
                                                 <td>{{ $parque->nombreParque }}</td>
                                                 @if($parque->foto == null)
-                                                
+
                                                 <td>
                                                     <span class="badge badge-danger">Sin Foto</span>
                                                 </td>
@@ -51,7 +51,7 @@
                                                 <th>{{ $parque->localidad }}</th>
                                                 <th>{{ $parque->direccion }}</th>
                                                 <th>{{ $parque->escala }}</th>
-                                                
+
                                                 <td class="td-actions text-right">
                                                     <a href="{{ route('parque.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
@@ -101,7 +101,45 @@
     $(document).ready(function() {
         $('#parqueTable').DataTable({
             dom: 'Bfrtip',
-            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            buttons: [
+                'pageLength',
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="fas fa-file-excel"></i> ',
+                    titleAttr: 'Exportar a Excel',
+                    className: 'btn btn-success'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="fas fa-file-pdf"></i> ',
+                    titleAttr: 'Exportar a PDF',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    className: 'btn-danger',
+                    download: 'open',
+                    messageTop: 'Reporte general parques',
+                    title: 'Institución Distrital de Recreación y Deporte',
+                    //Customizar estilos tabla PDF
+                    customize: function(doc) {
+
+                        doc.styles.title = {
+                            color: '#7F4DA9',
+                            fontSize: '30',
+                            alignment: 'center'
+                        }
+                        doc.styles['td:nth-child(2)'] = {
+                            width: '100px',
+                            'max-width': '100px'
+                        }
+                        doc.styles.tableHeader = {
+                            fillColor: '#7F4DA9',
+                            color: 'white'
+                        }
+                        doc.defaultStyle.alignment = 'center';
+                    
+                    }
+                }
+            ],
             language: {
                 lengthMenu: 'Mostrando _MENU_ registros por página',
                 zeroRecords: 'No hay registros para mostrar',
