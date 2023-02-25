@@ -23,11 +23,8 @@
                                 <form action="{{ route('inventario') }}" method="get">
                                     @csrf
                                     <div class="row ">
-
-
                                         <div class="col-6">
                                             <select name="id" id="id" class="form-control">
-                                                <option value="0" selected>Seleccione una opción</option>
                                                 @foreach($parques as $parque)
                                                 <option value="{{ $parque->id }}" {{ $dataTemp == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
                                                 @endforeach
