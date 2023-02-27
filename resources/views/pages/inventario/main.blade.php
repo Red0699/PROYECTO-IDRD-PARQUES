@@ -33,6 +33,9 @@
 
                                         <div class="col">
                                             <button type="submit" class="btn btn-primary">Buscar</button>
+                                            <a href="{{ route('inventario.reporte', $parque->id) }}" class="btn btn-danger">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </a>
                                         </div>
 
                                     </div>
