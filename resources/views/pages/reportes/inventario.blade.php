@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Informe PDF</title>
-    <style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </style>
-
-    <link rel="stylesheet" href="{{ public_path('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ public_path('assets/css/bootstrap/bootstrap.min.css') }}" type="text/css">
 
 </head>
 
 <body>
+    <!--
     <header class="text-center py-4">
         <div class="container">
-            <img src="{{ asset('argon') }}/img/brand/logo.png" alt="Logo" class="img-fluid mb-3">
+            <img src="{{ public_path('argon/img/brand/logo.png') }}" alt="Logo" class="img-fluid mb-3">
             <h1 class="mb-0">DIAGNOSTICO PARQUE</h1>
             <h2>{{ $parque->nombreParque }}</h2>
         </div>
@@ -32,6 +32,7 @@
 
         </div>
     </header>
+-->
 
 
     <div class="container my-5">
@@ -78,6 +79,7 @@
                 @endforelse
             </tbody>
         </table>
+        
 
         <h3 class="mb-4 text-center">Canchas Deportivas</h3>
         <table class="table table-bordered">
@@ -229,8 +231,10 @@
                 @endforelse
             </tbody>
         </table>
+        
 
     </div>
+    <!--
     <footer class="footer">
         <div class="row align-items-center justify-content-xl-between">
             <div class="col-xl-6">
@@ -248,6 +252,7 @@
             </div>
         </div>
     </footer>
+    
 </body>
 
 

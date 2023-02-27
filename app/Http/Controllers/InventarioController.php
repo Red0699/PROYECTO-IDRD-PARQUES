@@ -64,7 +64,7 @@ class InventarioController extends Controller
         $escenarios = escenario::all()->where('id_parque', '=', $data);
         $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
 
-
+/*
         $contxt = stream_context_create([
             'ssl' => [
                 'verify_peer' => FALSE,
@@ -75,15 +75,15 @@ class InventarioController extends Controller
 
         $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         $pdf->getDomPDF()->setHttpContext($contxt);
-
-        $pdf->loadView('pages.reportes.inventario', compact(
+*/
+        $pdf= PDF::loadView('pages.reportes.inventario', compact(
             'juegos',    
             'canchas',
             'equipamientos',
             'escenarios',
             'mobiliarios',
             'parque'
-        ))->setOptions(['defaultFont' => 'sans-serif']);
+        ))/*->setOptions(['defaultFont' => 'sans-serif'])*/;
 
         return $pdf->stream();
         
