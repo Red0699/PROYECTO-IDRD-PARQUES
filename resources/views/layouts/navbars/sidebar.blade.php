@@ -78,6 +78,7 @@
                     @endcan
 
                 </ul>
+                
                 <!-- Divider -->
                 <hr class="my-3">
                 <!-- Heading -->
@@ -85,6 +86,7 @@
                     <span class="docs-normal">Documentation</span>
                 </h6>
                 <!-- Navigation -->
+                <!--
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
                         <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
@@ -111,6 +113,7 @@
                         </a>
                     </li>
                 </ul>
+                -->
             </div>
         </div>
     </div>

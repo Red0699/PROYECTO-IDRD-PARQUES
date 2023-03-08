@@ -9,84 +9,95 @@
 
 @endpush
 
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
 <div class="content py-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
 
                 <!-- Card de Busqueda -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card borde">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card borde">
 
-                            <div class="card-body">
-                                <form action="{{ route('inventario') }}" method="get">
-                                    @csrf
-                                    <div class="row ">
-                                        <div class="col-6">
-                                            <select name="id" id="id" class="form-control">
-                                                @foreach($parques as $parque)
-                                                <option value="{{ $parque->id }}" {{ $dataTemp == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
-                                                @endforeach
-                                            </select>
+                                <div class="card-body">
+                                    <form action="{{ route('inventario') }}" method="get">
+                                        @csrf
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <select name="id" id="id" class="form-control">
+                                                    @foreach($parques as $parque)
+                                                    <option value="{{ $parque->id }}" {{ $dataTemp == $parque->id ? 'selected' : '' }}>{{ $parque->nombreParque }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary">Buscar</button>
+                                                <a href="{{ route('inventario.reporte', $parque->id) }}" class="btn btn-danger">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </a>
+                                            </div>
+
                                         </div>
+                                    </form>
+                                </div>
 
-                                        <div class="col">
-                                            <button type="submit" class="btn btn-primary">Buscar</button>
-                                            <a href="{{ route('inventario.reporte', $parque->id) }}" class="btn btn-danger">
-                                                <i class="fas fa-file-pdf"></i>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
                 <!-- Card Tablas -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="nav-wrapper">
-                            <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0 active " id="juegos-tab" data-toggle="tab" href="#juegos" role="tab" aria-controls="juegos" aria-selected="true">Juegos Infantiles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="canchas-tab" data-toggle="tab" href="#canchas" role="tab" aria-controls="canchas" aria-selected="false">Canchas Deportivas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="equipamientos-tab" data-toggle="tab" href="#equipamientos" role="tab" aria-controls="equipamientos" aria-selected="false">Equipamientos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="mobiliarios-tab" data-toggle="tab" href="#mobiliarios" role="tab" aria-controls="mobiliarios" aria-selected="false">Mobiliarios Urbanos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link mb-sm-3 mb-md-0" id="escenarios-tab" data-toggle="tab" href="#escenarios" role="tab" aria-controls="escenarios" aria-selected="false">Escenarios Deportivos</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-wrapper">
+                                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0 active " id="juegos-tab" data-toggle="tab" href="#juegos" role="tab" aria-controls="juegos" aria-selected="true">Juegos Infantiles</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0" id="canchas-tab" data-toggle="tab" href="#canchas" role="tab" aria-controls="canchas" aria-selected="false">Canchas Deportivas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0" id="equipamientos-tab" data-toggle="tab" href="#equipamientos" role="tab" aria-controls="equipamientos" aria-selected="false">Equipamientos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0" id="mobiliarios-tab" data-toggle="tab" href="#mobiliarios" role="tab" aria-controls="mobiliarios" aria-selected="false">Mobiliarios Urbanos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0" id="escenarios-tab" data-toggle="tab" href="#escenarios" role="tab" aria-controls="escenarios" aria-selected="false">Escenarios Deportivos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="content">
 
-                            <div class="card shadow">
-                                <div class="card-body">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="juegos" role="tabpanel" aria-labelledby="juegos-tab">
-                                            @include('pages/inventario/juegos/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="canchas" role="tabpanel" aria-labelledby="canchas-tab">
-                                            @include('pages/inventario/canchas/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="equipamientos" role="tabpanel" aria-labelledby="equipamientos-tab">
-                                            @include('pages/inventario/equipamiento/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="mobiliarios" role="tabpanel" aria-labelledby="mobiliarios-tab">
-                                            @include('pages/inventario/mobiliario/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="escenarios" role="tabpanel" aria-labelledby="escenarios-tab">
-                                            @include('pages/inventario/escenario/index')
+                                <div class="card shadow">
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="juegos" role="tabpanel" aria-labelledby="juegos-tab">
+                                                @include('pages/inventario/juegos/index')
+                                            </div>
+                                            <div class="tab-pane fade" id="canchas" role="tabpanel" aria-labelledby="canchas-tab">
+                                                @include('pages/inventario/canchas/index')
+                                            </div>
+                                            <div class="tab-pane fade" id="equipamientos" role="tabpanel" aria-labelledby="equipamientos-tab">
+                                                @include('pages/inventario/equipamiento/index')
+                                            </div>
+                                            <div class="tab-pane fade" id="mobiliarios" role="tabpanel" aria-labelledby="mobiliarios-tab">
+                                                @include('pages/inventario/mobiliario/index')
+                                            </div>
+                                            <div class="tab-pane fade" id="escenarios" role="tabpanel" aria-labelledby="escenarios-tab">
+                                                @include('pages/inventario/escenario/index')
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

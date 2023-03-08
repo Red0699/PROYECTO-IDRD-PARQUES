@@ -21,6 +21,9 @@
     <!-- Argon CSS -->
     <!-- <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/argon.css?v=1.2.0" type="text/css">
+    <link href="/assets-old/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
 
     @stack('css')
     
@@ -51,6 +54,8 @@
 
     <!-- Argon JS -->
     <script src="{{ asset('argon') }}/js/argon.js?v=1.2.0"></script>
+    <script src="{{ asset('argon') }}/js/argon.js"></script>
+    <script src="{{ asset('argon') }}/js/map.js"></script>
 </body>
 
 </html>

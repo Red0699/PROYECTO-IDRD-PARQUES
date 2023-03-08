@@ -7,15 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ public_path('assets/css/bootstrap/bootstrap.min.css') }}" type="text/css">
+    <!-- <link rel="stylesheet" href="{{ public_path('assets/css/bootstrap/bootstrap.min.css') }}" type="text/css"> -->
+   <!-- <link rel="stylesheet" href="{{ public_path('assets/css/argon.css?v=1.2.0') }}" type="text/css"> -->
+    <link rel="stylesheet" href="./bootstrap.min.css" type="text/css">  
+
+
+  <!--  <link rel="stylesheet" href="{{ asset('assets') }}/css/argon.css?v=1.2.0" type="text/css"> -->
 
 </head>
 
 <body>
-    <!--
+
     <header class="text-center py-4">
         <div class="container">
-            <img src="{{ public_path('argon/img/brand/logo.png') }}" alt="Logo" class="img-fluid mb-3">
+            <!-- <img src="{{ public_path('argon/img/brand/logo.png') }}" alt="Logo" class="img-fluid mb-3"> -->
+            <!-- <img src="{{ asset('argon/img/brand/logo.png') }}" alt="Logo" class="img-fluid mb-3"> -->
             <h1 class="mb-0">DIAGNOSTICO PARQUE</h1>
             <h2>{{ $parque->nombreParque }}</h2>
         </div>
@@ -32,54 +38,58 @@
 
         </div>
     </header>
--->
+
 
 
     <div class="container my-5">
 
         <h3 class="mb-4 text-center">Juegos Infantiles</h3>
-        <table class="table table-bordered">
-            <thead class="thead-light">
-                <th scope="col">Tipo</th>
-                <th scope="col">Iluminacion</th>
-                <th scope="col">Material</th>
-                <th scope="col">Altura</th>
-                <th scope="col">Cerramiento</th>
-                <th scope="col">Reservable</th>
-                <th scope="col">Largo</th>
-                <th scope="col">Ancho</th>
-                <th scope="col">Area</th>
-                <th scope="col">Superficie</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Estado</th>
-            </thead>
-            <tbody class="list">
-                @forelse ($juegos as $juego)
+        <div class="table-responsive m-2">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Iluminacion</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Altura</th>
+                    <th scope="col">Cerramiento</th>
+                    <th scope="col">Reservable</th>
+                    <th scope="col">Largo</th>
+                    <th scope="col">Ancho</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Superficie</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Estado</th>
+                </thead>
+                <tbody class="list">
+                    @forelse ($juegos as $juego)
 
-                <tr>
-                    <td>{{ $juego->tipojuego }}</td>
-                    <th>{{ $juego->iluminacion }}</th>
-                    <th>{{ $juego->material }}</th>
-                    <th>{{ $juego->altura }}</th>
-                    <th>{{ $juego->cerramiento }}</th>
-                    <th>{{ $juego->reservable }}</th>
-                    <th>{{ $juego->largo }}</th>
-                    <th>{{ $juego->ancho }}</th>
-                    <th>{{ $juego->area }}</th>
-                    <th>{{ $juego->materialsuperficie }}</th>
-                    <th>{{ $juego->descripcion }}</th>
-                    <th>{{ $juego->estado }}</th>
+                    <tr>
+                        <td>{{ $juego->tipojuego }}</td>
+                        <th>{{ $juego->iluminacion }}</th>
+                        <th>{{ $juego->material }}</th>
+                        <th>{{ $juego->altura }}</th>
+                        <th>{{ $juego->cerramiento }}</th>
+                        <th>{{ $juego->reservable }}</th>
+                        <th>{{ $juego->largo }}</th>
+                        <th>{{ $juego->ancho }}</th>
+                        <th>{{ $juego->area }}</th>
+                        <th>{{ $juego->materialsuperficie }}</th>
+                        <th>{{ $juego->descripcion }}</th>
+                        <th>{{ $juego->estado }}</th>
 
-                </tr>
-                @empty
+                    </tr>
+                    @empty
 
-                <tr>
-                    <td colspan="12">Sin registros.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-        
+                    <tr>
+                        <td colspan="12">Sin registros.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+
+                
+            </table>
+        </div>
+
 
         <h3 class="mb-4 text-center">Canchas Deportivas</h3>
         <table class="table table-bordered">
@@ -231,7 +241,7 @@
                 @endforelse
             </tbody>
         </table>
-        
+
 
     </div>
     <!--
@@ -252,7 +262,7 @@
             </div>
         </div>
     </footer>
-    
+    -->
 </body>
 
 

@@ -11,6 +11,7 @@ use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+//use Barryvdh\DomPDF\Facade as PDF;
 
 class InventarioController extends Controller
 {
@@ -55,6 +56,7 @@ class InventarioController extends Controller
     }
 
     public function pdf(Parque $parque)
+
     {
 
         $data = $parque->id;
@@ -64,7 +66,7 @@ class InventarioController extends Controller
         $escenarios = escenario::all()->where('id_parque', '=', $data);
         $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
 
-/*
+
         $contxt = stream_context_create([
             'ssl' => [
                 'verify_peer' => FALSE,
@@ -75,7 +77,7 @@ class InventarioController extends Controller
 
         $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         $pdf->getDomPDF()->setHttpContext($contxt);
-*/
+
         $pdf= PDF::loadView('pages.reportes.inventario', compact(
             'juegos',    
             'canchas',
@@ -83,11 +85,12 @@ class InventarioController extends Controller
             'escenarios',
             'mobiliarios',
             'parque'
-        ))/*->setOptions(['defaultFont' => 'sans-serif'])*/;
+        ));//setOptions(['defaultFont' => 'sans-serif'])
 
         return $pdf->stream();
+
         
-/*
+  /*
         
         return view('pages.reportes.inventario', compact(
             'juegos',    
@@ -97,7 +100,7 @@ class InventarioController extends Controller
             'mobiliarios',
             'parque'
         ));
-        */
+*/
         
     }
 }
