@@ -11,6 +11,7 @@
 
 @endpush
 
+
 <style>
     #contenedor-principal {
         border: 1px solid gray;
@@ -27,6 +28,7 @@
         background-color: white;
         padding: 20px;
         margin-bottom: 10px;
+        border-radius: 10px;
     }
 
     .busqueda {
@@ -40,6 +42,7 @@
         background-color: white;
         padding: 10px;
         margin-bottom: 20px;
+        border-radius: 10px;
     }
 
     .select-lg {
@@ -62,7 +65,17 @@
         color: #999999;
         font-size: 12px;
         margin-bottom: 0;
-        
+
+    }
+
+    .table-responsive table.table {
+        font-size: 14px;
+        border-collapse: collapse;
+        margin: 0;
+    }
+
+    p {
+        font-size: 13px;
     }
 </style>
 
@@ -104,9 +117,9 @@
                 <!-- Contenedor de información del parque -->
 
                 <div class="row justify-content-center mb-5">
-                <h2 class="text-center">Información General </h2>
+                    <h2 class="text-center">Información General: </h2>
                     <div class="col-md-11 contenedor">
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 <p><strong>Nombre:</strong> {{ $parque->nombreParque }}</p>
@@ -117,6 +130,29 @@
                                 <p><strong>Área:</strong> Área aproximada del parque</p>
                                 <p><strong>Dirección:</strong> {{ $parque->direccion }}</p>
                                 <p><strong>Estrato:</strong> {{ $parque->estrato }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de información del inventario -->
+
+                <div class="row justify-content-center mb-5">
+                    <h2 class="text-center">Información de Inventario:</h2>
+                    <div class="col-md-11 contenedor">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p><strong>Usuario que modifico el inventario:</strong>Ejemplo</p>
+                                <p><strong>Ultima actualización</strong>12/03/2023</p>
+
+                            </div>
+                            <div class="col-md-4">
+                                <p><strong>Persona que realizo el inventario: </strong>Ejemplo</p>
+                                <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn bg-purple text-white">Historicos</button>
                             </div>
                         </div>
                     </div>
@@ -186,10 +222,13 @@
     </div>
 </div>
 
-@push('js')
+@endsection
 
+@push('js')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.2/pdfmake.min.js"></script>
@@ -197,6 +236,159 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 
-@endpush
+<script>
+    $(document).ready(function() {
+        $('#invTable').DataTable({
+            "scrollY": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
 
-@endsection
+<script>
+    $(document).ready(function() {
+        $('#canchaTable').DataTable({
+            "scrollY": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#equipamientoTable').DataTable({
+            "scrollY": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#mobiliarioTable').DataTable({
+            "scrollY": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#escenarioTable').DataTable({
+            "scrollY": true,
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
+
+@endpush

@@ -24,7 +24,6 @@
     
     @stack('css')
     
-    
 </head>
 
 <body class="{{ $class ?? '' }}">
