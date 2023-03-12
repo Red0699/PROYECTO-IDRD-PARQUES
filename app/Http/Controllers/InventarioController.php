@@ -42,7 +42,7 @@ class InventarioController extends Controller
         $escenarios = escenario::all()->where('id_parque', '=', $data);
         $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
         $dataTemp = $data;
-        //dd($data);
+        //dd($parque);
 
         return view('pages.inventario.main', compact(
             'parques', 
@@ -52,6 +52,7 @@ class InventarioController extends Controller
             'escenarios',
             'mobiliarios',
             'dataTemp',
+            'parque'
         ));
     }
 

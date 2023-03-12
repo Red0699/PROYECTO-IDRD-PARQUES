@@ -1,0 +1,43 @@
+#contenedor-principal {
+    border: 1px solid gray;
+    background-color: white;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 1000px;
+    /* ancho máximo */
+    text-align: center;
+}
+
+.contenedor {
+    border: 2px solid gray;
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.busqueda {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.select-lg {
+    padding-right: 50px;
+}
+
+.btn-busqueda {
+    margin-left: 20px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-text {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.search-text p {
+    color: #999999;
+    font-size: 12px;
+    margin-bottom: 0;
+}
