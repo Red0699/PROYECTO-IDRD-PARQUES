@@ -28,7 +28,7 @@
                                             <th>Nombre</th>
                                             <th>Guard</th>
                                             <th>Fecha de creación</th>
-                                            <th class="text-right">Acciones</th>
+                                            <th class="text-center">Acciones</th>
                                         </thead>
                                         <tbody class="list">
                                             @forelse ($permissions as $permission)
@@ -37,15 +37,15 @@
                                                 <td>{{ $permission->name }}</td>
                                                 <td>{{ $permission->guard_name }}</td>
                                                 <td>{{ $permission->created_at }}</td>
-                                                <td class="td-actions text-right">
+                                                <td class="td-actions text-center">
                                                     @can('permission_edit')
-                                                    <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
                                                     @endcan
                                                     @can('permission_destroy')
                                                     <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>

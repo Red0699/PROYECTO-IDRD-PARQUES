@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+    .table {
+        table-layout: auto;
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    #rolTable .permissions-cell {
+        word-break: break-word;
+        vertical-align: top;
+        max-width: 100%;
+        white-space: normal;
+    }
+</style>
+
 <div class="content py-5">
     <div class="container-fluid">
         <div class="row">
@@ -29,7 +46,7 @@
                                             <th>Guard</th>
                                             <th>Fecha de creación</th>
                                             <th>Permisos</th>
-                                            <th class="text-right">Acciones</th>
+                                            <th class="text-center">Acciones</th>
                                         </thead>
                                         <tbody class="list">
                                             @forelse ($roles as $rol)
@@ -38,16 +55,16 @@
                                                 <td>{{ $rol->name }}</td>
                                                 <td>{{ $rol->guard_name }}</td>
                                                 <td>{{ $rol->created_at }}</td>
-                                                <td>
+                                                <td class="permissions-cell">
                                                     @forelse ($rol->permissions as $permission)
-                                                        <span class="badge badge-info">{{ $permission->name}}</span>
+                                                    <span class="badge badge-info">{{ $permission->name}}</span>
                                                     @empty
                                                     <span class="badge badge-danger">No tiene permisos</span>
                                                     @endforelse
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     @can('role_edit')
-                                                    <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white"><i class="fas fa-edit"></i></a>
                                                     @endcan
                                                     @can('role_destroy')
                                                     <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
@@ -70,7 +87,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
