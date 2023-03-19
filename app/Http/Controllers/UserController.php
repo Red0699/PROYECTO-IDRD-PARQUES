@@ -50,6 +50,8 @@ class UserController extends Controller
         abort_if(Gate::denies('users_module'), 403);
         $roles = Role::all();
         $user->load('roles');
+        //dd($user);
+        //dd($roles);
         return view('users.edit', compact('user', 'roles'));
     }
 
@@ -73,7 +75,6 @@ class UserController extends Controller
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
         return redirect()->route('user.index');
-
     }
 
     public function destroy(User $user)

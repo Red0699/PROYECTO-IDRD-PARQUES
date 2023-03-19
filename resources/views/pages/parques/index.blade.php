@@ -31,7 +31,7 @@
                                             <th>Dirección</th>
                                             <th>Escala</th>
 
-                                            <th class="text-right">Acciones</th>
+                                            <th class="text-center">Acciones</th>
                                         </thead>
                                         <tbody class="list">
                                             @forelse ($parques as $parque)
@@ -53,11 +53,12 @@
                                                 <th>{{ $parque->escala }}</th>
 
                                                 <td class="td-actions text-right">
-                                                    <a href="{{ route('parque.edit', $parque->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('parque.show', $parque->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('parque.edit', $parque->id) }}" class="btn bg-yellow btn-sm text-white"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -136,7 +137,7 @@
                             color: 'white'
                         }
                         doc.defaultStyle.alignment = 'center';
-                    
+
                     }
                 }
             ],

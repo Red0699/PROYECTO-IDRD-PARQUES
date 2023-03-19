@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ParqueRequest;
 use App\Models\Parque;
+use App\Models\cancha_deportiva;
+use App\Models\equipamiento;
+use App\Models\escenario;
+use App\Models\Juegos;
+use App\Models\mobiliario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -62,6 +67,20 @@ class ParqueController extends Controller
     public function show(Parque $parque)
     {
         //
+        $data = $parque->id;
+        $juegos = Juegos::all()->where('idParque', '=', $data);
+        $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);
+        $equipamientos = equipamiento::all()->where('idparque', '=', $data);
+        $escenarios = escenario::all()->where('id_parque', '=', $data);
+        $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
+        return view('pages.parques.show', compact(
+            'parque',
+            'juegos',
+            'canchas',
+            'equipamientos',
+            'escenarios',
+            'mobiliarios'
+        ));
     }
 
     /**
@@ -89,16 +108,21 @@ class ParqueController extends Controller
         
         $data = $request->validated();
         
+
         
         //dd($fileFoto);
         if(isset($data["foto"])){
             $fileFoto = Parque::findOrFail($parque->id);
             //$ruta = asset('images/parques').'/'.$fileFoto->foto;
-            $ruta = public_path().'/images/parques/'.$fileFoto->foto;
+            
             //dd($fileFoto->foto);
             
             //Storage::delete($ruta);
-            unlink($ruta);
+            if($parque->foto != NULL){
+                $ruta = public_path().'/images/parques/'.$fileFoto->foto;
+                unlink($ruta);
+            }
+            
             $data["foto"] = $filename = time().".".$data["foto"]->extension();
             $request->foto->move(public_path("images/parques"), $filename);
 
