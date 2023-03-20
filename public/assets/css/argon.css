@@ -20,7 +20,7 @@
 {
     --blue: #5e72e4;
     --indigo: #5603ad;
-    --purple: #8965e0;
+    --purple: #5b2d6d;
     --pink: #f3a4b5;
     --red: #f5365c;
     --orange: #fb6340;
@@ -23984,7 +23984,7 @@ button.bg-indigo:focus
 
 .bg-purple
 {
-    background-color: #8965e0 !important;
+    background-color: #5b2d6d !important;
 }
 
 a.bg-purple:hover,
@@ -23992,7 +23992,7 @@ a.bg-purple:focus,
 button.bg-purple:hover,
 button.bg-purple:focus
 {
-    background-color: #683bd7 !important;
+    background-color: #5b2d6d !important;
 }
 
 .bg-pink
