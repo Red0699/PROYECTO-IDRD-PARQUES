@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@push('css')
+
+
+
+@endpush
+
 @section('content')
 
 <style>
@@ -20,7 +26,7 @@
             </div>
             <div class="card-body">
 
-                <form method="post" action="{{ route('parque.store') }}" autocomplete="off" enctype="multipart/form-data">
+                <form method="post" id="form-alert" action="{{ route('parque.store') }}" autocomplete="off" enctype="multipart/form-data">
                     @csrf
 
                     <div class="pl-lg-3">
@@ -134,3 +140,26 @@
 </div>
 
 @endsection
+
+@push('js')
+
+<script>
+    $('#form-alert').submit(function(e) {
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            
+            if (result.isConfirmed) {
+                Swal.fire('Saved!', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    });
+</script>
+
+@endpush
