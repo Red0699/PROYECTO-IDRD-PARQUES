@@ -14,6 +14,8 @@ import { createApp } from 'vue';
  */
 
 const app = createApp({});
+import Swal from 'sweetalert2/src/sweetalert2.js';
+window.Swal = Swal;
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);

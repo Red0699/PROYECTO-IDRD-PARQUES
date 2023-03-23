@@ -13,8 +13,8 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
-                            <i class="ni ni-tv-2 text-purple"></i> {{ __('Inicio') }}
+                        <a class="nav-link" href="{{ route('home') }}" role="button" aria-expanded="true">
+                            <i class="fas fa-home text-purple"></i> {{ __('Inicio') }}
                         </a>
                     </li>
                     @can('users_module')
@@ -51,12 +51,12 @@
 
                     @can('role_index')
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
                             <span class="nav-link-text">{{ __('Configuraciones') }}</span>
                         </a>
 
-                        <div class="collapse show" id="navbar2-items">
+                        <div class="collapse" id="navbar2-items">
                             <ul class="nav nav-sm flex-column ">
                                 @can('permission_index')
                                 <li class="nav-item">

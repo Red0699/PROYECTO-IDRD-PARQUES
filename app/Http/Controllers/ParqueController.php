@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use File;
+use RealRashid\SweetAlert\Facades\Alert;
 class ParqueController extends Controller
 {
     /**
@@ -36,6 +37,7 @@ class ParqueController extends Controller
     public function create()
     {
         //
+        //Alert::success('Éxito', 'Los datos se han guardado correctamente');
         return view('pages.parques.create');
     }
 

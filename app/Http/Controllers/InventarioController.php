@@ -11,6 +11,8 @@ use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use PhpParser\Node\Stmt\While_;
+
 //use Barryvdh\DomPDF\Facade as PDF;
 
 class InventarioController extends Controller
@@ -25,6 +27,7 @@ class InventarioController extends Controller
             return redirect()->route('inventario.busqueda', $data);
         }else{
             $data = $request->get('id');
+            dd($data);
             return redirect()->route('inventario.busqueda', $data);
         }
         
