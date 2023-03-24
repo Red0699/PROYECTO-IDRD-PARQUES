@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RolRecord;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -47,7 +48,7 @@ class RolController extends Controller
         $rol = Role::create($request->only('name'));
 
         $rol->permissions()->sync($request->input('permissions', []));
-
+        event(new RolRecord($rol, "create"));
         return redirect()->route('rol.index');
     }
 
@@ -88,7 +89,7 @@ class RolController extends Controller
         //
         $rol->update($request->only('name'));
         $rol->permissions()->sync($request->input('permissions', []));
-
+        event(new RolRecord($rol, "update"));
         return redirect()->route('rol.index');
     }
 
@@ -101,6 +102,7 @@ class RolController extends Controller
     public function destroy(Role $rol)
     {
         //
+        event(new RolRecord($rol, "delete"));
         $rol->delete();
 
         return redirect()->route('rol.index');

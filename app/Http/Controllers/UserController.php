@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRecord;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -41,7 +42,7 @@ class UserController extends Controller
         $roles = $request->input('roles', []);
 
         $user->syncRoles($roles);
-
+        event(new UserRecord($user, "create"));
         return redirect()->route('user.index');
     }
 
@@ -74,6 +75,7 @@ class UserController extends Controller
         $user->update($data);
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
+        event(new UserRecord($user, "update"));
         return redirect()->route('user.index');
     }
 
@@ -83,7 +85,7 @@ class UserController extends Controller
         if (auth()->user()->id == $user->id) {
             return redirect()->route('user.index');
         }
-
+        event(new UserRecord($user, "delete"));
         $user->delete();
         return back()->with('success', 'Usuario eliminado correctamente');
         

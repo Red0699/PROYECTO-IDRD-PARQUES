@@ -20,7 +20,13 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\ParqueRecord' => [
             'App\Http\Controllers\HistoricoController@ParqueRecord'
-        ]
+        ],
+        'App\Events\RolRecord' => [
+            'App\Http\Controllers\HistoricoController@RolRecord'
+        ],
+        'App\Events\UserRecord' => [
+            'App\Http\Controllers\HistoricoController@UserRecord'
+        ],
     ];
 
     /**

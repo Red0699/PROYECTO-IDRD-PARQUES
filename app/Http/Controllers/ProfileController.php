@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserRecord;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\PhotoRequest;
@@ -39,7 +40,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $user->update($request->validated());
-
+        event(new UserRecord($user, "profile"));
         return back()->withStatus(__('Se ha actualizado los datos correctamente.'));
     }
 
@@ -56,7 +57,7 @@ class ProfileController extends Controller
         }
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
+        //event(new UserRecord($request, "profile"));
         return back()->withPasswordStatus(__('La contraseña se ha actualizado.'));
     }
 
@@ -81,6 +82,7 @@ class ProfileController extends Controller
             $user->photo = $destinationPath . $filename;
         }
         $user->save();
+        event(new UserRecord($user, "photo"));
        //User::where('id','=',auth()->user()->id)->update($user);
         return back()->withStatus(__('Datos actualizados correctamente'));
     }
