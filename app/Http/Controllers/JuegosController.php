@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecursosRecord;
 use App\Http\Requests\JuegosRequest;
 use App\Models\Juegos;
 use App\Models\Parque;
@@ -44,7 +45,8 @@ class JuegosController extends Controller
         $data = $request->validated();
         $data['idParque'] = $parque->id;
         //dd($parque->id);
-        Juegos::create($data);
+        $juego = Juegos::create($data);
+        event(new RecursosRecord($juego, "create", "juegos"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -83,7 +85,7 @@ class JuegosController extends Controller
         //
         $data = $request->validated();
         $juego->update($data);
-
+        event(new RecursosRecord($juego,"update", "juegos"));
         return redirect()->route('inventario.busqueda', $juego->idParque);
     }
 
@@ -97,6 +99,7 @@ class JuegosController extends Controller
     {
         //
         $dataId = $juego->idParque;
+        event(new RecursosRecord($juego,"delete", "juegos"));
         $juego->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

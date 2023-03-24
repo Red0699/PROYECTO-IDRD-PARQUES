@@ -64,13 +64,13 @@
                                                 </td>
                                                 <td class="td-actions text-right">
                                                     @can('role_edit')
-                                                    <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
                                                     @endcan
                                                     @can('role_destroy')
                                                     <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecursosRecord;
 use App\Models\escenario;
 use Illuminate\Http\Request;
 use App\Models\Parque;
@@ -41,7 +42,8 @@ class EscenarioController extends Controller
     {
         $data = $request->validated();
         $data['id_parque'] = $parque->id;
-        escenario::create($data);
+        $escenario = escenario::create($data);
+        event(new RecursosRecord($escenario, "create", "escenarios"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -79,7 +81,7 @@ class EscenarioController extends Controller
     {
         $data = $request->validated();
         $escenario->update($data);
-
+        event(new RecursosRecord($escenario, "update", "escenarios"));
         return redirect()->route('inventario.busqueda', $escenario->id_parque);
     }
 
@@ -92,6 +94,7 @@ class EscenarioController extends Controller
     public function destroy(escenario $escenario)
     {
         $dataId = $escenario->id_parque;
+        event(new RecursosRecord($escenario, "delete", "escenarios"));
         $escenario->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

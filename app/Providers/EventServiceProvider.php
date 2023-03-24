@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserRecord' => [
             'App\Http\Controllers\HistoricoController@UserRecord'
         ],
+        'App\Events\RecursosRecord' => [
+            'App\Http\Controllers\HistoricoController@InventarioRecord'
+        ]
     ];
 
     /**

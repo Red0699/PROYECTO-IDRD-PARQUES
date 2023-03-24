@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecursosRecord;
 use App\Models\mobiliario;
 use Illuminate\Http\Request;
 use App\Models\Parque;
@@ -41,7 +42,8 @@ class MobiliarioController extends Controller
     {
         $data = $request->validated();
         $data['idparque'] = $parque->id;
-        mobiliario::create($data);
+        $mobiliario = mobiliario::create($data);
+        event(new RecursosRecord($mobiliario, "create", "mobiliarios"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -78,7 +80,7 @@ class MobiliarioController extends Controller
     {
         $data = $request->validated();
         $mobiliario->update($data);
-
+        event(new RecursosRecord($mobiliario, "update", "mobiliarios"));
         return redirect()->route('inventario.busqueda', $mobiliario->idparque);
     }
 
@@ -91,6 +93,7 @@ class MobiliarioController extends Controller
     public function destroy(mobiliario $mobiliario)
     {
         $dataId = $mobiliario->idparque;
+        event(new RecursosRecord($mobiliario, "delete", "mobiliarios"));
         $mobiliario->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

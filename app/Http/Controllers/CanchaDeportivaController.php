@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecursosRecord;
 use App\Models\cancha_deportiva;
 use App\Http\Requests\CanchaRequest;
 use Illuminate\Http\Request;
@@ -41,7 +42,8 @@ class CanchaDeportivaController extends Controller
     {
         $data = $request->validated();
         $data['id_parque'] = $parque->id;
-        cancha_deportiva::create($data);
+        $cancha = cancha_deportiva::create($data);
+        event(new RecursosRecord($cancha, "create", "canchas"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -79,7 +81,7 @@ class CanchaDeportivaController extends Controller
     {
         $data = $request->validated();
         $cancha->update($data);
-
+        event(new RecursosRecord($cancha, "update", "canchas"));
         return redirect()->route('inventario.busqueda', $cancha->id_parque);
     }
 
@@ -92,6 +94,7 @@ class CanchaDeportivaController extends Controller
     public function destroy(cancha_deportiva $cancha)
     {
         $dataId = $cancha->id_parque;
+        event(new RecursosRecord($cancha, "delete", "canchas"));
         $cancha->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

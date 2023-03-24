@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecursosRecord;
 use App\Models\equipamiento;
 use Illuminate\Http\Request;
 use App\Http\Requests\EquipamientoRequest;
@@ -40,10 +41,11 @@ class EquipamientoController extends Controller
     {
         $data = $request->validated();
         $data['idparque'] = $parque->id;
-        equipamiento::create($data);
+        $equipamiento = equipamiento::create($data);
+        event(new RecursosRecord($equipamiento, "create", "equipamientos"));
         return redirect()->route('inventario.busqueda', $parque->id);
+    
     }
-
     /**
      * Display the specified resource.
      *
@@ -77,7 +79,7 @@ class EquipamientoController extends Controller
     {
         $data = $request->validated();
         $equipamiento->update($data);
-
+        event(new RecursosRecord($equipamiento, "update", "equipamientos"));
         return redirect()->route('inventario.busqueda', $equipamiento->idparque);
     }
 
@@ -90,6 +92,7 @@ class EquipamientoController extends Controller
     public function destroy(equipamiento $equipamiento)
     {
         $dataId = $equipamiento->idparque;
+        event(new RecursosRecord($equipamiento, "delete", "equipamientos"));
         $equipamiento->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }
