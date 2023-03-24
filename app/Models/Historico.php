@@ -12,11 +12,11 @@ class Historico extends Model
         'id',
         "nombreHistorico",
         "id_usuario",
+        "id_record",
         "tabla",
         "accion",
         "resultado",
         "descripcion",
-        
     ];
 
     public function user(){

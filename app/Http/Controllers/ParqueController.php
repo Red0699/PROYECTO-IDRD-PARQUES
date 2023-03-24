@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ParqueRecord;
 use App\Http\Requests\ParqueRequest;
 use App\Models\Parque;
 use App\Models\cancha_deportiva;
@@ -49,14 +50,16 @@ class ParqueController extends Controller
      */
     public function store(ParqueRequest $request)
     {
+        //$parque = new Parque();
         $data = $request->validated();
         if(isset($data["foto"])){
             $data["foto"] = $filename = time().".".$data["foto"]->extension();
             $request->foto->move(public_path("images/parques"), $filename);
         }
         //
-        Parque::create($data);
-
+        $parque = Parque::create($data);
+        //dd($parque);
+        event(new ParqueRecord($parque, "create")); //Evento para capturar la información y enviar los datos a la tabla de Historicos
         return redirect()->route('parque.index');
     }
 
@@ -132,7 +135,7 @@ class ParqueController extends Controller
         }
 
         $parque->update($data);
-
+        event(new ParqueRecord($parque, "update"));
         return redirect()->route('parque.index');
     }
 
@@ -150,6 +153,7 @@ class ParqueController extends Controller
             $ruta = public_path().'/images/parques/'.$parque->foto;
             unlink($ruta);
         }
+        event(new ParqueRecord($parque, "delete"));
         $parque->delete();
         return redirect()->route('parque.index');
     }

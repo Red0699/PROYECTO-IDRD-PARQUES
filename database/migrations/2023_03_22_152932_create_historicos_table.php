@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("nombreHistorico");
             $table->unsignedBigInteger("id_usuario");
+            $table->integer("id_record");
             $table->string("tabla");
             $table->string("accion");
             $table->string("resultado");
