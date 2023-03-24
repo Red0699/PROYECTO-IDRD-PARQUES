@@ -15,8 +15,11 @@ class Historico extends Model
         "id_record",
         "tabla",
         "accion",
+        "campos",
         "resultado",
         "descripcion",
+        //"fechaCreacion",
+        //"fechaActualizacion"
     ];
 
     public function user(){

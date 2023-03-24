@@ -36,6 +36,7 @@ class HistoricoController extends Controller
         $data["accion"] = $event->accion;
         $data["id_usuario"] = auth()->user()->id;
         //dd($event->parque->id);
+        $data["campos"] = $event->camposActualizados;
         $data["id_record"] = $event->parque->id;
         $data["resultado"] = "En construcción";
         if($event->accion == 'create'){
@@ -45,8 +46,12 @@ class HistoricoController extends Controller
         }else if($event->accion == 'delete'){
             $data["descripcion"] = "Se ha eliminado el parque ".$event->parque->nombreParque;
         }
-
+        
+        //$data["fechaCreacion"] = $event->parque->created_at;
+        //$data["fechaActualizacion"] = $event->parque->updated_at;
+        //dd($data);
         Historico::create($data);
+        
     }
 
     public function RolRecord(RolRecord $event){

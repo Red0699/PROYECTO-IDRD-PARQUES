@@ -59,7 +59,7 @@ class ParqueController extends Controller
         //
         $parque = Parque::create($data);
         //dd($parque);
-        event(new ParqueRecord($parque, "create")); //Evento para capturar la información y enviar los datos a la tabla de Historicos
+        event(new ParqueRecord($parque, "create", "ALL")); //Evento para capturar la información y enviar los datos a la tabla de Historicos
         return redirect()->route('parque.index');
     }
 
@@ -113,8 +113,6 @@ class ParqueController extends Controller
         
         $data = $request->validated();
         
-
-        
         //dd($fileFoto);
         if(isset($data["foto"])){
             $fileFoto = Parque::findOrFail($parque->id);
@@ -134,8 +132,14 @@ class ParqueController extends Controller
             //$data["foto"] = $request->file('foto')->store('uploads','public');
         }
 
+                
         $parque->update($data);
-        event(new ParqueRecord($parque, "update"));
+        $updated_fields = $parque->getChanges(); // Campos que han sido modificados
+        
+        //dd($updated_fields);
+        $campos = implode(',', $updated_fields); //Se pasa el array a un stri
+        dd($campos);
+        event(new ParqueRecord($parque, "update", $campos));
         return redirect()->route('parque.index');
     }
 
@@ -153,7 +157,7 @@ class ParqueController extends Controller
             $ruta = public_path().'/images/parques/'.$parque->foto;
             unlink($ruta);
         }
-        event(new ParqueRecord($parque, "delete"));
+        event(new ParqueRecord($parque, "delete", "ALL"));
         $parque->delete();
         return redirect()->route('parque.index');
     }

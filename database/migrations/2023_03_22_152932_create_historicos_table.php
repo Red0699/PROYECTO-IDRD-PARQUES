@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer("id_record");
             $table->string("tabla");
             $table->string("accion");
+            $table->string("campos");
             $table->string("resultado");
             $table->string("descripcion");
             $table->foreign("id_usuario")

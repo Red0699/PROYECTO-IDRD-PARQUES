@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 class ParqueRecord
 {
     public $parque;
-    public string $accion;
+    public $accion, $camposActualizados;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -21,11 +21,12 @@ class ParqueRecord
      *
      * @return void
      */
-    public function __construct($parque, $accion)
+    public function __construct($parque, $accion, $camposActualizados)
     {
         //
         $this->parque = $parque;
         $this->accion = $accion;
+        $this->camposActualizados = $camposActualizados;
     }
 
     /**
