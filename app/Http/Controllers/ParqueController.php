@@ -138,7 +138,7 @@ class ParqueController extends Controller
         
         //dd($updated_fields);
         $campos = implode(',', $updated_fields); //Se pasa el array a un stri
-        dd($campos);
+        //dd($campos);
         event(new ParqueRecord($parque, "update", $campos));
         return redirect()->route('parque.index');
     }

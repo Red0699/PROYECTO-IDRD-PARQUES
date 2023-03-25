@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 class ParqueRecord
 {
     public $parque;
-    public $accion, $camposActualizados;
+    public $accion, $camposActualizados, $fechaCreacion, $fechaActualizacion;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -27,6 +27,8 @@ class ParqueRecord
         $this->parque = $parque;
         $this->accion = $accion;
         $this->camposActualizados = $camposActualizados;
+        $this->fechaActualizacion = $parque->updated_at;
+        $this->fechaCreacion = $parque->created_at;
     }
 
     /**

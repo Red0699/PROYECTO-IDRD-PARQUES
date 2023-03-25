@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -24,11 +25,13 @@ return new class extends Migration
             $table->string("resultado");
             $table->string("descripcion");
             $table->foreign("id_usuario")
-            ->references("id")
+                ->references("id")
                 ->on("users")
                 ->onDelete("cascade");
-            $table->timestamps();
+            $table->timestamps(false);
         });
+        DB::statement("ALTER TABLE historicos MODIFY created_at TIMESTAMP NULL DEFAULT NULL");
+        DB::statement("ALTER TABLE historicos MODIFY updated_at TIMESTAMP NULL DEFAULT NULL");
     }
 
     /**

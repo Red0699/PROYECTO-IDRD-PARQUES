@@ -31,6 +31,7 @@ class HistoricoController extends Controller
     public function ParqueRecord(ParqueRecord $event)
     {
         //
+        $data = new Historico;
         $data["nombreHistorico"] = "Historico Parque";
         $data["tabla"] = "Parque";
         $data["accion"] = $event->accion;
@@ -47,10 +48,10 @@ class HistoricoController extends Controller
             $data["descripcion"] = "Se ha eliminado el parque ".$event->parque->nombreParque;
         }
         
-        //$data["fechaCreacion"] = $event->parque->created_at;
-        //$data["fechaActualizacion"] = $event->parque->updated_at;
+        $data["created_at"] = $event->fechaCreacion;
+        $data["updated_at"] = $event->fechaActualizacion;
         //dd($data);
-        Historico::create($data);
+        $data->save();
         
     }
 
