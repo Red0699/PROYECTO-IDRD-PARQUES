@@ -46,7 +46,7 @@ class JuegosController extends Controller
         $data['idParque'] = $parque->id;
         //dd($parque->id);
         $juego = Juegos::create($data);
-        event(new RecursosRecord($juego, "create", "juegos"));
+        event(new RecursosRecord($juego, "create", "juegos","ALL"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -85,7 +85,10 @@ class JuegosController extends Controller
         //
         $data = $request->validated();
         $juego->update($data);
-        event(new RecursosRecord($juego,"update", "juegos"));
+        $updated_fields = $juego->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RecursosRecord($juego,"update", "juegos", $campos));
         return redirect()->route('inventario.busqueda', $juego->idParque);
     }
 
@@ -99,7 +102,7 @@ class JuegosController extends Controller
     {
         //
         $dataId = $juego->idParque;
-        event(new RecursosRecord($juego,"delete", "juegos"));
+        event(new RecursosRecord($juego,"delete", "juegos", "ALL"));
         $juego->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

@@ -13,17 +13,18 @@ use Illuminate\Queue\SerializesModels;
 class UserRecord
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $user, $accion;
+    public $user, $accion, $campos;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user, $accion)
+    public function __construct($user, $accion, $campos)
     {
         //
         $this->user = $user;
         $this->accion = $accion;
+        $this->campos = $campos;
     }
 
     /**

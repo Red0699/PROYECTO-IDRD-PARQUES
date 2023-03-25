@@ -43,7 +43,7 @@ class CanchaDeportivaController extends Controller
         $data = $request->validated();
         $data['id_parque'] = $parque->id;
         $cancha = cancha_deportiva::create($data);
-        event(new RecursosRecord($cancha, "create", "canchas"));
+        event(new RecursosRecord($cancha, "create", "canchas", "ALL"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -81,7 +81,10 @@ class CanchaDeportivaController extends Controller
     {
         $data = $request->validated();
         $cancha->update($data);
-        event(new RecursosRecord($cancha, "update", "canchas"));
+        $updated_fields = $cancha->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RecursosRecord($cancha, "update", "canchas", $campos));
         return redirect()->route('inventario.busqueda', $cancha->id_parque);
     }
 
@@ -94,7 +97,7 @@ class CanchaDeportivaController extends Controller
     public function destroy(cancha_deportiva $cancha)
     {
         $dataId = $cancha->id_parque;
-        event(new RecursosRecord($cancha, "delete", "canchas"));
+        event(new RecursosRecord($cancha, "delete", "canchas", "ALL"));
         $cancha->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

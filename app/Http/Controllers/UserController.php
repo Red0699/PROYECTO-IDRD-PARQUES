@@ -42,7 +42,7 @@ class UserController extends Controller
         $roles = $request->input('roles', []);
 
         $user->syncRoles($roles);
-        event(new UserRecord($user, "create"));
+        event(new UserRecord($user, "create", "ALL"));
         return redirect()->route('user.index');
     }
 
@@ -75,7 +75,10 @@ class UserController extends Controller
         $user->update($data);
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
-        event(new UserRecord($user, "update"));
+        $updated_fields = $user->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new UserRecord($user, "update", $campos));
         return redirect()->route('user.index');
     }
 
@@ -85,7 +88,7 @@ class UserController extends Controller
         if (auth()->user()->id == $user->id) {
             return redirect()->route('user.index');
         }
-        event(new UserRecord($user, "delete"));
+        event(new UserRecord($user, "delete", "ALL"));
         $user->delete();
         return back()->with('success', 'Usuario eliminado correctamente');
         

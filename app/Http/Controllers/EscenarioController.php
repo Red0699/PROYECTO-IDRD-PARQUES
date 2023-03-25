@@ -43,7 +43,7 @@ class EscenarioController extends Controller
         $data = $request->validated();
         $data['id_parque'] = $parque->id;
         $escenario = escenario::create($data);
-        event(new RecursosRecord($escenario, "create", "escenarios"));
+        event(new RecursosRecord($escenario, "create", "escenarios", "ALL"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -81,7 +81,10 @@ class EscenarioController extends Controller
     {
         $data = $request->validated();
         $escenario->update($data);
-        event(new RecursosRecord($escenario, "update", "escenarios"));
+        $updated_fields = $escenario->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RecursosRecord($escenario, "update", "escenarios", $campos));
         return redirect()->route('inventario.busqueda', $escenario->id_parque);
     }
 
@@ -94,7 +97,7 @@ class EscenarioController extends Controller
     public function destroy(escenario $escenario)
     {
         $dataId = $escenario->id_parque;
-        event(new RecursosRecord($escenario, "delete", "escenarios"));
+        event(new RecursosRecord($escenario, "delete", "escenarios", "ALL"));
         $escenario->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

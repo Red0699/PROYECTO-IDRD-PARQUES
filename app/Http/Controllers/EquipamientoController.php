@@ -42,7 +42,7 @@ class EquipamientoController extends Controller
         $data = $request->validated();
         $data['idparque'] = $parque->id;
         $equipamiento = equipamiento::create($data);
-        event(new RecursosRecord($equipamiento, "create", "equipamientos"));
+        event(new RecursosRecord($equipamiento, "create", "equipamientos", "ALL"));
         return redirect()->route('inventario.busqueda', $parque->id);
     
     }
@@ -79,7 +79,10 @@ class EquipamientoController extends Controller
     {
         $data = $request->validated();
         $equipamiento->update($data);
-        event(new RecursosRecord($equipamiento, "update", "equipamientos"));
+        $updated_fields = $equipamiento->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RecursosRecord($equipamiento, "update", "equipamientos", $campos));
         return redirect()->route('inventario.busqueda', $equipamiento->idparque);
     }
 
@@ -92,7 +95,7 @@ class EquipamientoController extends Controller
     public function destroy(equipamiento $equipamiento)
     {
         $dataId = $equipamiento->idparque;
-        event(new RecursosRecord($equipamiento, "delete", "equipamientos"));
+        event(new RecursosRecord($equipamiento, "delete", "equipamientos", "ALL"));
         $equipamiento->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

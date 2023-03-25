@@ -39,8 +39,13 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        $user->update($request->validated());
-        event(new UserRecord($user, "profile"));
+        $data = $request->validated();
+
+        $user->update($data);
+        $updated_fields = $user->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new UserRecord($user, "profile", $campos));
         return back()->withStatus(__('Se ha actualizado los datos correctamente.'));
     }
 
@@ -82,7 +87,7 @@ class ProfileController extends Controller
             $user->photo = $destinationPath . $filename;
         }
         $user->save();
-        event(new UserRecord($user, "photo"));
+        event(new UserRecord($user, "photo", "foto"));
        //User::where('id','=',auth()->user()->id)->update($user);
         return back()->withStatus(__('Datos actualizados correctamente'));
     }

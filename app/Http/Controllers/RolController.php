@@ -48,7 +48,7 @@ class RolController extends Controller
         $rol = Role::create($request->only('name'));
 
         $rol->permissions()->sync($request->input('permissions', []));
-        event(new RolRecord($rol, "create"));
+        event(new RolRecord($rol, "create", "ALL"));
         return redirect()->route('rol.index');
     }
 
@@ -89,7 +89,10 @@ class RolController extends Controller
         //
         $rol->update($request->only('name'));
         $rol->permissions()->sync($request->input('permissions', []));
-        event(new RolRecord($rol, "update"));
+        $updated_fields = $rol->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RolRecord($rol, "update", $campos));
         return redirect()->route('rol.index');
     }
 
@@ -102,7 +105,7 @@ class RolController extends Controller
     public function destroy(Role $rol)
     {
         //
-        event(new RolRecord($rol, "delete"));
+        event(new RolRecord($rol, "delete", "ALL"));
         $rol->delete();
 
         return redirect()->route('rol.index');

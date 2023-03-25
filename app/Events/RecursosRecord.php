@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 
 class RecursosRecord
 {
-    public $recurso, $accion, $tipo;
+    public $recurso, $accion, $tipo, $camposActualizados;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -20,12 +20,13 @@ class RecursosRecord
      *
      * @return void
      */
-    public function __construct($recurso, $accion, $tipo)
+    public function __construct($recurso, $accion, $tipo, $camposActualizados)
     {
         //
         $this->recurso = $recurso;
         $this->accion = $accion;
         $this->tipo = $tipo;
+        $this->camposActualizados = $camposActualizados;
     }
 
     /**

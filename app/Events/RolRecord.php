@@ -13,18 +13,19 @@ use Illuminate\Queue\SerializesModels;
 class RolRecord
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $rol, $accion;
+    public $rol, $accion, $campos;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($rol, $accion)
+    public function __construct($rol, $accion, $campos)
     {
         //
         $this->rol = $rol;
         $this->accion = $accion;
+        $this->campos = $campos;
     }
 
     /**

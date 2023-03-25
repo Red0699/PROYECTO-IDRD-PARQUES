@@ -43,7 +43,7 @@ class MobiliarioController extends Controller
         $data = $request->validated();
         $data['idparque'] = $parque->id;
         $mobiliario = mobiliario::create($data);
-        event(new RecursosRecord($mobiliario, "create", "mobiliarios"));
+        event(new RecursosRecord($mobiliario, "create", "mobiliarios", "ALL"));
         return redirect()->route('inventario.busqueda', $parque->id);
     }
 
@@ -80,7 +80,10 @@ class MobiliarioController extends Controller
     {
         $data = $request->validated();
         $mobiliario->update($data);
-        event(new RecursosRecord($mobiliario, "update", "mobiliarios"));
+        $updated_fields = $mobiliario->getChanges(); // Campos que han sido modificados
+        
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
+        event(new RecursosRecord($mobiliario, "update", "mobiliarios", $campos));
         return redirect()->route('inventario.busqueda', $mobiliario->idparque);
     }
 
@@ -93,7 +96,7 @@ class MobiliarioController extends Controller
     public function destroy(mobiliario $mobiliario)
     {
         $dataId = $mobiliario->idparque;
-        event(new RecursosRecord($mobiliario, "delete", "mobiliarios"));
+        event(new RecursosRecord($mobiliario, "delete", "mobiliarios", "ALL"));
         $mobiliario->delete();
         return redirect()->route('inventario.busqueda', $dataId);
     }

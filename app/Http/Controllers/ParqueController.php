@@ -137,7 +137,7 @@ class ParqueController extends Controller
         $updated_fields = $parque->getChanges(); // Campos que han sido modificados
         
         //dd($updated_fields);
-        $campos = implode(',', $updated_fields); //Se pasa el array a un stri
+        $campos = implode(',', $updated_fields); //Se pasa el array a un string
         //dd($campos);
         event(new ParqueRecord($parque, "update", $campos));
         return redirect()->route('parque.index');

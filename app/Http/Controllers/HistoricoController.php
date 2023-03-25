@@ -48,19 +48,21 @@ class HistoricoController extends Controller
             $data["descripcion"] = "Se ha eliminado el parque ".$event->parque->nombreParque;
         }
         
-        $data["created_at"] = $event->fechaCreacion;
-        $data["updated_at"] = $event->fechaActualizacion;
+        $data["created_at"] = $event->parque->created_at;
+        $data["updated_at"] = $event->parque->updated_at;
         //dd($data);
         $data->save();
         
     }
 
     public function RolRecord(RolRecord $event){
+        $data = new Historico;
         $data["nombreHistorico"] = "Historico Rol";
         $data["tabla"] = "Roles";
         $data["accion"] = $event->accion;
         $data["id_usuario"] = auth()->user()->id;
         $data["id_record"] = $event->rol->id;
+        $data["campos"] = $event->campos;
         $data["resultado"] = "En construcción";
         if($event->accion == 'create'){
             $data["descripcion"] = "Se ha registrado un nuevo rol";
@@ -69,15 +71,19 @@ class HistoricoController extends Controller
         }else if($event->accion == 'delete'){
             $data["descripcion"] = "Se ha eliminado el rol ".$event->rol->name;
         }
-        Historico::create($data);        
+        $data["created_at"] = $event->rol->created_at;
+        $data["updated_at"] = $event->rol->updated_at;
+        $data->save();        
     }
 
     public function UserRecord(UserRecord $event){
+        $data = new Historico;
         $data["nombreHistorico"] = "Historico Usuario";
         $data["tabla"] = "User";
         $data["accion"] = $event->accion;
         $data["id_usuario"] = auth()->user()->id;
         $data["id_record"] = $event->user->id;
+        $data["campos"] = $event->campos;
         $data["resultado"] = "En construcción";
         if($event->accion == 'create'){
             $data["descripcion"] = "Se ha registrado un nuevo usuario";
@@ -92,10 +98,13 @@ class HistoricoController extends Controller
         }else if($event->accion == 'password'){
             $data["descripcion"] = "Se ha editado la contraseña de perfil del usuario ".$event->user->name;
         }
-        Historico::create($data);        
+        $data["created_at"] = $event->user->created_at;
+        $data["updated_at"] = $event->user->updated_at;
+        $data->save();      
     }
 
     public function InventarioRecord(RecursosRecord $event){
+        $data = new Historico;
         if($event->tipo == "juegos"){
             $data["nombreHistorico"] = "Historico Juego Infantil";
             $data["tabla"] = "juegos";
@@ -156,6 +165,9 @@ class HistoricoController extends Controller
         $data["id_usuario"] = auth()->user()->id;
         $data["id_record"] = $event->recurso->id;
         $data["accion"] = $event->accion;
-        Historico::create($data);   
+        $data["campos"] = $event->camposActualizados;
+        $data["created_at"] = $event->recurso->created_at;
+        $data["updated_at"] = $event->recurso->updated_at;
+        $data->save();
     }
 }
