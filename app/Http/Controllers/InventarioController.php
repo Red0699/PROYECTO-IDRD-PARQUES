@@ -27,7 +27,7 @@ class InventarioController extends Controller
             return redirect()->route('inventario.busqueda', $data);
         }else{
             $data = $request->get('id');
-            dd($data);
+            //dd($data);
             return redirect()->route('inventario.busqueda', $data);
         }
         
@@ -37,14 +37,16 @@ class InventarioController extends Controller
     
     public function busqueda(Parque $parque)
     {
-        $data = $parque->id;
+        $data = Parque::find($parque->id);
+        //dd($dataPrueba);
+        
         $parques = Parque::all();
-        $juegos = Juegos::all()->where('idParque', '=', $data);
-        $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);
-        $equipamientos = equipamiento::all()->where('idparque', '=', $data);
-        $escenarios = escenario::all()->where('id_parque', '=', $data);
-        $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
-        $dataTemp = $data;
+        $juegos = Juegos::all()->where('idParque', '=', $data->id);
+        $canchas = cancha_deportiva::all()->where('id_parque', '=', $data->id);
+        $equipamientos = equipamiento::all()->where('idparque', '=', $data->id);
+        $escenarios = escenario::all()->where('id_parque', '=', $data->id);
+        $mobiliarios = mobiliario::all()->where('idparque', '=', $data->id);
+        $dataTemp = $data->id;
         //dd($parque);
 
         return view('pages.inventario.main', compact(
@@ -55,7 +57,7 @@ class InventarioController extends Controller
             'escenarios',
             'mobiliarios',
             'dataTemp',
-            'parque'
+            'data'
         ));
     }
 

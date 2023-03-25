@@ -124,14 +124,14 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <p><strong>Nombre:</strong> {{ $parque->nombreParque }}</p>
-                                <p><strong>Localidad:</strong> {{ $parque->localidad }}</p>
-                                <p><strong>Escala:</strong> {{ $parque->escala }}</p>
+                                <p><strong>Nombre:</strong> {{ $data->nombreParque }}</p>
+                                <p><strong>Localidad:</strong> {{ $data->localidad }}</p>
+                                <p><strong>Escala:</strong> {{ $data->escala }}</p>
                             </div>
                             <div class="col-md-6">
                                 <p><strong>Área:</strong> Área aproximada del parque</p>
-                                <p><strong>Dirección:</strong> {{ $parque->direccion }}</p>
-                                <p><strong>Estrato:</strong> {{ $parque->estrato }}</p>
+                                <p><strong>Dirección:</strong> {{ $data->direccion }}</p>
+                                <p><strong>Estrato:</strong> {{ $data->estrato }}</p>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                                 <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
                             </div>
                             <div class="col-md-4">
-                                <button class="btn bg-purple text-white">Historicos</button>
+                                <a class="btn bg-purple text-white" href="{{ route('historico.index', $parque->id) }}">Historicos</a>
                             </div>
                         </div>
                     </div>

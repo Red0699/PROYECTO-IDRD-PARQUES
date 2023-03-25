@@ -7,6 +7,7 @@ use App\Events\RecursosRecord;
 use App\Events\RolRecord;
 use App\Events\UserRecord;
 use App\Models\Historico;
+use App\Models\Parque;
 use Illuminate\Http\Request;
 
 class HistoricoController extends Controller
@@ -16,9 +17,13 @@ class HistoricoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Parque $parque)
     {
         //
+        $informe = Historico::all()->where('id_inventario', '=' ,$parque->id);
+
+        //dd($informe);
+        return view('pages\informes\historicos\historicoInventario');
     }
 
    
@@ -108,6 +113,7 @@ class HistoricoController extends Controller
         if($event->tipo == "juegos"){
             $data["nombreHistorico"] = "Historico Juego Infantil";
             $data["tabla"] = "juegos";
+            $data["id_inventario"] = $event->recurso->idParque;
             $data["resultado"] = "En construcción";
             if($event->accion == 'create'){
                 $data["descripcion"] = "Se ha registrado un nuevo juego infantil del parque con ID: ".$event->recurso->idParque;
@@ -119,6 +125,7 @@ class HistoricoController extends Controller
         }else if($event->tipo == "canchas"){
             $data["nombreHistorico"] = "Historico Cancha Deportiva";
             $data["tabla"] = "cancha_deportivas";
+            $data["id_inventario"] = $event->recurso->id_parque;
             $data["resultado"] = "En construcción";
             if($event->accion == 'create'){
                 $data["descripcion"] = "Se ha registrado una nueva cancha deportiva del parque con ID: ".$event->recurso->id_parque;
@@ -130,6 +137,7 @@ class HistoricoController extends Controller
         }else if($event->tipo == "equipamientos"){
             $data["nombreHistorico"] = "Historico Equipamiento";
             $data["tabla"] = "juegos";
+            $data["id_inventario"] = $event->recurso->idparque;
             $data["resultado"] = "En construcción";
             if($event->accion == 'create'){
                 $data["descripcion"] = "Se ha registrado un nuevo equipamiento del parque con ID: ".$event->recurso->idparque;
@@ -141,6 +149,7 @@ class HistoricoController extends Controller
         }else if($event->tipo == "mobiliarios"){
             $data["nombreHistorico"] = "Historico Mobiliario Urbano";
             $data["tabla"] = "mobiliarios";
+            $data["id_inventario"] = $event->recurso->idparque;
             $data["resultado"] = "En construcción";
             if($event->accion == 'create'){
                 $data["descripcion"] = "Se ha registrado un nuevo mobiliario urbano del parque con ID: ".$event->recurso->idparque;
@@ -152,6 +161,7 @@ class HistoricoController extends Controller
         }else if($event->tipo == "escenarios"){
             $data["nombreHistorico"] = "Historico Escenario Deportivo";
             $data["tabla"] = "escenarios";
+            $data["id_inventario"] = $event->recurso->id_parque;
             $data["resultado"] = "En construcción";
             if($event->accion == 'create'){
                 $data["descripcion"] = "Se ha registrado un nuevo escenario deportivo del parque con ID: ".$event->recurso->id_parque;

@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="d-flex justify-content-between align-items-center mb-5">
     <h3 class="text-left">Agregar Cancha Deportiva</h3>
-    <a type="button" class="btn btn-primary" href="{{ route('cancha.create', $parque->id) }}">Añadir</a>
+    <a type="button" class="btn btn-primary" href="{{ route('cancha.create', $data->id) }}">Añadir</a>
 </div>
 
 <!-- Tabla -->

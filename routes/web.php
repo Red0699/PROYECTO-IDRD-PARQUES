@@ -81,6 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('mobiliario/create/{parque}', ['as' => 'mobiliario.create', 'uses' => 'App\Http\Controllers\MobiliarioController@create']);
 	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 
-	//Reportes
-	
+	//Informe
+	Route::get('historicoInventario/{parque}', ['as' => 'historico.index', 'uses' => 'App\Http\Controllers\HistoricoController@index']);
 });
