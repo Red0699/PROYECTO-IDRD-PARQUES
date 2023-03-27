@@ -94,7 +94,6 @@ class InventarioController extends Controller
         ));//setOptions(['defaultFont' => 'sans-serif'])
 
         return $pdf->stream();
-
         
   /*
         

@@ -154,7 +154,7 @@
                                 <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
                             </div>
                             <div class="col-md-4">
-                                <a class="btn bg-purple text-white" href="{{ route('historico.index', $parque->id) }}">Historicos</a>
+                                <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Historicos</a>
                             </div>
                         </div>
                     </div>
