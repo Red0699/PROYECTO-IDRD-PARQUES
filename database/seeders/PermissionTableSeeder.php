@@ -19,18 +19,14 @@ class PermissionTableSeeder extends Seeder
     {
         //
         $permissions = [
-            'permission_index',
-            'permission_create',
-            'permission_edit',
-            'permission_destroy',
-
-            'role_index',
-            'role_create',
-            'role_edit',
-            'role_destroy',
-
+            'permissions_module',
+            'roles_module',
             'users_module',
-            'parks_module'
+            'parques_module',
+            'informes_module',
+            'inventario_module',
+            'diagnostico_module',
+            'historicos_module'
         ];
 
         foreach($permissions as $permission){

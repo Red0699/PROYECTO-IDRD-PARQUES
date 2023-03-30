@@ -10,6 +10,7 @@ use App\Models\mobiliario;
 use App\Models\Parque;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use PDF;
 use PhpParser\Node\Stmt\While_;
 
@@ -20,7 +21,7 @@ class InventarioController extends Controller
     //
     public function index(Request $request)
     {
-        
+        abort_if(Gate::denies('inventario_module'), 403);
         if($request->id == null){
             $data = Parque::all()->pluck('id')->sortBy('id')->first();
             //dd($data);
@@ -37,6 +38,7 @@ class InventarioController extends Controller
     
     public function busqueda(Parque $parque)
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         $data = Parque::find($parque->id);
         //dd($dataPrueba);
         
@@ -64,7 +66,7 @@ class InventarioController extends Controller
     public function pdf(Parque $parque)
 
     {
-
+        abort_if(Gate::denies('inventario_module'), 403);
         $data = $parque->id;
         $juegos = Juegos::all()->where('idParque', '=', $data);
         $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);

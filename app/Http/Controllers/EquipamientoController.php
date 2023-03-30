@@ -7,6 +7,7 @@ use App\Models\equipamiento;
 use Illuminate\Http\Request;
 use App\Http\Requests\EquipamientoRequest;
 use App\Models\Parque;
+use Illuminate\Support\Facades\Gate;
 
 class EquipamientoController extends Controller
 {
@@ -17,6 +18,7 @@ class EquipamientoController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         $equipamientos = equipamiento::all();
         return view('pages\inventario\equipamiento\index', compact('equipamientos'));
     }
@@ -28,6 +30,7 @@ class EquipamientoController extends Controller
      */
     public function create(Parque $parque)
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\equipamiento\create', compact('parque'));
     }
 
@@ -65,6 +68,7 @@ class EquipamientoController extends Controller
      */
     public function edit(equipamiento $equipamiento)
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\equipamiento\edit', compact('equipamiento'));
     }
 

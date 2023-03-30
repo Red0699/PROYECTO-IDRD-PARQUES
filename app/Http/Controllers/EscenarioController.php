@@ -7,6 +7,7 @@ use App\Models\escenario;
 use Illuminate\Http\Request;
 use App\Models\Parque;
 use App\Http\Requests\EscenarioRequest;
+use Illuminate\Support\Facades\Gate;
 
 class EscenarioController extends Controller
 {
@@ -17,6 +18,7 @@ class EscenarioController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         $escenarios = escenario::all();
         return view('pages\inventario\escenario\index', compact('escenarios'));
     }
@@ -28,7 +30,7 @@ class EscenarioController extends Controller
      */
     public function create(Parque $parque)
     {
-        
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\escenario\create', compact('parque'));
     }
 
@@ -66,7 +68,7 @@ class EscenarioController extends Controller
      */
     public function edit(escenario $escenario)
     {
-        
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\escenario\edit', compact('escenario'));
     }
 

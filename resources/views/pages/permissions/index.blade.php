@@ -38,10 +38,10 @@
                                                 <td>{{ $permission->guard_name }}</td>
                                                 <td>{{ $permission->created_at }}</td>
                                                 <td class="td-actions text-center">
-                                                    @can('permission_edit')
+                                                    
                                                     <a href="{{ route('permissionEdit.edit', $permission->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
-                                                    @endcan
-                                                    @can('permission_destroy')
+                                                    
+                                                    
                                                     <form action="{{ route('permission.destroy', $permission->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
@@ -49,7 +49,7 @@
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                                    @endcan
+                                                    
                                                 </td>
                                             </tr>
                                             @empty

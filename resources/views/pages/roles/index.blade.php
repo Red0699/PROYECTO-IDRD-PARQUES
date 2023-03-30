@@ -63,10 +63,10 @@
                                                     @endforelse
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                    @can('role_edit')
+                                                    
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
-                                                    @endcan
-                                                    @can('role_destroy')
+                                                
+                                                    
                                                     <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf
                                                         @method('DELETE')
@@ -74,7 +74,7 @@
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                                    @endcan
+                                        
                                                 </td>
                                             </tr>
                                             @empty

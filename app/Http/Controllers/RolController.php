@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\RolRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -17,6 +18,7 @@ class RolController extends Controller
     public function index()
     {
         //
+        abort_if(Gate::denies('roles_module'), 403);
         $roles = Role::all();
 
         return view('pages.roles.index', compact('roles'));
@@ -30,6 +32,7 @@ class RolController extends Controller
     public function create()
     {
         //
+        abort_if(Gate::denies('roles_module'), 403);
         $permissions = Permission::all()->pluck('name', 'id');
 
         return view('pages.roles.create', compact('permissions'));
@@ -61,6 +64,7 @@ class RolController extends Controller
     public function show($id)
     {
         //
+        abort_if(Gate::denies('roles_module'), 403);
     }
 
     /**
@@ -72,6 +76,7 @@ class RolController extends Controller
     public function edit(Role $rol)
     {
         //
+        abort_if(Gate::denies('roles_module'), 403);
         $permissions = Permission::all()->pluck('name', 'id');
         $rol->load('permissions');
         return view('pages.roles.edit', compact('rol', 'permissions'));

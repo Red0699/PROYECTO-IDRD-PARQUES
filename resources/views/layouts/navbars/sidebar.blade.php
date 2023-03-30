@@ -25,23 +25,29 @@
                     </li>
                     @endcan
 
+                    @can('parques_module')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('parque.index') }}">
                             <i class="fas fa-tree text-purple"></i> {{ __('Parques') }}
                         </a>
                     </li>
+                    @endcan
 
+                    @can('inventario_module')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('inventario') }}">
                             <i class="fas fa-warehouse text-purple"></i></i> {{ __('Inventarios') }}
                         </a>
                     </li>
+                    @endcan
 
+                    @can('diagnostico_module')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">
                             <i class="fas fa-archive text-purple"></i> {{ __('Diagnosticos') }}
                         </a>
                     </li>
+                    @endcan
 
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('map') }}">
@@ -49,7 +55,41 @@
                         </a>
                     </li>
 
-                    @can('role_index')
+                    @can('informes_module')
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navbar3-items" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                            <i class="fas fa-poll text-purple"></i>
+                            <span class="nav-link-text">{{ __('Informes') }}</span>
+                        </a>
+
+                        <div class="collapse" id="navbar3-items">
+                            <ul class="nav nav-sm flex-column ">
+
+                                <li class="nav-item">
+                                    <a class="nav-link">
+                                        {{ __('Inventario') }}
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link">
+                                        {{ __('Diagnostico') }}
+                                    </a>
+                                </li>
+
+                                @can('historicos_module')
+                                <li class="nav-item">
+                                    <a class="nav-link">
+                                        {{ __('Historicos') }}
+                                    </a>
+                                </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                    @endcan
+
+                    @can('roles_module')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar2-items" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                             <i class="fas fa-cog text-purple"></i>
@@ -58,27 +98,27 @@
 
                         <div class="collapse" id="navbar2-items">
                             <ul class="nav nav-sm flex-column ">
-                                @can('permission_index')
+                                @can('permissions_module')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('permission.index') }}">
                                         {{ __('Permisos') }}
                                     </a>
                                 </li>
                                 @endcan
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('rol.index') }}">
                                         {{ __('Roles') }}
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </li>
                     @endcan
 
                 </ul>
-                
+
                 <!-- Divider -->
                 <hr class="my-3">
                 <!-- Heading -->

@@ -25,7 +25,7 @@ class ParqueController extends Controller
     public function index()
     {
         //
-        abort_if(Gate::denies('parks_module'), 403);
+        abort_if(Gate::denies('parques_module'), 403);
         $parques = Parque::all();
         return view('pages.parques.index', compact('parques'));
     }
@@ -39,6 +39,7 @@ class ParqueController extends Controller
     {
         //
         //Alert::success('Éxito', 'Los datos se han guardado correctamente');
+        abort_if(Gate::denies('parques_module'), 403);
         return view('pages.parques.create');
     }
 
@@ -72,6 +73,7 @@ class ParqueController extends Controller
     public function show(Parque $parque)
     {
         //
+        abort_if(Gate::denies('parques_module'), 403);
         $data = $parque->id;
         $juegos = Juegos::all()->where('idParque', '=', $data);
         $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);
@@ -97,7 +99,7 @@ class ParqueController extends Controller
     public function edit(Parque $parque)
     {
         //
-        abort_if(Gate::denies('parks_module'), 403);
+        abort_if(Gate::denies('parques_module'), 403);
         return view('pages.parques.edit', compact('parque'));
     }
 

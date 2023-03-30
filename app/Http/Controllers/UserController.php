@@ -46,6 +46,10 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    public function show(User $user){
+        abort_if(Gate::denies('users_module'), 403);
+    }
+
     public function edit(User $user)
     {
         abort_if(Gate::denies('users_module'), 403);

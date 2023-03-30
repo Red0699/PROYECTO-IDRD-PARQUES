@@ -7,6 +7,7 @@ use App\Http\Requests\JuegosRequest;
 use App\Models\Juegos;
 use App\Models\Parque;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class JuegosController extends Controller
 {
@@ -18,6 +19,7 @@ class JuegosController extends Controller
     public function index()
     {
         //
+        abort_if(Gate::denies('inventario_module'), 403);
         $juegos = Juegos::all();
         return view('pages\inventario\juegos\index', compact('juegos'));
     }
@@ -30,6 +32,7 @@ class JuegosController extends Controller
     public function create(Parque $parque)
     {
         //
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\juegos\create', compact('parque'));
     }
 
@@ -70,6 +73,7 @@ class JuegosController extends Controller
     public function edit(Juegos $juego, Parque $parque)
     {
         //
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\juegos\edit', compact('juego', 'parque'));
     }
 

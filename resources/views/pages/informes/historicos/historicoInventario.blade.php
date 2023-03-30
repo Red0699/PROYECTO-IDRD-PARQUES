@@ -2,18 +2,30 @@
 
 @section('content')
 
+@push('css')
+
+
+
+@endpush
+
 <style>
     .table {
         table-layout: auto;
         width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
+        border-spacing: 2px;
     }
 
-    .table td,
-    th {
-        padding: 5px;
+    .table tbody td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
     }
+    .table thead th{
+        font-size: 7px;
+    }
+
+    
 </style>
 
 <div class="container mt-5">
@@ -27,7 +39,7 @@
                         <h5>Seleccionar Año:</h5>
                         <select class="form-control" id="año" name="año">
                             <option value="" selected>Selecciona una opción</option>
-                            <option value="2023" {{ $año == '2023' ? 'selected' : ''}} >2023</option>
+                            <option value="2023" {{ $año == '2023' ? 'selected' : ''}}>2023</option>
                             <option value="2022" {{ $año == '2022' ? 'selected' : '' }}>2022</option>
                             <option value="2021" {{ $año == '2021' ? 'selected' : '' }}>2021</option>
                             <option value="2020" {{ $año == '2020' ? 'selected' : '' }}>2020</option>
@@ -76,8 +88,8 @@
             @if($tipo == 'Todos' or $tipo == 'Juegos Infantiles')
             <h2>Historico de Juegos Infantiles</h2>
             <div class="table-responsive m-2">
-                <table class="table table-bordered mb-5 table-sm text-sm">
-                    <thead class="bg-purple text-white">
+                <table class="table table-bordered mb-5" style="border-spacing: 8px;">
+                    <thead class="bg-purple text-white encabezado">
                         <tr>
                             <th>Codigo Juego</th>
                             <th>Codigo Parque</th>
@@ -86,7 +98,7 @@
                             <th>Nombre Usuario</th>
                             <th>Datos actualizados</th>
                             <th>Resultado</th>
-                            <th>Descripción</th>
+                            <th class="col-md-2">Descripción</th>
                             <th>Creación</th>
                             <th>Ultima actualización</th>
                         </tr>
@@ -295,5 +307,9 @@
         </div>
     </div>
 </div>
+
+@push('js')
+
+@endpush
 
 @endsection

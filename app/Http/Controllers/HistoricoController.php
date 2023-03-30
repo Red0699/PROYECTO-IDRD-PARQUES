@@ -11,6 +11,7 @@ use App\Models\Parque;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class HistoricoController extends Controller
 {
@@ -21,6 +22,7 @@ class HistoricoController extends Controller
      */
     public function index(Parque $parque, Request $request)
     {
+        abort_if(Gate::denies('historicos_module'), 403);
         $tipo = $request->tipo;
         $año = $request->año;
         $mes = $request->mes;

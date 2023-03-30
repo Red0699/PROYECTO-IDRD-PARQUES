@@ -7,6 +7,7 @@ use App\Models\cancha_deportiva;
 use App\Http\Requests\CanchaRequest;
 use Illuminate\Http\Request;
 use App\Models\Parque;
+use Illuminate\Support\Facades\Gate;
 
 class CanchaDeportivaController extends Controller
 {
@@ -17,6 +18,7 @@ class CanchaDeportivaController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         $canchas = cancha_deportiva::all();
         return view('pages\inventario\canchas\index', compact('canchas'));
     }
@@ -28,7 +30,7 @@ class CanchaDeportivaController extends Controller
      */
     public function create(Parque $parque)
     {
-        
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\canchas\create', compact('parque'));
     }
 
@@ -67,6 +69,7 @@ class CanchaDeportivaController extends Controller
     public function edit(cancha_deportiva $cancha)
     {
         //$parques = Parque::all();
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\canchas\edit', compact('cancha'));
     }
 

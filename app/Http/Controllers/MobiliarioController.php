@@ -7,6 +7,7 @@ use App\Models\mobiliario;
 use Illuminate\Http\Request;
 use App\Models\Parque;
 use App\Http\Requests\MobiliarioRequest;
+use Illuminate\Support\Facades\Gate;
 
 class MobiliarioController extends Controller
 {
@@ -17,6 +18,7 @@ class MobiliarioController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         $mobiliarios = mobiliario::all();
         return view('pages\inventario\mobiliario\index', compact('mobiliarios'));
     }
@@ -28,7 +30,7 @@ class MobiliarioController extends Controller
      */
     public function create(Parque $parque)
     {
-        
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\mobiliario\create', compact('parque'));
     }
 
@@ -66,6 +68,7 @@ class MobiliarioController extends Controller
      */
     public function edit(mobiliario $mobiliario)
     {
+        abort_if(Gate::denies('inventario_module'), 403);
         return view('pages\inventario\mobiliario\edit', compact('mobiliario'));
     }
 
