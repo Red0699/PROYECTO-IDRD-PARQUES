@@ -48,6 +48,7 @@ class UserController extends Controller
 
     public function show(User $user){
         abort_if(Gate::denies('users_module'), 403);
+        return view('users.show', compact('user'));
     }
 
     public function edit(User $user)
