@@ -2,10 +2,6 @@
 
 @section('content')
 
-@push('css')
-
-
-
 @endpush
 
 <style>

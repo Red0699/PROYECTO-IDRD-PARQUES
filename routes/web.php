@@ -83,4 +83,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Informe
 	Route::get('historicoInventario/{parque}', ['as' => 'historico.index', 'uses' => 'App\Http\Controllers\HistoricoController@index']);
+	Route::get('historicoUsuario/{user}', ['as' => 'historico.usuario', 'uses' => 'App\Http\Controllers\HistoricoController@verUsuario']);
 });

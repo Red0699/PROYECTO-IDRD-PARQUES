@@ -53,7 +53,7 @@
             <p><strong>ID:</strong> {{ $user->id }}</p>
             <p><strong>Fecha de creación:</strong> {{ $user->created_at }}</p>
             <p><strong>Fecha de actualización:</strong> {{ $user->updated_at }}</p>
-            <a href="#" class="btn btn-primary">Ver historial</a>
+            <a href="{{ route('historico.usuario', $user->id) }}" class="btn btn-primary">Ver historial</a>
         </div>
     </div>
 </div>

@@ -10,7 +10,6 @@ use App\Models\Historico;
 use App\Models\Parque;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class HistoricoController extends Controller
@@ -91,6 +90,40 @@ class HistoricoController extends Controller
             'tipo',
             'año',
             'mes'
+        ));
+    }
+
+    public function verUsuario(User $user, Request $request)
+    {
+
+        $año = $request->año;
+        $mes = $request->mes;
+
+        //dd($user->id);
+
+        abort_if(Gate::denies('historicos_module'), 403);
+        $informeUsuario = Historico::query()
+            ->join('users', 'historicos.id_usuario', '=', 'users.id')
+            ->select('users.name', 'historicos.*')
+            ->where('id_usuario', '=', $user->id);
+
+        if ($año) {
+            $informeUsuario->whereYear('historicos.updated_at', $año);
+            
+        }
+        if ($mes) {
+            $informeUsuario->whereMonth('historicos.updated_at', $mes);
+        }
+
+        $informeUsuario = $informeUsuario->get();
+
+        //dd($informeUsuario);
+
+        return view('pages\informes\historicos\historicoUsuario', compact(
+            'informeUsuario',
+            'año',
+            'mes',
+            'user'
         ));
     }
 
