@@ -2,44 +2,62 @@
 
 @section('content')
 
+@push('css')
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap.min.css"></link>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap.min.css"></link>
+
+@endpush
+
+<style>
+    table {
+        font-size: 10px;
+    }
+
+    table thead {}
+
+    .dataTables_filter input {
+        background-color: #f2f2f2;
+        border: none;
+        border-radius: 50px;
+        padding: 10px 20px;
+        width: 300px;
+        
+    }
+</style>
+
 <div class="container mt-5">
-    <h2 class="mb-4">Informe de Históricos del Usuario {{ $user->name }}</h2>
+    <h2 class="mb-4">Informe de históricos del usuario {{ $user->name }}</h2>
 
     <div class="card">
         <div class="card-header">
             <form action="{{ route('historico.usuario', $user->id) }}" method="GET">
-                <div class="row">
-                    <div class="col">
-                        <h5>Seleccionar Año:</h5>
-                        <select class="form-control" id="año" name="año">
-                            <option value="" selected>Selecciona una opción</option>
-                            <option value="2023" {{ $año == '2023' ? 'selected' : ''}}>2023</option>
-                            <option value="2022" {{ $año == '2022' ? 'selected' : '' }}>2022</option>
-                            <option value="2021" {{ $año == '2021' ? 'selected' : '' }}>2021</option>
-                            <option value="2020" {{ $año == '2020' ? 'selected' : '' }}>2020</option>
-                            <option value="2019" {{ $año == '2019' ? 'selected' : '' }}>2019</option>
-                        </select>
+                <div class="input-daterange datepicker row align-items-center" >
+                    <div class="col-md-5">
+                        <h5>Fecha Inicio:</h5>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Fecha de Inicio" type="text" value="{{ isset($inicio) ? $inicio : $start }}" id="inicio" name="inicio">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <h5>Seleccionar Mes:</h5>
-                        <select class="form-control" id="mes" name="mes">
-                            <option value="" selected>Selecciona una opción</option>
-                            <option value="01" {{ $mes == '01' ? 'selected' : '' }}>Enero</option>
-                            <option value="02" {{ $mes == '02' ? 'selected' : '' }}>Febrero</option>
-                            <option value="03" {{ $mes == '03' ? 'selected' : '' }}>Marzo</option>
-                            <option value="04" {{ $mes == '04' ? 'selected' : '' }}>Abril</option>
-                            <option value="05" {{ $mes == '05' ? 'selected' : '' }}>Mayo</option>
-                            <option value="06" {{ $mes == '06' ? 'selected' : '' }}>Junio</option>
-                            <option value="07" {{ $mes == '07' ? 'selected' : '' }}>Julio</option>
-                            <option value="08" {{ $mes == '08' ? 'selected' : '' }}>Agosto</option>
-                            <option value="09" {{ $mes == '09' ? 'selected' : '' }}>Septiembre</option>
-                            <option value="10" {{ $mes == '10' ? 'selected' : '' }}>Octubre</option>
-                            <option value="11" {{ $mes == '11' ? 'selected' : '' }}>Noviembre</option>
-                            <option value="12" {{ $mes == '12' ? 'selected' : '' }}>Diciembre</option>
-                        </select>
+                    <div class="col-md-5">
+                        <h5>Fecha Fin:</h5>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Fecha de fin" type="text" value="{{ isset($fin) ? $fin : $end }}" id="fin" name="fin">
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-md-3 align-self-end">
+                    <div class="col-md-2">
                         <button class="btn btn-primary btn-block" type="submit">
                             Buscar
                         </button>
@@ -51,8 +69,8 @@
             <!--------------------------------------------- Tablas de Historicos ------------------------------------------->
 
             <div class="table-responsive m-2">
-                <table class="table table-bordered mb-5" style="border-spacing: 8px;">
-                    <thead class="bg-purple text-white encabezado">
+                <table class="table-bordered table-striped mb-5" id="historicTable">
+                    <thead class="bg-purple text-white">
                         <tr>
                             <th>Codigo Usuario</th>
                             <th>Nombre Usuario</th>
@@ -62,7 +80,7 @@
                             <th>Accion</th>
                             <th>Datos actualizados</th>
                             <th>Resultado</th>
-                            <th class="col-md-2">Descripción</th>
+                            <th>Descripción</th>
                             <th>Creación</th>
                             <th>Ultima actualización</th>
                         </tr>
@@ -89,7 +107,7 @@
                         @empty
 
                         <tr>
-                            <td colspan="2">Sin registros.</td>
+                            <td colspan="11">Sin registros.</td>
                         </tr>
 
                         @endforelse
@@ -100,5 +118,48 @@
         </div>
     </div>
 </div>
+
+@push('js')
+
+<script src="/assets-old/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.2/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.2/fonts/Roboto.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#historicTable').DataTable({
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": true,
+            dom: 'Bfrtip',
+            buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
+            language: {
+                lengthMenu: 'Mostrando _MENU_ registros por página',
+                zeroRecords: 'No hay registros para mostrar',
+                info: 'Mostrando página _PAGE_ de _PAGES_',
+                infoEmpty: 'No hay registros...',
+                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
+                sSearch: 'Buscar',
+                'paginate': {
+                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
+                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
+                },
+                buttons: {
+                    pageLength: 'Mostrando %d filas'
+                },
+            },
+        });
+    });
+</script>
+
+@endpush
 
 @endsection

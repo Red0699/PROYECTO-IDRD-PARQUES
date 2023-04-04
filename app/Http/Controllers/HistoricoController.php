@@ -9,6 +9,7 @@ use App\Events\UserRecord;
 use App\Models\Historico;
 use App\Models\Parque;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -95,24 +96,24 @@ class HistoricoController extends Controller
 
     public function verUsuario(User $user, Request $request)
     {
-
-        $año = $request->año;
-        $mes = $request->mes;
-
-        //dd($user->id);
+        $now = Carbon::now();
+        $end = $now->format('Y-m-d');
+        $start = $now->subYear()->format('Y-m-d');
+        $inicio = $request->input('inicio');
+        $fin = $request->input('fin');
+        
+        //dd($inicio);
 
         abort_if(Gate::denies('historicos_module'), 403);
         $informeUsuario = Historico::query()
             ->join('users', 'historicos.id_usuario', '=', 'users.id')
             ->select('users.name', 'historicos.*')
-            ->where('id_usuario', '=', $user->id);
+            ->where('id_usuario', '=', $user->id)
+            ->orderBy('updated_at', 'desc');
 
-        if ($año) {
-            $informeUsuario->whereYear('historicos.updated_at', $año);
             
-        }
-        if ($mes) {
-            $informeUsuario->whereMonth('historicos.updated_at', $mes);
+        if($inicio && $fin){
+            $informeUsuario = $informeUsuario->whereBetween('historicos.updated_at', [$inicio, $fin]);
         }
 
         $informeUsuario = $informeUsuario->get();
@@ -121,9 +122,12 @@ class HistoricoController extends Controller
 
         return view('pages\informes\historicos\historicoUsuario', compact(
             'informeUsuario',
-            'año',
-            'mes',
-            'user'
+            'user',
+            'now',
+            'end',
+            'start',
+            'inicio',
+            'fin'
         ));
     }
 
