@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiagnosticoRequest;
 use App\Models\diagnostico;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,10 @@ class DiagnosticoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id, $tabla)
     {
-        //
+        
+        return view('pages\inventario\diagnostico\create', compact('id', 'tabla'));
     }
 
     /**
@@ -33,9 +35,26 @@ class DiagnosticoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiagnosticoRequest $request, $id, $tabla)
     {
         //
+        
+        $data = $request->validated();
+        if($tabla == "juego"){
+            $data['id_juego'] = $id;
+        }else if($tabla == "cancha"){
+            $data['id_cancha'] = $id;
+        }else if($tabla == "equipamiento"){
+            $data['id_equipamiento'] = $id;
+        }else if($tabla == "mobiliario"){
+            $data['id_mobiliario'] = $id;
+        }else if($tabla == "escenario"){
+            $data['id_escenario'] = $id;
+        }
+        $data['tipoRecurso'] = $tabla;
+        Diagnostico::create($data);
+        return redirect()->route('parque.index');
+
     }
 
     /**
@@ -47,6 +66,7 @@ class DiagnosticoController extends Controller
     public function show(diagnostico $diagnostico)
     {
         //
+
     }
 
     /**

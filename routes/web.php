@@ -81,6 +81,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('mobiliario/create/{parque}', ['as' => 'mobiliario.create', 'uses' => 'App\Http\Controllers\MobiliarioController@create']);
 	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 
+	//Diagnostico
+	Route::get('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
+	Route::post('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
+
 	//Informe
 	Route::get('historicoInventario/{parque}', ['as' => 'historico.index', 'uses' => 'App\Http\Controllers\HistoricoController@index']);
 	Route::get('historicoUsuario/{user}', ['as' => 'historico.usuario', 'uses' => 'App\Http\Controllers\HistoricoController@verUsuario']);
