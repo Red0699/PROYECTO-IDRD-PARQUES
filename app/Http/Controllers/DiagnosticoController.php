@@ -18,6 +18,21 @@ class DiagnosticoController extends Controller
         //
     }
 
+    public function validar(Request $request){
+        $id = $request->id;
+        $tabla = $request->tabla;
+        $registro = Diagnostico::query()
+            ->where('id_juego', '=', $id)
+            ->where('tipoRecurso', '=', $tabla)
+            ->first();
+
+        if($registro){
+            return redirect()->route('diagnostico.edit', $registro->id);
+        }else{
+            return redirect()->route('diagnostico.create', [$id, $tabla]);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -75,9 +90,10 @@ class DiagnosticoController extends Controller
      * @param  \App\Models\diagnostico  $diagnostico
      * @return \Illuminate\Http\Response
      */
-    public function edit(diagnostico $diagnostico)
+    public function edit(Diagnostico $diagnostico)
     {
         //
+        return view('pages\inventario\diagnostico\edit', compact('diagnostico'));
     }
 
     /**
@@ -87,9 +103,12 @@ class DiagnosticoController extends Controller
      * @param  \App\Models\diagnostico  $diagnostico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, diagnostico $diagnostico)
+    public function update(DiagnosticoRequest $request, diagnostico $diagnostico)
     {
         //
+        $data = $request->validated();
+        $diagnostico->update($data);
+        return redirect('inventario');
     }
 
     /**

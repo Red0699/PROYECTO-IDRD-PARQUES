@@ -53,7 +53,7 @@
                                 <button class="dropdown-item" type="submit">Eliminar</button>
                             </form>
 
-                            <a class="dropdown-item" href="{{ route('diagnostico.create', ['id' => $juego->id, 'tabla' => 'juego']) }}">Diagnostico</a>
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['id' => $juego->id, 'tabla' => 'juego']) }}">Diagnostico</a>
                         </div>
                     </div>
                 </td>

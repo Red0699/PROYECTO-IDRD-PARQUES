@@ -82,6 +82,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 
 	//Diagnostico
+	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store', 'index']]);
+	Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@validar')->name('diagnostico');
 	Route::get('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
 	Route::post('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
 
