@@ -38,16 +38,23 @@
                 <th>{{ $escenario->descripcion }}</th>
                 <th>{{ $escenario->estado }}</th>
 
-                <td class="td-actions text-right">
-                    <a href="{{ route('escenario.edit', $escenario->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                    <form action="{{ route('escenario.destroy', $escenario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit" rel="tooltip">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
+                <td class="text-right">
+                    <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a class="dropdown-item" href="{{ route('escenario.edit', $escenario->id) }}">Editar</a>
 
+                            <form action="{{ route('escenario.destroy', $escenario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="dropdown-item" type="submit">Eliminar</button>
+                            </form>
+
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['id' => $escenario->id, 'tabla' => 'escenario'] ) }}">Diagnostico</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
             @empty

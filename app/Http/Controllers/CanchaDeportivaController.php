@@ -46,7 +46,7 @@ class CanchaDeportivaController extends Controller
         $data['id_parque'] = $parque->id;
         $cancha = cancha_deportiva::create($data);
         event(new RecursosRecord($cancha, "create", "canchas", "ALL"));
-        return redirect()->route('inventario.busqueda', $parque->id);
+        return redirect()->route('diagnostico.create', ['id' => $cancha->id, 'tabla' => 'cancha', 'idParque' => $parque->id]);
     }
 
     /**

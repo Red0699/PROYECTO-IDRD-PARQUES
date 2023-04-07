@@ -285,4 +285,6 @@ class HistoricoController extends Controller
         $data["updated_at"] = $event->recurso->updated_at;
         $data->save();
     }
+
+    
 }

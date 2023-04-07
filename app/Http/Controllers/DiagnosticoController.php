@@ -21,15 +21,28 @@ class DiagnosticoController extends Controller
     public function validar(Request $request){
         $id = $request->id;
         $tabla = $request->tabla;
-        $registro = Diagnostico::query()
-            ->where('id_juego', '=', $id)
-            ->where('tipoRecurso', '=', $tabla)
-            ->first();
+        $idParque = $request->idParque;
+        $registro = Diagnostico::query()->where('tipoRecurso', '=', $tabla);
+
+        if($tabla == 'juego'){
+            $registro = $registro->where('id_juego', '=', $id);
+            
+        }else if($tabla == 'cancha'){
+            $registro = $registro->where('id_cancha', '=', $id);
+        }else if($tabla == 'equipamiento'){
+            $registro = $registro->where('id_equipamiento', '=', $id);
+        }else if($tabla == 'mobiliario'){
+            $registro = $registro->where('id_mobiliario', '=', $id);
+        }else if($tabla == 'escenario'){
+            $registro = $registro->where('id_escenario', '=', $id);
+        }
+
+        $registro = $registro->first();
 
         if($registro){
             return redirect()->route('diagnostico.edit', $registro->id);
         }else{
-            return redirect()->route('diagnostico.create', [$id, $tabla]);
+            return redirect()->route('diagnostico.create', [$id, $tabla, $idParque]);
         }
     }
 
@@ -68,7 +81,7 @@ class DiagnosticoController extends Controller
         }
         $data['tipoRecurso'] = $tabla;
         Diagnostico::create($data);
-        return redirect()->route('parque.index');
+        return redirect()->route('inventario');
 
     }
 

@@ -50,7 +50,7 @@ class JuegosController extends Controller
         //dd($parque->id);
         $juego = Juegos::create($data);
         event(new RecursosRecord($juego, "create", "juegos","ALL"));
-        return redirect()->route('inventario.busqueda', $parque->id);
+        return redirect()->route('diagnostico.create', [$juego->id, 'juego']);
     }
 
     /**
