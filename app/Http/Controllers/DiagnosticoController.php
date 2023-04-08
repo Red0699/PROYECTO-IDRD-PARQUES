@@ -19,17 +19,21 @@ class DiagnosticoController extends Controller
         //
     }
 
-    public function validar($idParque, $id, $tabla){
-        
+    public function validar(Request $request)
+    {
+        $parque = $request->parque; 
+        $id = $request->id; 
+        $tabla = $request->tabla;
         $registro = Diagnostico::query()
             ->where('tipoRecurso', '=', $tabla)
-            ->where('id_parque', '=', $idParque)
+            ->where('id_parque', '=', $parque)
+            ->where('id_recurso', '=', $id)
             ->first();
-        
-        if($registro){
+
+        if ($registro) {
             return redirect()->route('diagnostico.edit', $registro->id);
-        }else{
-            return redirect()->route('diagnostico.create', [$id, $tabla, $idParque]);
+        } else {
+            return redirect()->route('diagnostico.create', ['idParque' => $parque, 'id'=> $id, 'tabla'=>$tabla]);
         }
     }
 
@@ -38,9 +42,9 @@ class DiagnosticoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Parque $parque, $id, $tabla)
+    public function create($idParque, $id, $tabla)
     {
-        
+        $parque = Parque::findOrFail($idParque);
         return view('pages\inventario\diagnostico\create', compact('id', 'tabla', 'parque'));
     }
 
@@ -50,17 +54,16 @@ class DiagnosticoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DiagnosticoRequest $request, Parque $parque, $id, $tabla)
+    public function store(DiagnosticoRequest $request, $idParque, $id, $tabla)
     {
         //
-        
+
         $data = $request->validated();
-        $data['id_parque'] = $parque->id;
+        $data['id_parque'] = $idParque;
         $data['id_recurso'] = $id;
         $data['tipoRecurso'] = $tabla;
         Diagnostico::create($data);
-        return redirect()->route('inventario.busqueda', $parque->id);
-
+        return redirect()->route('inventario.busqueda', $idParque);
     }
 
     /**
@@ -102,7 +105,8 @@ class DiagnosticoController extends Controller
         return redirect('inventario');
     }
 
-    public function informe(Parque $parque){
+    public function informe(Parque $parque)
+    {
         return view('pages.informes.diagnostico', compact('parque'));
     }
 }

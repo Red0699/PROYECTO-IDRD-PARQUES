@@ -46,7 +46,7 @@ class MobiliarioController extends Controller
         $data['idparque'] = $parque->id;
         $mobiliario = mobiliario::create($data);
         event(new RecursosRecord($mobiliario, "create", "mobiliarios", "ALL"));
-        return redirect()->route('diagnostico.create', [$parque->id, $mobiliario->id, 'juego']);
+        return redirect()->route('diagnostico.create', ['idParque' => $parque->id, 'id' => $mobiliario->id, 'tabla'=> 'mobiliario']);
     }
 
     /**

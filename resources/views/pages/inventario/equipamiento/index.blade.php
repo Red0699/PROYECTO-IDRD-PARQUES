@@ -45,7 +45,7 @@
                                 <button class="dropdown-item" type="submit">Eliminar</button>
                             </form>
 
-                            <a class="dropdown-item" href="{{ route('diagnostico', ['idParque' => $parque->id, 'id' => $equipamiento->id, 'tabla' => 'juego'] ) }}">Diagnostico</a>                        </div>
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $equipamiento->id, 'tabla' => 'equipamiento'] ) }}">Diagnostico</a>                        </div>
                     </div>
                 </td>
             </tr>

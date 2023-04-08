@@ -46,7 +46,7 @@ class EquipamientoController extends Controller
         $data['idparque'] = $parque->id;
         $equipamiento = equipamiento::create($data);
         event(new RecursosRecord($equipamiento, "create", "equipamientos", "ALL"));
-        return redirect()->route('diagnostico.create', [$parque->id, $equipamiento->id, 'juego']);
+        return redirect()->route('diagnostico.create', [$parque->id, $equipamiento->id, 'equipamiento']);
     
     }
     /**

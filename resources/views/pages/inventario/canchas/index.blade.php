@@ -35,7 +35,7 @@
                 <th>{{ $cancha->descripcion }}</th>
                 <th>{{ $cancha->estado }}</th>
 
-                
+
                 <td class="text-right">
                     <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +50,8 @@
                                 <button class="dropdown-item" type="submit">Eliminar</button>
                             </form>
 
-                            <a class="dropdown-item" href="{{ route('diagnostico', ['idParque' => $parque->id, 'id' => $cancha->id, 'tabla' => 'juego'] ) }}">Diagnostico</a>                        </div>
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $cancha->id, 'tabla' => 'cancha'] ) }}">Diagnostico</a>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -62,6 +63,5 @@
             @endforelse
         </tbody>
     </table>
-    
-</div>
 
+</div>
