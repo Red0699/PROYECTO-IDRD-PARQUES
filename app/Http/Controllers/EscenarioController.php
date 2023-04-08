@@ -46,7 +46,7 @@ class EscenarioController extends Controller
         $data['id_parque'] = $parque->id;
         $escenario = escenario::create($data);
         event(new RecursosRecord($escenario, "create", "escenarios", "ALL"));
-        return redirect()->route('diagnostico.create', [$escenario->id, 'escenario', $parque->id]);
+        return redirect()->route('diagnostico.create', [$parque->id, $escenario->id, 'juego']);
     }
 
     /**

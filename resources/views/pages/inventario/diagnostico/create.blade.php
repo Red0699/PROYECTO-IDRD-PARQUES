@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
 
-                <form method="post" id="form-alert" action="{{ route('diagnostico.store', [$id, $tabla]) }}" autocomplete="off">
+                <form method="post" id="form-alert" action="{{ route('diagnostico.store', [$parque->id,$id, $tabla]) }}" autocomplete="off">
                     @csrf
 
                     <div class="pl-lg-3">
@@ -46,7 +46,7 @@
                                 <option value="" selected>Seleccione una opción</option>
                                 <option value="Bueno">Bueno con diagnostico</option>
                                 <option value="En mal estado">En mal estado</option>
-                                <option value="En mantenimiento">En proceso de mantenimiento</option>
+                                <option value="En proceso de mantenimiento">En proceso de mantenimiento</option>
                                 <option value="Pendiente de piezas">Pendiente de piezas</option>
                                 <option value="En prueba">En prueba</option>
                             </select>

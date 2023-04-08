@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DiagnosticoRequest;
 use App\Models\diagnostico;
+use App\Models\Parque;
 use Illuminate\Http\Request;
 
 class DiagnosticoController extends Controller
@@ -18,27 +19,13 @@ class DiagnosticoController extends Controller
         //
     }
 
-    public function validar(Request $request){
-        $id = $request->id;
-        $tabla = $request->tabla;
-        $idParque = $request->idParque;
-        $registro = Diagnostico::query()->where('tipoRecurso', '=', $tabla);
-
-        if($tabla == 'juego'){
-            $registro = $registro->where('id_juego', '=', $id);
-            
-        }else if($tabla == 'cancha'){
-            $registro = $registro->where('id_cancha', '=', $id);
-        }else if($tabla == 'equipamiento'){
-            $registro = $registro->where('id_equipamiento', '=', $id);
-        }else if($tabla == 'mobiliario'){
-            $registro = $registro->where('id_mobiliario', '=', $id);
-        }else if($tabla == 'escenario'){
-            $registro = $registro->where('id_escenario', '=', $id);
-        }
-
-        $registro = $registro->first();
-
+    public function validar($idParque, $id, $tabla){
+        
+        $registro = Diagnostico::query()
+            ->where('tipoRecurso', '=', $tabla)
+            ->where('id_parque', '=', $idParque)
+            ->first();
+        
         if($registro){
             return redirect()->route('diagnostico.edit', $registro->id);
         }else{
@@ -51,10 +38,10 @@ class DiagnosticoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id, $tabla)
+    public function create(Parque $parque, $id, $tabla)
     {
         
-        return view('pages\inventario\diagnostico\create', compact('id', 'tabla'));
+        return view('pages\inventario\diagnostico\create', compact('id', 'tabla', 'parque'));
     }
 
     /**
@@ -63,25 +50,16 @@ class DiagnosticoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DiagnosticoRequest $request, $id, $tabla)
+    public function store(DiagnosticoRequest $request, Parque $parque, $id, $tabla)
     {
         //
         
         $data = $request->validated();
-        if($tabla == "juego"){
-            $data['id_juego'] = $id;
-        }else if($tabla == "cancha"){
-            $data['id_cancha'] = $id;
-        }else if($tabla == "equipamiento"){
-            $data['id_equipamiento'] = $id;
-        }else if($tabla == "mobiliario"){
-            $data['id_mobiliario'] = $id;
-        }else if($tabla == "escenario"){
-            $data['id_escenario'] = $id;
-        }
+        $data['id_parque'] = $parque->id;
+        $data['id_recurso'] = $id;
         $data['tipoRecurso'] = $tabla;
         Diagnostico::create($data);
-        return redirect()->route('inventario');
+        return redirect()->route('inventario.busqueda', $parque->id);
 
     }
 
@@ -103,10 +81,10 @@ class DiagnosticoController extends Controller
      * @param  \App\Models\diagnostico  $diagnostico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Diagnostico $diagnostico)
+    public function edit(Diagnostico $diagnostico, Parque $parque)
     {
         //
-        return view('pages\inventario\diagnostico\edit', compact('diagnostico'));
+        return view('pages\inventario\diagnostico\edit', compact('diagnostico', 'parque'));
     }
 
     /**
@@ -124,14 +102,7 @@ class DiagnosticoController extends Controller
         return redirect('inventario');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\diagnostico  $diagnostico
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(diagnostico $diagnostico)
-    {
-        //
+    public function informe(Parque $parque){
+        return view('pages.informes.diagnostico', compact('parque'));
     }
 }

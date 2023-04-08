@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class diagnostico extends Model
 {
     protected $fillable = [
-        'id_juego',
-        'id_cancha',
-        'id_escenario',
-        'id_mobiliario',
-        'id_equipamiento',
+        'id_parque',
         'id_recurso',
         'tipoRecurso',
         'descripcion',
@@ -21,5 +17,11 @@ class diagnostico extends Model
         'observaciones',
         'acciones'
     ];
+
+    public function parque()
+    {
+        return $this->belongsTo('App\Models\Parque');
+    }
+    
     use HasFactory;
 }

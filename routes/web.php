@@ -83,11 +83,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Diagnostico
 	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store', 'index']]);
-	Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@validar')->name('diagnostico');
-	Route::get('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
-	Route::post('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
+	Route::get('diagnostico/{idParque}/{id}/{tabla}', 'App\Http\Controllers\DiagnosticoController@validar')->name('diagnostico');
+	Route::get('diagnostico/{parque}/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
+	Route::post('diagnostico/{parque}/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
 
-	//Informe
+	//Informes
 	Route::get('historicoInventario/{parque}', ['as' => 'historico.index', 'uses' => 'App\Http\Controllers\HistoricoController@index']);
 	Route::get('historicoUsuario/{user}', ['as' => 'historico.usuario', 'uses' => 'App\Http\Controllers\HistoricoController@verUsuario']);
+	Route::get('informeDiagnostico/{parque}', ['as' => 'diagnostico.informe', 'uses' => 'App\Http\Controllers\DiagnosticoController@informe']);
+
 });
