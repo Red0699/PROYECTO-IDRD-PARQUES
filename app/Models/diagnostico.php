@@ -22,6 +22,11 @@ class diagnostico extends Model
     {
         return $this->belongsTo('App\Models\Parque');
     }
-    
+
+    public function totalEstado($estado)
+    {
+        return $this->where('id_recurso', $this->id_recurso)->where('estado', $estado)->count();
+    }
+
     use HasFactory;
 }

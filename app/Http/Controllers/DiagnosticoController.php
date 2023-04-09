@@ -6,6 +6,7 @@ use App\Http\Requests\DiagnosticoRequest;
 use App\Models\diagnostico;
 use App\Models\Parque;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DiagnosticoController extends Controller
 {
@@ -21,8 +22,8 @@ class DiagnosticoController extends Controller
 
     public function validar(Request $request)
     {
-        $parque = $request->parque; 
-        $id = $request->id; 
+        $parque = $request->parque;
+        $id = $request->id;
         $tabla = $request->tabla;
         $registro = Diagnostico::query()
             ->where('tipoRecurso', '=', $tabla)
@@ -33,7 +34,7 @@ class DiagnosticoController extends Controller
         if ($registro) {
             return redirect()->route('diagnostico.edit', $registro->id);
         } else {
-            return redirect()->route('diagnostico.create', ['idParque' => $parque, 'id'=> $id, 'tabla'=>$tabla]);
+            return redirect()->route('diagnostico.create', ['idParque' => $parque, 'id' => $id, 'tabla' => $tabla]);
         }
     }
 
@@ -108,6 +109,7 @@ class DiagnosticoController extends Controller
     public function informe(Parque $parque)
     {
         $diagnosticos = Diagnostico::where('id_parque', $parque->id)->get();
-        return view('pages.informes.diagnostico', compact('parque', 'diagnosticos'));
+        return view('pages.informes.diagnostico', compact('diagnosticos'));
+
     }
 }
