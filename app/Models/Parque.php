@@ -29,5 +29,18 @@ class Parque extends Model
 
     public function equipamiento(){
         return $this->hasMany('App\Models\equipamiento');
-    }    
+    }
+    
+    public function mobiliario(){
+        return $this->hasMany('App\Models\mobiliario');
+    }
+
+    public function escenario(){
+        return $this->hasMany('App\Models\escenario');   
+    }
+
+    public function diagnostico(){
+        return $this->hasMany('App\Models\diagnostico');   
+    }
+    
 }

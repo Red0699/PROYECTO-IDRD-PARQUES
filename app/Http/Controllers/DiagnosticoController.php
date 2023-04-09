@@ -107,6 +107,7 @@ class DiagnosticoController extends Controller
 
     public function informe(Parque $parque)
     {
-        return view('pages.informes.diagnostico', compact('parque'));
+        $diagnosticos = Diagnostico::where('id_parque', $parque->id)->get();
+        return view('pages.informes.diagnostico', compact('parque', 'diagnosticos'));
     }
 }
