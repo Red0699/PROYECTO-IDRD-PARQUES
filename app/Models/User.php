@@ -43,7 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function historico(){
+    public function historico()
+    {
         return $this->hasMany('App\Models\Historico');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 }

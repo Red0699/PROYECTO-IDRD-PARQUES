@@ -19,28 +19,38 @@ class Parque extends Model
         'foto'
     ];
 
-    public function juego(){
+    public function juego()
+    {
         return $this->hasMany('App\Models\Juegos');
     }
 
-    public function cancha(){
+    public function cancha()
+    {
         return $this->hasMany('App\Models\cancha_deportiva');
     }
 
-    public function equipamiento(){
+    public function equipamiento()
+    {
         return $this->hasMany('App\Models\equipamiento');
     }
-    
-    public function mobiliario(){
+
+    public function mobiliario()
+    {
         return $this->hasMany('App\Models\mobiliario');
     }
 
-    public function escenario(){
-        return $this->hasMany('App\Models\escenario');   
+    public function escenario()
+    {
+        return $this->hasMany('App\Models\escenario');
     }
 
-    public function diagnostico(){
-        return $this->hasMany('App\Models\diagnostico');   
+    public function diagnostico()
+    {
+        return $this->hasMany('App\Models\diagnostico');
     }
-    
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }
