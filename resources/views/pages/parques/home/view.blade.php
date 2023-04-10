@@ -118,6 +118,7 @@
                                     <th>Dirección</th>
                                     <th>Escala</th>
                                     <th>Area</th>
+                                    <th>Calificación</th>
                                     <th>Acciones</th>
 
                                 </thead>
@@ -140,6 +141,7 @@
                                         <th>{{ $parque->direccion }}</th>
                                         <th>{{ $parque->escala }}</th>
                                         <th>{{ $parque->area }}m<sup>2</sup></th>
+                                        <th>{{ $parque->averageRating() }}</th>
 
                                         <td class="td-actions">
                                             <a href="{{ route('vista.show', $parque->id) }}" class="btn bg-purple text-white"><i class="fas fa-eye"></i></a>

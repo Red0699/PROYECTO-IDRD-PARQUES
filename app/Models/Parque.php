@@ -19,6 +19,7 @@ class Parque extends Model
         'foto'
     ];
 
+    //Relaciones
     public function juego()
     {
         return $this->hasMany('App\Models\Juegos');
@@ -51,6 +52,12 @@ class Parque extends Model
 
     public function ratings()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasMany(Rating::class, 'id_parque');
+    }
+
+    //Metodos para el modelo
+    public function averageRating()
+    {
+        return $this->ratings()->avg('rating');
     }
 }
