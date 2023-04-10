@@ -62,12 +62,7 @@
                         <span class="nav-link-inner--text">{{ __('Login') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02 circle"></i>
-                        <span class="nav-link-inner--text">{{ __('Ver perfil') }}</span>
-                    </a>
-                </li>
+                
             </ul>
         </div>
     </div>
