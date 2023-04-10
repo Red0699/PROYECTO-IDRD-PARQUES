@@ -28,4 +28,8 @@ class VistaParqueController extends Controller
             'escala'
         ));
     }
+
+    public function show(Parque $parque){
+        return view('pages\parques\home\show', compact('parque'));
+    }
 }

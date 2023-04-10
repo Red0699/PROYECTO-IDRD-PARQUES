@@ -28,7 +28,8 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
 
 	//Usuario registrado
-	Route::get('/inicio', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
+	Route::get('parquesIDRD', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
+	Route::get('parques/{parque}', ['as' => 'vista.show', 'uses' =>'App\Http\Controllers\VistaParqueController@show']);
 
 	//Usuario Administrador
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['edit']]);

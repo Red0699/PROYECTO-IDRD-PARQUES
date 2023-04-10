@@ -142,7 +142,7 @@
                                         <th>{{ $parque->area }}m<sup>2</sup></th>
 
                                         <td class="td-actions">
-                                            <a href="#" class="btn bg-purple text-white"><i class="fas fa-eye"></i></a>
+                                            <a href="{{ route('vista.show', $parque->id) }}" class="btn bg-purple text-white"><i class="fas fa-eye"></i></a>
                                         </td>
                                     </tr>
                                     @empty
