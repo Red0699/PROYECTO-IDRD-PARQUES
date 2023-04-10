@@ -3,6 +3,11 @@
 @section('content')
 
 <style>
+    .container-fluid {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
     .card {
         margin: 10px;
         padding: 20px;
@@ -29,6 +34,13 @@
     .row {
         display: flex;
         flex-wrap: wrap;
+    }
+
+    .narrow-card {
+        max-width: 70%;
+        font-size: 1.1em;
+        /* aumenta el tamaño de letra en un 20% */
+        margin: 0 auto;
     }
 </style>
 
@@ -61,6 +73,40 @@
                 </div>
             </div>
 
+            <!-- Sección de calificaciones -->
+            <div class="justify-content-center mt-7">
+                <div class="narrow-card card p-3 mt-3 border">
+                    <h4 class="text-center mb-3">Calificar parque</h4>
+                    <p class="text-center text-black mb-4">¡Tu opinión nos importa! Ayúdanos a mejorar la calidad de nuestros parques con tu calificación.</p>
+                    @if($registro)
+                    <form method="POST" action="{{ route('rating.update', [$registro->id, $parque->id]) }}">
+                        @csrf
+                        @method('PUT')
+                    @else
+                    <form method="POST" action="{{ route('rating.store', $parque->id) }}">
+                        @csrf
+                    @endif
+                        <div class="form-group">
+                            <label for="calificacion" class="mb-2">Calificación:</label>
+                            <div class="d-flex align-items-center">
+                                <select name="rating" id="rating" class="form-control mr-2">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <i class="fas fa-star fa-lg text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentario" class="mb-2">Comentario:</label>
+                            <textarea name="comentario" id="comentario" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_parque');
             $table->float("rating");
+            $table->string('comentario');
             $table->foreign('id_parque')->references('id')->on('parques')->onDelete("cascade");
             $table->foreign('id_user')->references('id')->on('users')->onDelete("cascade");
             $table->timestamps();

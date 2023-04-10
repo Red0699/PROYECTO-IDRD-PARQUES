@@ -2,30 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parque;
 use App\Models\Rating;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,31 +16,22 @@ class RatingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Parque $parque)
     {
         //
-    }
+        $data = $request->validate([
+            'rating' => 'required',
+            'comentario' => 'max:500'
+        ], [
+            'rating.required' => 'Debe seleccionar una opción',
+            'comentario' => 'El texto no debe sobrepasar de 500 caracteres'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rating $rating)
-    {
-        //
-    }
+        $data['id_parque'] = $parque->id;
+        $data['id_user'] = auth()->user()->id;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rating $rating)
-    {
-        //
+        $rating = Rating::create($data);
+        return redirect()->route('vista.show', $parque->id);
     }
 
     /**
@@ -67,19 +41,19 @@ class RatingController extends Controller
      * @param  \App\Models\Rating  $rating
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rating $rating)
+    public function update(Request $request, Rating $rating, Parque $parque)
     {
         //
-    }
+        $data = $request->validate([
+            'rating' => 'required',
+            'comentario' => 'max:500'
+        ], [
+            'rating.required' => 'Debe seleccionar una opción',
+            'comentario' => 'El texto no debe sobrepasar de 500 caracteres'
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Rating  $rating
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Rating $rating)
-    {
-        //
+        $rating->update($data);
+
+        return redirect()->route('vista.show', $parque->id);
     }
 }

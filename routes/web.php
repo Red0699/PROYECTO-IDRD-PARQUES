@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//Usuario registrado
 	Route::get('parquesIDRD', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
 	Route::get('parques/{parque}', ['as' => 'vista.show', 'uses' =>'App\Http\Controllers\VistaParqueController@show']);
+	Route::post('rating/{parque}', ['as' => 'rating.store', 'uses' =>'App\Http\Controllers\RatingController@store']);
+	Route::put('rating/{rating}/{parque}', ['as' => 'rating.update', 'uses' =>'App\Http\Controllers\RatingController@update']);
 
 	//Usuario Administrador
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['edit']]);
