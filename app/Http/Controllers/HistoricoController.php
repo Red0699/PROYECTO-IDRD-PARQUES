@@ -229,7 +229,7 @@ class HistoricoController extends Controller
             }
         } else if ($event->tipo == "canchas") {
             $data["nombreHistorico"] = "Historico Cancha Deportiva";
-            $data["tabla"] = "cancha_deportivas";
+            $data["tabla"] = "canchas";
             $data["id_inventario"] = $event->recurso->id_parque;
             $data["resultado"] = "En construcción";
             if ($event->accion == 'create') {
@@ -241,7 +241,7 @@ class HistoricoController extends Controller
             }
         } else if ($event->tipo == "equipamientos") {
             $data["nombreHistorico"] = "Historico Equipamiento";
-            $data["tabla"] = "juegos";
+            $data["tabla"] = "equipamientos";
             $data["id_inventario"] = $event->recurso->idparque;
             $data["resultado"] = "En construcción";
             if ($event->accion == 'create') {

@@ -2,7 +2,6 @@
 
 @section('content')
 
-@endpush
 
 <style>
     .table {
