@@ -15,9 +15,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-12 text-right">
+                                    
                                         <a type="button" class="btn btn-primary" href="{{ url('/user/create') }}">Añadir Usuario</a>
-                                    </div>
+                                        <a type="button" class="btn btn-primary" href="{{ url('/informeUsuarios') }}">Ver Informe</a>
+                                    
                                 </div>
                                 <div class="table-responsive m-2">
                                     <table class="table" id="userTable">

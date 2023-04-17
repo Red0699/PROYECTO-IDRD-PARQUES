@@ -98,4 +98,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('historicoUsuario/{user}', ['as' => 'historico.usuario', 'uses' => 'App\Http\Controllers\HistoricoController@verUsuario']);
 	Route::get('informeDiagnostico/{parque}', ['as' => 'diagnostico.informe', 'uses' => 'App\Http\Controllers\DiagnosticoController@informe']);
 	Route::get('/informeParques', function () { return view('pages.informes.parques'); })->name('parques.informe');
+	Route::get('/informeUsuarios', function () { return view('pages.informes.usuarios'); })->name('usuarios.informe');
 });
