@@ -164,7 +164,7 @@
 
                 <div class="row justify-content-between mb-0 py-3">
                     <div class="col-md-5">
-                        <button class="btn bg-purple text-white btn-sm">Informe Inventario</button>
+                        <a class="btn bg-purple text-white btn-sm" href="{{ route('inventario.informe') }}">Informe Inventario</a>
                         <a class="btn bg-purple text-white btn-sm" href="{{ route('diagnostico.informe', $parque->id) }}">Informe Diagnostico</a>
                     </div>
                 </div>
