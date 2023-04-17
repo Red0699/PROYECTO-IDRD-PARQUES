@@ -66,20 +66,20 @@
                             <ul class="nav nav-sm flex-column ">
 
                                 <li class="nav-item">
-                                    <a class="nav-link">
+                                    <a class="nav-link" href="{{ route('inventario.informe') }}">
                                         {{ __('Inventario') }}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link">
+                                    <a class="nav-link" href="{{ route('general.informe') }}">
                                         {{ __('Diagnostico') }}
                                     </a>
                                 </li>
 
                                 @can('historicos_module')
                                 <li class="nav-item">
-                                    <a class="nav-link">
+                                    <a class="nav-link" href="{{ route('usuarios.informe') }}">
                                         {{ __('Historicos') }}
                                     </a>
                                 </li>
