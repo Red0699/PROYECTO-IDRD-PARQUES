@@ -11,6 +11,7 @@
         </div>
         <div class="card-body">
 
+        <h6 class="heading-small text-muted mb-4">{{ __('Información') }}</h6>
             <form method="post" action="{{ route('parque.update', $parque->id) }}" autocomplete="off" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -112,6 +113,36 @@
                         @endif
                     </div>
 
+                    <h6 class="heading-small text-muted mb-4">{{ __('Ubicación del parque') }}</h6>
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Latitud</label>
+                                    <input class="form-control" type="text" name="latitud" value="{{ old('latitud', $parque->latitud) }}" id="lat" readonly="true">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Longitud</label>
+                                    <input class="form-control" name="longitud" value="{{ old('longitud', $parque->longitud) }}" id="lng" readonly="true">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <input class="form-control" type="text" id="place_input" placeholder="Ingresa una ubicación">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card border-0">
+                                    <div id="map-default" class="map-canvas" style="height: 500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
                         <a href="/parque" class="btn bg-purple text-white mt-4">Volver</a>
@@ -124,3 +155,9 @@
 </div>
 
 @endsection
+
+@push('js')
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOCm_Uov0IyKa71QmTBO9VHFWjWK7pDOY"></script>
+
+@endpush

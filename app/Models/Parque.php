@@ -16,7 +16,9 @@ class Parque extends Model
         'escala',
         'estrato',
         'direccion',
-        'foto'
+        'foto',
+        'latitud',
+        'longitud'
     ];
 
     //Relaciones
