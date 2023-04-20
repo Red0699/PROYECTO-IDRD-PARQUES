@@ -6,8 +6,15 @@
 
 </style>
 
-<div class="container py-5">
-    <h1 class="text-center mb-5">Bienvenido al sistema</h1>
+<div>
+    <!-- Título de la página -->
+    <div class="container-fluid bg-purple py-6 text-white">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-white">Bienvenido al Sistema de Gestión y Control de Parques IDRD: Administración Eficiente y Segura</h1>
+            </div>
+        </div>
+    </div>
 
     <!-- Informacion -->
     <div class="row justify-content-center mt-5">
@@ -50,7 +57,7 @@
                                 <li>Resumen de los diagnósticos de los parques y los recursos</li>
                             </ul>
                             <div class="text-center mt-4">
-                                <a href="{{ route('parque.index') }}" class="btn btn-primary">Ir a Parques</a>
+                                <a href="{{ route('parque.index') }}" class="btn bg-purple text-white">Ir a Parques</a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +83,7 @@
                                 <li>Mobiliarios urbanos</li>
                             </ul>
                             <div class="text-center mt-4">
-                                <a href="{{ route('inventario') }}" class="btn btn-primary">Ir a Inventario</a>
+                                <a href="{{ route('inventario') }}" class="btn bg-purple text-white">Ir a Inventario</a>
                             </div>
                         </div>
                         <div class="col-md-6 text-center">
@@ -98,7 +105,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Parques</h2>
                         <p class="card-text">Ver informes relacionados con los parques.</p>
-                        <a href="#" class="btn btn-primary w-100">Ver informes</a>
+                        <a href="#" class="btn w-100 bg-purple text-white">Ver informes</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +114,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Diagnósticos</h2>
                         <p class="card-text">Ver informes relacionados con los diagnósticos.</p>
-                        <a href="#" class="btn btn-primary w-100">Ver informes</a>
+                        <a href="#" class="btn w-100 bg-purple text-white">Ver informes</a>
                     </div>
                 </div>
             </div>
@@ -116,7 +123,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Inventario</h2>
                         <p class="card-text">Ver informes relacionados con el inventario.</p>
-                        <a href="#" class="btn btn-primary w-100">Ver informes</a>
+                        <a href="#" class="btn w-100 bg-purple text-white">Ver informes</a>
                     </div>
                 </div>
             </div>
@@ -126,7 +133,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Usuarios</h2>
                         <p class="card-text">Ver informes relacionados con los usuarios.</p>
-                        <a href="#" class="btn btn-primary w-100">Ver informes</a>
+                        <a href="#" class="btn w-100 bg-purple text-white">Ver informes</a>
                     </div>
                 </div>
             </div>
@@ -137,8 +144,3 @@
 </div>
 
 @endsection
-
-@push('js')
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush
