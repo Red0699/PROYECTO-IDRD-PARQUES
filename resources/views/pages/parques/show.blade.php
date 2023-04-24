@@ -59,7 +59,11 @@
             <div class="row">
                 <div class="col-md-7 ">
                     <h5 class="text-center">Foto del parque</h5>
+                    @if($parque->foto)
                     <img src="{{ asset('images/parques').'/'.$parque->foto }}" alt="Foto de Parque" class="img-fluid rounded-left">
+                    @else
+                    <img src="{{ asset('argon/img/brand/default-parque.avif') }}" alt="Foto de Parque" class="img-fluid rounded-left">
+                    @endif
                 </div>
                 <div class="col-md-5">
                     <h5 class="text-center">Información del parque</h5>

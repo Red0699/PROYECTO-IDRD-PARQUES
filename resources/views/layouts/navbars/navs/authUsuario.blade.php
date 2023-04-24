@@ -18,11 +18,11 @@
     }
 
     .navbar-nav li a {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .navbar-nav .social-icons i {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .navbar {
@@ -60,6 +60,13 @@
                     <a class="nav-link nav-link-icon" href="{{ route('map') }}">
                         <i class="ni ni-square-pin circle"></i>
                         <span class="nav-link-inner--text">{{ __('Mapa') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="#">
+                        <i class="ni ni-chat-round circle"></i>
+                        <span class="nav-link-inner--text">{{ __('Danos tu feedback') }}</span>
                     </a>
                 </li>
 

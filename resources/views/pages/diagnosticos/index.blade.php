@@ -64,12 +64,18 @@
     <div class="card">
         <div class="card-body">
             <h1>Diagnósticos de Parques</h1>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <a type="button" href="{{ route('general.informe') }}" class="btn bg-purple text-white btn-block">Ver informe de diagnóstico</a>
+                </div>
+            </div>
             <hr>
 
             <form method="GET" action="{{ route('diagnostico.index') }}">
                 <div class="form-group row">
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <h5>Seleccionar Parque:</h5>
                         <select id="parque_id" name="parque_id" class="form-control" required>
                             <option value="" disabled selected>Seleccionar Parque</option>
@@ -80,8 +86,7 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <h5>Seleccionar tipo de recurso:</h5>
                         <select id="tipo_recurso" name="tipo_recurso" class="form-control">
                             <option value="" selected>Todos</option>
@@ -93,8 +98,19 @@
 
                         </select>
                     </div>
-                    <div class="col-md-3 align-self-end">
-                        <button class="btn btn-primary btn-block" type="submit">
+                    <div class="col-md-4">
+                        <h5>Seleccionar Estado:</h5>
+                        <select name="estado" id="estado" class="form-control">
+                            <option value="" selected>Todos</option>
+                            <option value="Bueno" {{ $estado == 'Bueno' ? 'selected' : '' }}>Bueno con diagnostico</option>
+                            <option value="En mal estado" {{ $estado == 'En mal estado' ? 'selected' : '' }}>En mal estado</option>
+                            <option value="En proceso de mantenimiento" {{ $estado == 'En proceso de mantenimiento' ? 'selected' : '' }}>En proceso de mantenimiento</option>
+                            <option value="Pendiente de piezas" {{ $estado == 'Pendiente de piezas' ? 'selected' : '' }}>Pendiente de piezas</option>
+                            <option value="En prueba" {{ $estado == 'En prueba' ? 'selected' : '' }}>En prueba</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 align-self-end">
+                        <button class="btn bg-purple text-white btn-block" type="submit">
                             Filtrar
                         </button>
                     </div>

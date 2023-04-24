@@ -20,6 +20,7 @@ class DiagnosticoController extends Controller
         //
         $parque_id = $request->input('parque_id');
         $tipo_recurso = $request->input('tipo_recurso');
+        $estado = $request->input('estado');
         $parques = Parque::all();
         $diagnosticos = Diagnostico::query()
             ->where('id_parque', $parque_id)
@@ -29,11 +30,16 @@ class DiagnosticoController extends Controller
             $diagnosticos = $diagnosticos->where('tipoRecurso', $tipo_recurso);
         }
 
+        if($estado){
+            $diagnosticos = $diagnosticos->where('estado', $estado);
+        }
+
         $diagnosticos = $diagnosticos->get();
         return view('pages.diagnosticos.index', compact(
             'parque_id',
             'tipo_recurso',
             'parques',
+            'estado',
             'diagnosticos'
         ));
     }
