@@ -1,24 +1,28 @@
 <!-- Header -->
 <div class="d-flex justify-content-between align-items-center mb-5">
     <h3 class="text-left">Agregar Cancha Deportiva</h3>
+    @if ($bandera == 'activo')
     <a type="button" class="btn btn-primary" href="{{ route('cancha.create', $data->id) }}">Añadir</a>
+    @endif
 </div>
 
 <!-- Tabla -->
 <div class="table-responsive m-2">
-    <table class="table" id="canchaTable">
-        <thead class="thead-light">
-            <th>Tipo</th>
-            <th>Iluminacion</th>
-            <th>Material</th>
-            <th>Cerramiento</th>
-            <th>camerino</th>
-            <th>Largo</th>
-            <th>Ancho</th>
-            <th>Area</th>
-            <th>Descripcion</th>
-            <th>Estado</th>
-            <th>Acciones</th>
+    <table class="align-items-center table-flush" id="canchaTable">
+        <thead class="thead bg-purple text-white">
+            <th>TIPO</th>
+            <th>ILUMINACIÓN</th>
+            <th>MATERIAL</th>
+            <th>CERRAMIENTO</th>
+            <th>CAMERINO</th>
+            <th>LARGO</th>
+            <th>ANCHO</th>
+            <th>ÁREA</th>
+            <th>DESCRIPCIÓN</th>
+            <th>ESTADO</th>
+            @if ($bandera == 'activo')
+            <th>ACCIONES</th>
+            @endif
         </thead>
         <tbody class="list">
             @forelse ($canchas as $cancha)
@@ -35,8 +39,8 @@
                 <th>{{ $cancha->descripcion }}</th>
                 <th>{{ $cancha->estado }}</th>
 
-
-                <td class="text-right">
+                @if ($bandera == 'activo')
+                <td>
                     <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>
@@ -54,6 +58,7 @@
                         </div>
                     </div>
                 </td>
+                @endif
             </tr>
             @empty
 

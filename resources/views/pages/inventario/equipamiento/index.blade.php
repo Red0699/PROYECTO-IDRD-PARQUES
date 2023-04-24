@@ -1,22 +1,24 @@
 <!-- Header -->
 <div class="d-flex justify-content-between align-items-center mb-5">
     <h3 class="text-left">Agregar Equipamiento</h3>
+    @if ($bandera == 'activo')
     <a type="button" class="btn btn-primary" href="{{ route('equipamiento.create', $data->id) }}">Añadir</a>
+    @endif
 </div>
 
 <!-- Tabla -->
 <div class="table-responsive m-2">
-    <table class="table" id="equipamientoTable">
-        <thead class="thead-light">
-            <th>modulo</th>
+    <table class="table align-items-center table-flush" id="equipamientoTable">
+        <thead class="thead bg-purple text-white">
+            <th>Módulo</th>
             <th>Largo</th>
             <th>Ancho</th>
-            <th>Area</th>
-            <th>agua</th>
-            <th>gas</th>
-            <th>Descripcion</th>
+            <th>Área</th>
+            <th>Agua</th>
+            <th>Gas</th>
+            <th>Descripción</th>
             <th>Estado</th>
-            <th class="text-right">Acciones</th>
+            <th>Acciones</th>
         </thead>
         <tbody class="list">
             @forelse ($equipamientos as $equipamiento)
@@ -45,7 +47,8 @@
                                 <button class="dropdown-item" type="submit">Eliminar</button>
                             </form>
 
-                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $equipamiento->id, 'tabla' => 'equipamiento'] ) }}">Diagnostico</a>                        </div>
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $equipamiento->id, 'tabla' => 'equipamiento'] ) }}">Diagnostico</a>
+                        </div>
                     </div>
                 </td>
             </tr>

@@ -1,12 +1,35 @@
+<style>
+    /*
+    .perfil-usuario .profile-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+    }
+    */
+</style>
+
 <!-- Sidenav -->
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
         <!-- Brand -->
-        <div class="sidenav-header  align-items-center">
+        <div class="sidenav-header align-items-center d-flex>
             <a class="navbar-brand" href="javascript:void(0)">
-                <img src="{{ asset('argon') }}/img/brand/logo.png" class="navbar-brand-img" alt="...">
+                <img src="{{ asset('argon') }}/img/brand/logo-idrd.png" class="navbar-brand-img" alt="..." style="max-height: 90px;">
             </a>
         </div>
+        <!--
+        <div class="perfil-usuario justify-content-center">
+            <div class="profile-container d-flex flex-column align-items-center">
+                <div class="profile-image-container">
+                    <img src="../assets/img/theme/default-user-image.png" alt="Foto de perfil del usuario" class="profile-image" style="width:120px;height:120px;">
+                </div>
+                <p>Bienvenido usuario <span class="username">{{ auth()->user()->name }}</span></p>
+            </div>
+        </div>
+        -->
+
         <div class="navbar-inner">
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
@@ -43,8 +66,8 @@
 
                     @can('diagnostico_module')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
-                            <i class="fas fa-archive text-purple"></i> {{ __('Diagnosticos') }}
+                        <a class="nav-link" href="{{ route('diagnostico.index') }}">
+                            <i class="fas fa-archive text-purple"></i> {{ __('Diagnósticos') }}
                         </a>
                     </li>
                     @endcan
@@ -73,14 +96,14 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('general.informe') }}">
-                                        {{ __('Diagnostico') }}
+                                        {{ __('Diagnóstico') }}
                                     </a>
                                 </li>
 
                                 @can('historicos_module')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('usuarios.informe') }}">
-                                        {{ __('Historicos') }}
+                                        {{ __('Históricos') }}
                                     </a>
                                 </li>
                                 @endcan

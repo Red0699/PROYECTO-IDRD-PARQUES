@@ -8,83 +8,23 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
-
+<link rel="stylesheet" type="text/css" href="{{asset('argon/css/main.css')}}">
 @endpush
 
+<!-- Título de la página -->
+<div class="container-fluid bg-purple py-8 text-white">
+    <div class="row">
+        <div class="col-md-12 text-center mt--6">
+            <h1 class="text-white">Administración de inventario de los parques</h1>
+            <p class="text-white mt-4">En esta plataforma podrás gestionar y controlar el inventario de recursos de los parques, incluyendo canchas deportivas, mobiliarios urbanos, escenarios deportivos, juegos infantiles y equipamientos. Mantén un registro actualizado de los recursos disponibles y optimiza su uso para ofrecer la mejor experiencia a los usuarios de los parques.</p>
+        </div>
+    </div>
+</div>
 
-<style>
-    #contenedor-principal {
-        border: 1px solid gray;
-        background-color: white;
-        padding: 10px;
-        margin: 0 auto;
-        max-width: 1000px;
-        /* ancho máximo */
-        text-align: center;
-    }
-
-    .contenedor {
-        border: 1px solid gray;
-        background-color: white;
-        padding: 20px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-    }
-
-    .busqueda {
-        background-color: white;
-        padding: 30px;
-        margin-bottom: 20px;
-    }
-
-    .contenedor-tabs {
-        border: 1px solid gray;
-        background-color: white;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 10px;
-    }
-
-    .select-lg {
-        padding-right: 50px;
-    }
-
-    .btn-busqueda {
-        margin-left: 20px;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    .search-text {
-        text-align: left;
-        margin-top: 10px;
-        padding-top: -10px;
-    }
-
-    .search-text p {
-        color: #999999;
-        font-size: 12px;
-        margin-bottom: 0;
-
-    }
-
-    .table-responsive table.table {
-        font-size: 14px;
-        border-collapse: collapse;
-        margin: 0;
-    }
-
-    p {
-        font-size: 13px;
-    }
-
-    
-</style>
-
-<div class="content py-2">
-    <div class="container-fluid mt-5">
+<div class="content mt--9">
+    <div class="container-fluid mt-5" >
         <div class="row">
-            <div class="col-md-12" id="contenedor-principal">
+            <div class="col-md-13" id="contenedor-principal">
 
                 <!-- Contenedor de Busqueda -->
 
@@ -118,20 +58,22 @@
 
                 <!-- Contenedor de información del parque -->
 
-                <div class="row justify-content-center mb-5">
-                    <h2 class="text-center">Información General: </h2>
-                    <div class="col-md-11 contenedor">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <h2 class="text-center">Información General: </h2>
+                        <div class="col-md-11 contenedor">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p><strong>Nombre:</strong> {{ $data->nombreParque }}</p>
-                                <p><strong>Localidad:</strong> {{ $data->localidad }}</p>
-                                <p><strong>Escala:</strong> {{ $data->escala }}</p>
-                            </div>
-                            <div class="col-md-6">
-                                <p><strong>Área:</strong> Área aproximada del parque</p>
-                                <p><strong>Dirección:</strong> {{ $data->direccion }}</p>
-                                <p><strong>Estrato:</strong> {{ $data->estrato }}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Nombre:</strong> {{ $data->nombreParque }}</p>
+                                    <p><strong>Localidad:</strong> {{ $data->localidad }}</p>
+                                    <p><strong>Escala:</strong> {{ $data->escala }}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Área:</strong> {{ $data->area }}m<sup>2</sup></p>
+                                    <p><strong>Dirección:</strong> {{ $data->direccion }}</p>
+                                    <p><strong>Estrato:</strong> {{ $data->estrato }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,22 +81,24 @@
 
                 <!-- Contenido de información del inventario -->
 
-                <div class="row justify-content-center mb-5">
-                    <h2 class="text-center">Información de Inventario:</h2>
-                    <div class="col-md-11 contenedor">
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <h2 class="text-center">Información de Inventario:</h2>
+                        <div class="col-md-11 contenedor">
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p><strong>Usuario que modifico el inventario:</strong>Ejemplo</p>
-                                <p><strong>Ultima actualización</strong>12/03/2023</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p><strong>Usuario que modifico el inventario:</strong>Ejemplo</p>
+                                    <p><strong>Ultima actualización</strong>12/03/2023</p>
 
-                            </div>
-                            <div class="col-md-4">
-                                <p><strong>Persona que realizo el inventario: </strong>Ejemplo</p>
-                                <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
-                            </div>
-                            <div class="col-md-4">
-                                <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Historicos</a>
+                                </div>
+                                <div class="col-md-4">
+                                    <p><strong>Persona que realizo el inventario: </strong>Ejemplo</p>
+                                    <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Historicos</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,64 +108,45 @@
 
                 <div class="row justify-content-between mb-0 py-3">
                     <div class="col-md-5">
-                        <a class="btn bg-purple text-white btn-sm" href="{{ route('inventario.informe') }}">Informe Inventario</a>
-                        <a class="btn bg-purple text-white btn-sm" href="{{ route('diagnostico.informe', $parque->id) }}">Informe Diagnostico</a>
+                        <a class="btn bg-purple text-white" href="{{ route('inventario.informe') }}">Informe Inventario</a>
+                        <a class="btn bg-purple text-white" href="{{ route('diagnostico.index', ['parque_id' => $dataTemp]) }}">Ver Diagnostico</a>
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
-                    <div class="col-md-11 contenedor-tabs">
-                        <div class="tabs">
-                            <div class="nav-wrapper">
-                                <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 active " id="juegos-tab" data-toggle="tab" href="#juegos" role="tab" aria-controls="juegos" aria-selected="true">Juegos Infantiles</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0" id="canchas-tab" data-toggle="tab" href="#canchas" role="tab" aria-controls="canchas" aria-selected="false">Canchas Deportivas</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0" id="equipamientos-tab" data-toggle="tab" href="#equipamientos" role="tab" aria-controls="equipamientos" aria-selected="false">Equipamientos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0" id="mobiliarios-tab" data-toggle="tab" href="#mobiliarios" role="tab" aria-controls="mobiliarios" aria-selected="false">Mobiliarios Urbanos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0" id="escenarios-tab" data-toggle="tab" href="#escenarios" role="tab" aria-controls="escenarios" aria-selected="false">Escenarios Deportivos</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="card shadow border">
-                                <div class="card-body">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="juegos" role="tabpanel" aria-labelledby="juegos-tab">
-                                            @include('pages/inventario/juegos/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="canchas" role="tabpanel" aria-labelledby="canchas-tab">
-                                            @include('pages/inventario/canchas/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="equipamientos" role="tabpanel" aria-labelledby="equipamientos-tab">
-                                            @include('pages/inventario/equipamiento/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="mobiliarios" role="tabpanel" aria-labelledby="mobiliarios-tab">
-                                            @include('pages/inventario/mobiliario/index')
-                                        </div>
-                                        <div class="tab-pane fade" id="escenarios" role="tabpanel" aria-labelledby="escenarios-tab">
-                                            @include('pages/inventario/escenario/index')
-                                        </div>
-                                    </div>
-
-
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <nav>
+                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-juegos-tab" data-toggle="tab" href="#nav-juegos" role="tab" aria-controls="nav-juegos" aria-selected="true">Juegos Infantiles</a>
+                                    <a class="nav-item nav-link" id="nav-canchas-tab" data-toggle="tab" href="#nav-canchas" role="tab" aria-controls="nav-canchas" aria-selected="false">Canchas Deportivas</a>
+                                    <a class="nav-item nav-link" id="nav-equipamientos-tab" data-toggle="tab" href="#nav-equipamientos" role="tab" aria-controls="nav-equipamientos" aria-selected="false">Equipamientos</a>
+                                    <a class="nav-item nav-link" id="nav-mobiliarios-tab" data-toggle="tab" href="#nav-mobiliarios" role="tab" aria-controls="nav-mobiliarios" aria-selected="false">Mobiliarios Urbanos</a>
+                                    <a class="nav-item nav-link" id="nav-escenarios-tab" data-toggle="tab" href="#nav-escenarios" role="tab" aria-controls="nav-escenarios" aria-selected="false">Escenarios Deportivos</a>
                                 </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-juegos" role="tabpanel" aria-labelledby="nav-juegos-tab">
+                                    @include('pages/inventario/juegos/index', ['bandera' => 'activo'])
+                                </div>
+                                <div class="tab-pane fade" id="nav-canchas" role="tabpanel" aria-labelledby="nav-canchas-tab">
+                                    @include('pages/inventario/canchas/index', ['bandera' => 'activo']) </div>
+                                <div class="tab-pane fade" id="nav-equipamientos" role="tabpanel" aria-labelledby="nav-equipamientos-tab">
+                                    @include('pages/inventario/equipamiento/index', ['bandera' => 'activo']) </div>
+                                <div class="tab-pane fade" id="nav-mobiliarios" role="tabpanel" aria-labelledby="nav-mobiliarios-tab">
+                                    @include('pages/inventario/mobiliario/index', ['bandera' => 'activo']) </div>
+                                <div class="tab-pane fade" id="nav-escenarios" role="tabpanel" aria-labelledby="nav-escenarios-tab">
+                                    @include('pages/inventario/escenario/index', ['bandera' => 'activo']) </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 @endsection
@@ -237,6 +162,8 @@
 <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.3.0-beta.2/fonts/Roboto.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"></script>
+
 
 <script>
     $(document).ready(function() {
@@ -303,30 +230,10 @@
 <script>
     $(document).ready(function() {
         $('#equipamientoTable').DataTable({
-            "scrollY": true,
-            "scrollX": true,
-            "scrollCollapse": true,
-            "paging": true,
-            "ordering": true,
-            "searching": true,
-            "info": true,
-            dom: 'Bfrtip',
             buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
-            language: {
-                lengthMenu: 'Mostrando _MENU_ registros por página',
-                zeroRecords: 'No hay registros para mostrar',
-                info: 'Mostrando página _PAGE_ de _PAGES_',
-                infoEmpty: 'No hay registros...',
-                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
-                sSearch: 'Buscar',
-                'paginate': {
-                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
-                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
-                },
-                buttons: {
-                    pageLength: 'Mostrando %d filas'
-                },
-            },
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
         });
     });
 </script>
@@ -334,30 +241,10 @@
 <script>
     $(document).ready(function() {
         $('#mobiliarioTable').DataTable({
-            "scrollY": true,
-            "scrollX": true,
-            "scrollCollapse": true,
-            "paging": true,
-            "ordering": true,
-            "searching": true,
-            "info": true,
-            dom: 'Bfrtip',
             buttons: ['pageLength', 'excelHtml5', 'pdfHtml5'],
-            language: {
-                lengthMenu: 'Mostrando _MENU_ registros por página',
-                zeroRecords: 'No hay registros para mostrar',
-                info: 'Mostrando página _PAGE_ de _PAGES_',
-                infoEmpty: 'No hay registros...',
-                infoFiltered: '(filtrando de _MAX_ registros disponibles)',
-                sSearch: 'Buscar',
-                'paginate': {
-                    'previous': '<i class="fas fa-light fa-arrow-left"></i>',
-                    'next': '<i class="fas fa-light fa-arrow-right"></i>'
-                },
-                buttons: {
-                    pageLength: 'Mostrando %d filas'
-                },
-            },
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
         });
     });
 </script>

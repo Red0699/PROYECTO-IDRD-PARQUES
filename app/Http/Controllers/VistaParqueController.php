@@ -34,9 +34,9 @@ class VistaParqueController extends Controller
 
     public function show(Parque $parque)
     {
-        $registro = Rating::where('id_user', auth()->user()->id)
-            ->where('id_parque', $parque->id)->first();
+        //$registro = Rating::where('id_user', auth()->user()->id)
+        //    ->where('id_parque', $parque->id)->first();
             
-        return view('pages\parques\home\show', compact('parque', 'registro'));
+    return view('pages\parques\home\show', compact('parque'/*, 'registro'*/));
     }
 }

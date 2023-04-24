@@ -24,12 +24,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('parquesIDRD', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
+Route::get('parques/{parque}', ['as' => 'vista.show', 'uses' =>'App\Http\Controllers\VistaParqueController@show']);
 
 Route::group(['middleware' => 'auth'], function () {
 
 	//Usuario registrado
-	Route::get('parquesIDRD', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
-	Route::get('parques/{parque}', ['as' => 'vista.show', 'uses' =>'App\Http\Controllers\VistaParqueController@show']);
 	Route::post('rating/{parque}', ['as' => 'rating.store', 'uses' =>'App\Http\Controllers\RatingController@store']);
 	Route::put('rating/{rating}/{parque}', ['as' => 'rating.update', 'uses' =>'App\Http\Controllers\RatingController@update']);
 
@@ -88,7 +88,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 
 	//Diagnostico
-	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store', 'index']]);
+	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store']]);
+	Route::get('diagnosticos', 'App\Http\Controllers\DiagnosticoController@index')->name('diagnostico.index');
 	Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@validar')->name('diagnostico');
 	Route::get('diagnostico/{idParque}/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
 	Route::post('diagnostico/{idParque}/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);

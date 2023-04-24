@@ -72,7 +72,8 @@
                     </div>
                 </div>
             </div>
-
+            
+            @if (Auth::check())    
             <!-- Sección de calificaciones -->
             <div class="justify-content-center mt-7">
                 <div class="narrow-card card p-3 mt-3 border">
@@ -107,6 +108,7 @@
                     </form>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

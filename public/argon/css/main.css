@@ -1,0 +1,109 @@
+#contenedor-principal {
+	border: 5px solid #5b2d6d;
+	background-color: white;
+	padding: 10px;
+	margin: 0 auto;
+	max-width: 1100px;
+	/* ancho máximo */
+	text-align: center;
+}
+
+.contenedor {
+	border: 1px solid gray;
+	background-color: white;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.busqueda {
+	background-color: white;
+	padding: 30px;
+	margin-bottom: 20px;
+}
+
+.contenedor-tabs {
+	border: 1px solid gray;
+	background-color: white;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.select-lg {
+	padding-right: 50px;
+}
+
+.btn-busqueda {
+	margin-left: 20px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.search-text {
+	text-align: left;
+	margin-top: 10px;
+	padding-top: -10px;
+}
+
+.search-text p {
+	color: #999999;
+	font-size: 12px;
+	margin-bottom: 0;
+
+}
+
+.table-responsive table.table {
+	font-size: 14px;
+	border-collapse: collapse;
+	margin: 0;
+}
+
+p {
+	font-size: 15px;
+}
+
+nav>.nav.nav-tabs {
+
+	border: none;
+	color: #fff;
+	background: #272e38;
+	border-radius: 0;
+
+}
+
+nav>div a.nav-item.nav-link,
+nav>div a.nav-item.nav-link.active {
+	border: none;
+	padding: 18px 25px;
+	color: #fff;
+	background: #272e38;
+	border-radius: 0;
+}
+
+nav>div a.nav-item.nav-link.active:after {
+	content: "";
+	position: relative;
+	bottom: -60px;
+	left: -10%;
+	border: 15px solid transparent;
+	border-top-color: #5b2d6d;
+}
+
+.tab-content {
+	background: #fdfdfd;
+	line-height: 25px;
+	border: 1px solid #ddd;
+	border-top: 5px solid #5b2d6d;
+	border-bottom: 5px solid #5b2d6d;
+	padding: 30px 25px;
+}
+
+nav>div a.nav-item.nav-link:hover,
+nav>div a.nav-item.nav-link:focus {
+	border: none;
+	background: #5b2d6d;
+	color: #fff;
+	border-radius: 0;
+	transition: background 0.20s linear;
+}

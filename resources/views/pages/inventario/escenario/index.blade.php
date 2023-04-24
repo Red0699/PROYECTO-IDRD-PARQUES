@@ -1,25 +1,29 @@
 <!-- Header -->
 <div class="d-flex justify-content-between align-items-center mb-5">
     <h3 class="text-left">Agregar Escenario Deportivo</h3>
+    @if ($bandera == 'activo')
     <a type="button" class="btn btn-primary" href="{{ route('escenario.create', $data->id) }}">Añadir</a>
+    @endif
 </div>
 
 <div class="table-responsive m-2">
-    <table class="table" id="escenarioTable">
-        <thead class="thead-light">
-            <th>tipoescenariodeportivo</th>
-            <th>Largo</th>
-            <th>Ancho</th>
-            <th>Area</th>
-            <th>luz</th>
-            <th>agua</th>
-            <th>gas</th>
-            <th>cerramiento</th>
-            <th>camerinos</th>
-            <th>nbaños</th>
-            <th>Descripcion</th>
-            <th>Estado</th>
-            <th class="text-right">Acciones</th>
+    <table class="align-items-center table-flush" id="escenarioTable">
+        <thead class="bg-purple text-white">
+            <th>TIPO</th>
+            <th>LARGO</th>
+            <th>ANCHO</th>
+            <th>ÁREA</th>
+            <th>LUZ</th>
+            <th>AGUA</th>
+            <th>GAS</th>
+            <th>CERRAMIENTO</th>
+            <th>CAMERINOS</th>
+            <th>NBAÑOS</th>
+            <th>DESCRIPCIÓN</th>
+            <th>ESTADO</th>
+            @if ($bandera == 'activo')
+            <th>ACCIONES</th>
+            @endif
         </thead>
         <tbody class="list">
             @forelse ($escenarios as $escenario)
@@ -38,6 +42,7 @@
                 <th>{{ $escenario->descripcion }}</th>
                 <th>{{ $escenario->estado }}</th>
 
+                @if ($bandera == 'activo')
                 <td class="text-right">
                     <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,9 +57,11 @@
                                 <button class="dropdown-item" type="submit">Eliminar</button>
                             </form>
 
-                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $escenario->id, 'tabla' => 'escenario'] ) }}">Diagnostico</a>                        </div>
+                            <a class="dropdown-item" href="{{ route('diagnostico', ['parque' => $parque->id, 'id' => $escenario->id, 'tabla' => 'escenario'] ) }}">Diagnostico</a>
+                        </div>
                     </div>
                 </td>
+                @endif
             </tr>
             @empty
 

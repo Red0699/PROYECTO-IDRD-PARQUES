@@ -15,9 +15,27 @@ class DiagnosticoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $parque_id = $request->input('parque_id');
+        $tipo_recurso = $request->input('tipo_recurso');
+        $parques = Parque::all();
+        $diagnosticos = Diagnostico::query()
+            ->where('id_parque', $parque_id)
+            ->orderBy('tipoRecurso');
+
+        if($tipo_recurso){
+            $diagnosticos = $diagnosticos->where('tipoRecurso', $tipo_recurso);
+        }
+
+        $diagnosticos = $diagnosticos->get();
+        return view('pages.diagnosticos.index', compact(
+            'parque_id',
+            'tipo_recurso',
+            'parques',
+            'diagnosticos'
+        ));
     }
 
     public function validar(Request $request)

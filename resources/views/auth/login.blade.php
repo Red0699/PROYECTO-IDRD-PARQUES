@@ -3,6 +3,7 @@
 @section('content')
 @include('layouts.headers.guest')
 
+
 <div class="container mt--9 pb-5">
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">

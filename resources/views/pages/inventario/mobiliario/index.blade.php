@@ -1,19 +1,23 @@
 <!-- Header -->
 <div class="d-flex justify-content-between align-items-center mb-5">
     <h3 class="text-left">Agregar Mobiliario Urbano</h3>
+    @if ($bandera == 'activo')
     <a type="button" class="btn btn-primary" href="{{ route('mobiliario.create', $data->id) }}">Añadir</a>
+    @endif
 </div>
 
 <!-- Tabla -->
 <div class="table-responsive m-2">
     <table class="table" id="mobiliarioTable">
-        <thead class="thead-light">
-            <th>tipomobiliario</th>
+        <thead class="thead bg-purple text-white">
+            <th>tipo</th>
             <th>material</th>
             <th>longitud</th>
-            <th>ubicacion</th>
+            <th>ubicación</th>
             <th>Estado</th>
-            <th class="text-right">Acciones</th>
+            @if ($bandera == 'activo')
+            <th>Acciones</th>
+            @endif
         </thead>
         <tbody class="list">
             @forelse ($mobiliarios as $mobiliario)
@@ -25,6 +29,7 @@
                 <th>{{ $mobiliario->ubicacion }}</th>
                 <th>{{ $mobiliario->estado}}</th>
 
+                @if ($bandera == 'activo')
                 <td class="text-right">
                     <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,6 +48,7 @@
                         </div>
                     </div>
                 </td>
+                @endif
             </tr>
             @empty
 
