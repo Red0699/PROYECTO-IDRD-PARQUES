@@ -25,6 +25,7 @@ class OpinionController extends Controller
     public function create()
     {
         //
+        return view('pages.opiniones.create');
     }
 
     /**
@@ -36,6 +37,14 @@ class OpinionController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required|email',
+            'mensaje' => 'required'
+        ]);
+        $data['id_user'] = auth()->user()->id;
+        Opinion::create($data);
+        return back()->withStatus(__('Se ha enviado el mensaje con éxito.'));
     }
 
     /**

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('opinions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
             $table->string('nombre');
             $table->string('correo');
             $table->text('mensaje');

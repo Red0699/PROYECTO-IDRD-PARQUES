@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Usuario registrado
 	Route::post('rating/{parque}', ['as' => 'rating.store', 'uses' =>'App\Http\Controllers\RatingController@store']);
 	Route::put('rating/{rating}/{parque}', ['as' => 'rating.update', 'uses' =>'App\Http\Controllers\RatingController@update']);
+	Route::resource('opiniones', 'App\Http\Controllers\OpinionController', ['except' => ['edit', 'update', 'destroy']]);
 
 	//Usuario Administrador
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['edit']]);

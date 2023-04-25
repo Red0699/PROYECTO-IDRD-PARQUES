@@ -64,7 +64,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="#">
+                    <a class="nav-link nav-link-icon" href="{{ route('opiniones.create') }}">
                         <i class="ni ni-chat-round circle"></i>
                         <span class="nav-link-inner--text">{{ __('Danos tu feedback') }}</span>
                     </a>
