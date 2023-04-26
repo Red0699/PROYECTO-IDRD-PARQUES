@@ -57,7 +57,11 @@
             <div class="row align-items-stretch">
                 <div class="col-md-7">
                     <h5 class="text-center">Foto del parque</h5>
-                    <img src="{{ asset('images/parques').'/'.$parque->foto }}" alt="Foto de Parque" class="img-fluid rounded-left" height="700" width="700">
+                    @if($parque->foto)
+                    <img src="{{ asset('images/parques').'/'.$parque->foto }}" alt="Foto de Parque" class="img-fluid rounded-left">
+                    @else
+                    <img src="{{ asset('argon/img/brand/default-parque.avif') }}" alt="Foto de Parque" class="img-fluid rounded-left">
+                    @endif
                 </div>
                 <div class="col-md-5">
                     <h5 class="text-center">Información del parque</h5>
