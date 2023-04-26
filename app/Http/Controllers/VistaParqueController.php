@@ -25,7 +25,7 @@ class VistaParqueController extends Controller
         }
 
         $parques = $parques->get();
-        return view('pages\parques\home\view', compact(
+        return view('pages.parques.home.view', compact(
             'parques',
             'localidad',
             'escala'
