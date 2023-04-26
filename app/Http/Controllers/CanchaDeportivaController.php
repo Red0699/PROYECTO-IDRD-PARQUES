@@ -20,7 +20,7 @@ class CanchaDeportivaController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $canchas = cancha_deportiva::all();
-        return view('pages\inventario\canchas\index', compact('canchas'));
+        return view('pages.inventario.canchas.index', compact('canchas'));
     }
 
     /**
@@ -31,7 +31,7 @@ class CanchaDeportivaController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\canchas\create', compact('parque'));
+        return view('pages.inventario.canchas.create', compact('parque'));
     }
 
     /**
@@ -70,7 +70,7 @@ class CanchaDeportivaController extends Controller
     {
         //$parques = Parque::all();
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\canchas\edit', compact('cancha'));
+        return view('pages.inventario.canchas.edit', compact('cancha'));
     }
 
     /**

@@ -20,7 +20,7 @@ class MobiliarioController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $mobiliarios = mobiliario::all();
-        return view('pages\inventario\mobiliario\index', compact('mobiliarios'));
+        return view('pages.inventario.mobiliario.index', compact('mobiliarios'));
     }
 
     /**
@@ -31,7 +31,7 @@ class MobiliarioController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\mobiliario\create', compact('parque'));
+        return view('pages.inventario.mobiliario.create', compact('parque'));
     }
 
     /**
@@ -69,7 +69,7 @@ class MobiliarioController extends Controller
     public function edit(mobiliario $mobiliario)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\mobiliario\edit', compact('mobiliario'));
+        return view('pages.inventario.mobiliario.edit', compact('mobiliario'));
     }
 
     /**

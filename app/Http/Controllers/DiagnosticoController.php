@@ -70,7 +70,7 @@ class DiagnosticoController extends Controller
     public function create($idParque, $id, $tabla)
     {
         $parque = Parque::findOrFail($idParque);
-        return view('pages\inventario\diagnostico\create', compact('id', 'tabla', 'parque'));
+        return view('pages.inventario.diagnostico.create', compact('id', 'tabla', 'parque'));
     }
 
     /**
@@ -112,7 +112,7 @@ class DiagnosticoController extends Controller
     public function edit(Diagnostico $diagnostico, Parque $parque)
     {
         //
-        return view('pages\inventario\diagnostico\edit', compact('diagnostico', 'parque'));
+        return view('pages.inventario.diagnostico.edit', compact('diagnostico', 'parque'));
     }
 
     /**

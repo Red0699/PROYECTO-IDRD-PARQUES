@@ -20,7 +20,7 @@ class EscenarioController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $escenarios = escenario::all();
-        return view('pages\inventario\escenario\index', compact('escenarios'));
+        return view('pages.inventario.escenario.index', compact('escenarios'));
     }
 
     /**
@@ -69,7 +69,7 @@ class EscenarioController extends Controller
     public function edit(escenario $escenario)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\escenario\edit', compact('escenario'));
+        return view('pages.inventario.escenario.edit', compact('escenario'));
     }
 
     /**

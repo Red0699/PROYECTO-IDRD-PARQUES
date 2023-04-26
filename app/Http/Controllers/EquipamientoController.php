@@ -20,7 +20,7 @@ class EquipamientoController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $equipamientos = equipamiento::all();
-        return view('pages\inventario\equipamiento\index', compact('equipamientos'));
+        return view('pages.inventario.equipamiento.index', compact('equipamientos'));
     }
 
     /**

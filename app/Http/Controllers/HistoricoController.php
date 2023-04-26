@@ -81,7 +81,7 @@ class HistoricoController extends Controller
         $informeMobiliarios = $informeMobiliarios->get();
         $informeEscenarios = $informeEscenarios->get();
 
-        return view('pages\informes\historicos\historicoInventario', compact(
+        return view('pages.informes.historicos.historicoInventario', compact(
             'informeJuegos',
             'informeCanchas',
             'informeEquipamientos',
@@ -120,7 +120,7 @@ class HistoricoController extends Controller
 
         //dd($informeUsuario);
 
-        return view('pages\informes\historicos\historicoUsuario', compact(
+        return view('pages.informes.historicos.historicoUsuario', compact(
             'informeUsuario',
             'user',
             'now',
