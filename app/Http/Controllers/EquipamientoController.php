@@ -31,7 +31,7 @@ class EquipamientoController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\equipamiento\create', compact('parque'));
+        return view('pages.inventario.equipamiento.create', compact('parque'));
     }
 
     /**
@@ -69,7 +69,7 @@ class EquipamientoController extends Controller
     public function edit(equipamiento $equipamiento)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\equipamiento\edit', compact('equipamiento'));
+        return view('pages.inventario.equipamiento.edit', compact('equipamiento'));
     }
 
     /**
