@@ -172,5 +172,8 @@
 @push('js')
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOCm_Uov0IyKa71QmTBO9VHFWjWK7pDOY"></script>
+<script>
+    
+</script>
 
 @endpush
