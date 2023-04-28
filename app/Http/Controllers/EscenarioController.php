@@ -31,7 +31,7 @@ class EscenarioController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\escenario\create', compact('parque'));
+        return view('pages.inventario.escenario.create', compact('parque'));
     }
 
     /**
