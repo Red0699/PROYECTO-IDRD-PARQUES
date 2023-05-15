@@ -185,8 +185,8 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area') }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" class="form-control" placeholder="{{ __('Área del recurso') }}" value="{{ old('area') }}" autofocus>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
@@ -195,8 +195,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('Descripcion') }}</label>
-                        <textarea type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion') }}" autofocus></textarea>
+                        <label class="form-control-label">{{ __('Descripción') }}</label>
+                        <textarea type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripción') }}" value="{{ old('descripcion') }}" autofocus></textarea>
                         @if ($errors->has('descripcion'))
                         <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                         @endif

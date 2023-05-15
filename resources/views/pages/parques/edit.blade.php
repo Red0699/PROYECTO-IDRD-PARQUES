@@ -57,8 +57,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en m') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area', $parque->area) }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en m') }}<sup>2</sup></label>
+                                <input type="number" name="area" class="form-control" placeholder="{{ __('Área del parque') }}" value="{{ old('area', $parque->area) }}" autofocus>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif

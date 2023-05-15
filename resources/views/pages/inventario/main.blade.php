@@ -50,7 +50,7 @@
                         </form>
                         <hr class="my-2" style="border-top: 2px solid #ccc;">
                         <div class="search-text ">
-                            <p>Busqueda por parque</p>
+                            <p>Búsqueda por parque</p>
                         </div>
                     </div>
                 </div>
@@ -88,16 +88,16 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <p><strong>Usuario que modifico el inventario:</strong>Ejemplo</p>
-                                    <p><strong>Ultima actualización</strong>12/03/2023</p>
+                                    <p><strong>Usuario que modificó el inventario:</strong>Ejemplo</p>
+                                    <p><strong>Última actualización</strong>12/03/2023</p>
 
                                 </div>
                                 <div class="col-md-4">
-                                    <p><strong>Persona que realizo el inventario: </strong>Ejemplo</p>
-                                    <p><strong>Ultima visita de inventario: </strong>12/03/2023</p>
+                                    <p><strong>Persona que realizó el inventario: </strong>Ejemplo</p>
+                                    <p><strong>Última visita de inventario: </strong>12/03/2023</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Historicos</a>
+                                    <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Históricos</a>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                 <div class="row justify-content-between mb-0 py-3">
                     <div class="col-md-5">
                         <a class="btn bg-purple text-white" href="{{ route('inventario.informe') }}">Informe Inventario</a>
-                        <a class="btn bg-purple text-white" href="{{ route('diagnostico.index', ['parque_id' => $dataTemp]) }}">Ver Diagnostico</a>
+                        <a class="btn bg-purple text-white" href="{{ route('diagnostico.index', ['parque_id' => $dataTemp]) }}">Ver Diagnóstico</a>
                     </div>
                 </div>
 
