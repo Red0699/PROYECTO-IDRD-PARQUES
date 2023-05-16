@@ -24,26 +24,26 @@ class InventarioController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        if($request->id == null){
+        if ($request->id == null) {
             $data = Parque::all()->pluck('id')->sortBy('id')->first();
             //dd($data);
             return redirect()->route('inventario.busqueda', $data);
-        }else{
+        } else {
             $data = $request->get('id');
             //dd($data);
             return redirect()->route('inventario.busqueda', $data);
         }
-        
+
         //dd($request->id);
-            
+
     }
-    
+
     public function busqueda(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $data = Parque::find($parque->id);
         //dd($dataPrueba);
-        
+
         $parques = Parque::all();
         $juegos = Juegos::all()->where('idParque', '=', $data->id);
         $canchas = cancha_deportiva::all()->where('id_parque', '=', $data->id);
@@ -51,23 +51,29 @@ class InventarioController extends Controller
         $escenarios = escenario::all()->where('id_parque', '=', $data->id);
         $mobiliarios = mobiliario::all()->where('idparque', '=', $data->id);
         $historico = Historico::where('id_inventario', $data->id)
+            ->orWhere(function ($query) use ($data) {
+                $query->where('id_record', $data->id)
+                    ->where('tabla', 'Parque');
+            })
             ->latest('updated_at')
             ->first();
-        
+
+
         $user = User::where('id', $historico->id_usuario)->first();
 
-        $historicoAntiguo = Historico::where('id_inventario', $parque->id)
+        $historicoAntiguo = Historico::where('id_record', $parque->id)
+            ->where('tabla', 'Parque')
             ->orderBy('created_at', 'asc')
             ->first();
 
         $userAntiguo = User::where('id', $historicoAntiguo->id_usuario)->first();
-        
+
         $dataTemp = $data->id;
         //dd($parque);
 
         return view('pages.inventario.main', compact(
-            'parques', 
-            'juegos',    
+            'parques',
+            'juegos',
             'canchas',
             'equipamientos',
             'escenarios',
@@ -104,18 +110,18 @@ class InventarioController extends Controller
         $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         $pdf->getDomPDF()->setHttpContext($contxt);
 
-        $pdf= PDF::loadView('pages.reportes.inventario', compact(
-            'juegos',    
+        $pdf = PDF::loadView('pages.reportes.inventario', compact(
+            'juegos',
             'canchas',
             'equipamientos',
             'escenarios',
             'mobiliarios',
             'parque'
-        ));//setOptions(['defaultFont' => 'sans-serif'])
+        )); //setOptions(['defaultFont' => 'sans-serif'])
 
         return $pdf->stream();
-        
-  /*
+
+        /*
         
         return view('pages.reportes.inventario', compact(
             'juegos',    
@@ -126,6 +132,5 @@ class InventarioController extends Controller
             'parque'
         ));
 */
-        
     }
 }
