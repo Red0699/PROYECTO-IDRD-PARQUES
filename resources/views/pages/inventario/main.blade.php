@@ -88,13 +88,13 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <p><strong>Usuario que modificó el inventario:</strong>Ejemplo</p>
-                                    <p><strong>Última actualización</strong>12/03/2023</p>
+                                    <p><strong>Usuario que modificó el inventario:</strong>{{ $historico->user->name }}</p>
+                                    <p><strong>Última actualización</strong>{{ $historico->updated_at }}</p>
 
                                 </div>
                                 <div class="col-md-4">
-                                    <p><strong>Persona que realizó el inventario: </strong>Ejemplo</p>
-                                    <p><strong>Última visita de inventario: </strong>12/03/2023</p>
+                                    <p><strong>Persona que realizó el inventario: </strong>{{ $historicoAntiguo->user->name }}</p>
+                                    <p><strong>Última visita de inventario: </strong>{{ $historico->updated_at }}</p>
                                 </div>
                                 <div class="col-md-4">
                                     <a class="btn bg-purple text-white" href="{{ route('historico.index', $data->id) }}">Históricos</a>
