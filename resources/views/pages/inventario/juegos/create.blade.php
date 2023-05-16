@@ -137,20 +137,6 @@
                         </div>
                     </div>
 
-
-                    <div class="form-group">
-                        <label class="form-control-label">{{ __('Altura') }}</label>
-                        <select name="altura" id="altura" class="form-control">
-                            <option value="" selected>Selecciona una opción</option>
-                            <option value="Ninguno" {{ old('altura') == 'Ninguno' ? 'selected' : '' }}>Ninguno</option>
-                            <option value="Solo metalico (Contraimpacto, malla eslabonada)" {{ old('altura') == 'Solo metalico (Contraimpacto, malla eslabonada)' ? 'selected' : '' }}>Solo metalico (Contraimpacto, malla eslabonada)</option>
-                            <option value="Mixto (Mampostería y metalico en malla eslabonada)" {{ old('altura') == 'Mixto (Mampostería y metalico en malla eslabonada)' ? 'selected' : '' }}>Mixto (Mampostería y metalico en malla eslabonada)</option>
-                        </select>
-                        @if ($errors->has('altura'))
-                        <span class="error text-danger" for="input-altura">{{ $errors->first('altura') }}</span>
-                        @endif
-                    </div>
-
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Altura') }}</label>
                         <select name="altura" id="altura" class="form-control">
@@ -161,6 +147,18 @@
                         </select>
                         @if ($errors->has('altura'))
                         <span class="error text-danger" for="input-altura">{{ $errors->first('altura') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label">{{ __('Cerramiento') }}</label>
+                        <select name="cerramiento" id="cerramiento" class="form-control">
+                            <option value="" selected>Seleccione una opción</option>
+                            <option value="Ninguno" {{ old('cerramiento') == 'Ninguno' ? 'selected' : '' }}>Ninguno</option>
+                            <option value="Total" {{ old('cerramiento') == 'Total' ? 'selected' : '' }}>Total</option>
+                        </select>
+                        @if ($errors->has('cerramiento'))
+                        <span class="error text-danger" for="input-cerramiento">{{ $errors->first('cerramiento') }}</span>
                         @endif
                     </div>
 

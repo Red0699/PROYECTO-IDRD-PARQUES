@@ -17,7 +17,6 @@
                 <div class="pl-lg-3">
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Tipo de escenario deportivo') }}</label>
-                        <label class="form-control-label">{{ __('Tipo de escenario deportivo') }}</label>
                         <select name="tipoescenariodeportivo" id="tipoescenariodeportivo" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
                             <option value="Aula múltiple" {{ old('tipoescenariodeportivo') == 'Aula múltiple' ? 'selected' : '' }}>Aula múltiple</option>
