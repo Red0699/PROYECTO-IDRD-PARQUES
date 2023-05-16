@@ -7,7 +7,7 @@
 </div>
 
 <!-- Tabla -->
-<div class="table-responsive m-2" style="overflow-x: auto;">
+<div class="table table-responsive m-2">
     <table class="align-items-center table-flush" id="invTable">
         <thead class="thead bg-purple text-white">
             <th>TIPO</th>

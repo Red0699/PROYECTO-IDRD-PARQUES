@@ -16,34 +16,35 @@
                 @method('PUT')
                 <div class="pl-lg-3">
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('modulo') }}</label>
+                        <label class="form-control-label">{{ __('Módulo') }}</label>
                         <select name="modulo" id="modulo" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="asadero" {{ old('modulo',$equipamiento->modulo) == 'asadero' ? 'selected' : '' }}>asadero</option>
-                            <option value="auditorio" {{ old('modulo',$equipamiento->modulo) == 'auditorio' ? 'selected' : '' }}>auditorio</option>
-                            <option value="baños" {{ old('modulo',$equipamiento->modulo) == 'baños' ? 'selected' : '' }}>baños</option>
-                            <option value="baterias sanitarias" {{ old('modulo',$equipamiento->modulo) == 'baterias sanitarias' ? 'selected' : '' }}>baterias sanitarias</option>
-                            <option value="bodegas" {{ old('modulo',$equipamiento->modulo) == 'bodegas' ? 'selected' : '' }}>bodegas</option>
-                            <option value="cafeteria" {{ old('modulo',$equipamiento->modulo) == 'cafeteria' ? 'selected' : '' }}>cafeteria</option>
-                            <option value="CAI" {{ old('modulo',$equipamiento->modulo) == 'CAI' ? 'selected' : '' }}>CAI</option>
-                            <option value="camerino" {{ old('modulo',$equipamiento->modulo) == 'camerino' ? 'selected' : '' }}>camerino</option>
-                            <option value="caseta" {{ old('modulo',$equipamiento->modulo) == 'caseta' ? 'selected' : '' }}>caseta</option>
-                            <option value="cicloruta" {{ old('modulo',$equipamiento->modulo) == 'cicloruta' ? 'selected' : '' }}>cicloruta</option>
-                            <option value="concha acustica" {{ old('modulo',$equipamiento->modulo) == 'concha acustica' ? 'selected' : '' }}>concha acustica</option>
-                            <option value="iglesias" {{ old('modulo',$equipamiento->modulo) == 'iglesias' ? 'selected' : '' }}>iglesias</option>
-                            <option value="gradas" {{ old('modulo',$equipamiento->modulo) == 'gradas' ? 'selected' : '' }}>gradas</option>
-                            <option value="locales" {{ old('modulo',$equipamiento->modulo) == 'locales' ? 'selected' : '' }}>locales</option>
+                            <option value="Asadero" {{ old('modulo', $equipamiento->modulo) == 'Asadero' ? 'selected' : '' }}>Asadero</option>
+                            <option value="Auditorio" {{ old('modulo', $equipamiento->modulo) == 'Auditorio' ? 'selected' : '' }}>Auditorio</option>
+                            <option value="Baños" {{ old('modulo', $equipamiento->modulo) == 'Baños' ? 'selected' : '' }}>Baños</option>
+                            <option value="Baterías sanitarias" {{ old('modulo', $equipamiento->modulo) == 'Baterías sanitarias' ? 'selected' : '' }}>Baterías sanitarias</option>
+                            <option value="Bodegas" {{ old('modulo', $equipamiento->modulo) == 'Bodegas' ? 'selected' : '' }}>Bodegas</option>
+                            <option value="Cafetería" {{ old('modulo', $equipamiento->modulo) == 'Cafetería' ? 'selected' : '' }}>Cafetería</option>
+                            <option value="CAI" {{ old('modulo', $equipamiento->modulo) == 'CAI' ? 'selected' : '' }}>CAI</option>
+                            <option value="Camerino" {{ old('modulo', $equipamiento->modulo) == 'Camerino' ? 'selected' : '' }}>Camerino</option>
+                            <option value="Caseta" {{ old('modulo', $equipamiento->modulo) == 'Caseta' ? 'selected' : '' }}>Caseta</option>
+                            <option value="Cicloruta" {{ old('modulo', $equipamiento->modulo) == 'Cicloruta' ? 'selected' : '' }}>Cicloruta</option>
+                            <option value="Concha acústica" {{ old('modulo', $equipamiento->modulo) == 'Concha acústica' ? 'selected' : '' }}>Concha acústica</option>
+                            <option value="Iglesias" {{ old('modulo', $equipamiento->modulo) == 'Iglesias' ? 'selected' : '' }}>Iglesias</option>
+                            <option value="Gradas" {{ old('modulo', $equipamiento->modulo) == 'Gradas' ? 'selected' : '' }}>Gradas</option>
+                            <option value="Locales" {{ old('modulo', $equipamiento->modulo) == 'Locales' ? 'selected' : '' }}>Locales</option>
                         </select>
                         @if ($errors->has('modulo'))
                         <span class="error text-danger" for="input-modulo">{{ $errors->first('modulo') }}</span>
                         @endif
                     </div>
 
+
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Largo en metros') }}</label>
-                                <input type="number" name="largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo',$equipamiento->largo) }}" autofocus>
+                                <label class="form-control-label" for="input-largo">{{ __('Largo en metros') }}</label>
+                                <input type="number" name="largo" id="input-largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo', $equipamiento->largo) }}" autofocus>
                                 @if ($errors->has('largo'))
                                 <span class="error text-danger" for="input-largo">{{ $errors->first('largo') }}</span>
                                 @endif
@@ -53,17 +54,17 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-ancho">{{ __('Ancho en metros') }}</label>
-                                <input type="number" name="ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho',$equipamiento->ancho) }}" autofocus>
+                                <input type="number" name="ancho" id="input-ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho', $equipamiento->ancho) }}" autofocus>
                                 @if ($errors->has('ancho'))
                                 <span class="error text-danger" for="input-ancho">{{ $errors->first('ancho') }}</span>
                                 @endif
                             </div>
-
                         </div>
+
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area',$equipamiento->area) }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" id="input-area" class="form-control" placeholder="{{ __('Área del Parque') }}" value="{{ old('area', $equipamiento->area) }}" readonly>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
@@ -71,11 +72,30 @@
                         </div>
                     </div>
 
+                    <script>
+                        // Calcular el área automáticamente al modificar el largo o ancho
+                        var inputLargo = document.getElementById('input-largo');
+                        var inputAncho = document.getElementById('input-ancho');
+                        var inputArea = document.getElementById('input-area');
+
+                        inputLargo.addEventListener('input', calcularArea);
+                        inputAncho.addEventListener('input', calcularArea);
+
+                        function calcularArea() {
+                            var largo = inputLargo.value;
+                            var ancho = inputAncho.value;
+                            var area = largo * ancho;
+                            inputArea.value = area;
+                        }
+                    </script>
+
+
+
 
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('luz') }}</label>
+                                <label class="form-control-label">{{ __('Luz') }}</label>
                                 <select name="luz" id="luz" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('luz',$equipamiento->luz) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -90,7 +110,7 @@
 
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('agua') }}</label>
+                                <label class="form-control-label">{{ __('Agua') }}</label>
                                 <select name="agua" id="agua" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('agua',$equipamiento->agua) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -104,7 +124,7 @@
 
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('gas') }}</label>
+                                <label class="form-control-label">{{ __('Gas') }}</label>
                                 <select name="gas" id="gas" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('gas',$equipamiento->gas) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -117,15 +137,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('descripcion') }}</label>
-                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('descripcion') }}" value="{{ old('descripcion',$equipamiento->descripcion) }}" autofocus>
+                        <label class="form-control-label">{{ __('Descripción') }}</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Ingrese texto') }}" value="{{ old('descripcion',$equipamiento->descripcion) }}" autofocus>
                         @if ($errors->has('descripcion'))
                         <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                         @endif
                     </div>
 
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('estado') }}</label>
+                        <label class="form-control-label">{{ __('Estado') }}</label>
                         <select name="estado" id="estado" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
                             <option value="Bueno" {{ old('estado',$equipamiento->estado) == 'Bueno' ? 'selected' : '' }}>Bueno</option>
@@ -136,7 +156,7 @@
                         <span class="error text-danger" for="input-estado">{{ $errors->first('estado') }}</span>
                         @endif
                     </div>
-                    
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
                         <a href="{{ route('inventario.busqueda', $equipamiento->idparque) }}" class="btn bg-purple text-white mt-4">Volver</a>

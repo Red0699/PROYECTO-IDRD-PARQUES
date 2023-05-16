@@ -6,7 +6,7 @@
     @endif
 </div>
 
-<div class="table-responsive m-2">
+<div class="table table-responsive m-2">
     <table class="align-items-center table-flush" id="escenarioTable">
         <thead class="bg-purple text-white">
             <th>TIPO</th>
