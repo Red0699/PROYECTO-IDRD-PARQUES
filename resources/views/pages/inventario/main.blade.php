@@ -88,12 +88,12 @@
 
                             <div class="row">
                                 <div class="col-md-4">
-                                    <p><strong>Usuario que modificó el inventario:</strong>{{ $historico->user->name }}</p>
+                                    <p><strong>Usuario que modificó el inventario:</strong>{{ $user->name }}</p>
                                     <p><strong>Última actualización</strong>{{ $historico->updated_at }}</p>
 
                                 </div>
                                 <div class="col-md-4">
-                                    <p><strong>Persona que realizó el inventario: </strong>{{ $historicoAntiguo->user->name }}</p>
+                                    <p><strong>Persona que realizó el inventario: </strong>{{ $userAntiguo->name }}</p>
                                     <p><strong>Última visita de inventario: </strong>{{ $historico->updated_at }}</p>
                                 </div>
                                 <div class="col-md-4">

@@ -9,6 +9,7 @@ use App\Models\Historico;
 use App\Models\Juegos;
 use App\Models\mobiliario;
 use App\Models\Parque;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -52,11 +53,14 @@ class InventarioController extends Controller
         $historico = Historico::where('id_inventario', $parque->id)
             ->latest('updated_at')
             ->first();
+        
+        $user = User::where('id', $historico->id_usuario)->first();
 
         $historicoAntiguo = Historico::where('id_inventario', $parque->id)
             ->orderBy('created_at', 'asc')
             ->first();
 
+        $userAntiguo = User::where('id', $historicoAntiguo->id_usuario)->first();
         
         $dataTemp = $data->id;
         //dd($parque);
@@ -71,7 +75,9 @@ class InventarioController extends Controller
             'dataTemp',
             'data',
             'historico',
-            'historicoAntiguo'
+            'historicoAntiguo',
+            'user',
+            'userAntiguo'
         ));
     }
 
