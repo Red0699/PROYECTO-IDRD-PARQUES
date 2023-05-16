@@ -151,7 +151,7 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                      <li class="nav-item">
-                    <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/getting-started/overview.html">
+                    <a class="nav-link" href="/guiaUsuario">
                         <i class="ni ni-spaceship text-purple"></i> Guía de Usuario
                     </a>
                 </li>

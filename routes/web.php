@@ -103,4 +103,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/informeUsuarios', function () { return view('pages.informes.usuarios'); })->name('usuarios.informe');
 	Route::get('/informeInventario', function () { return view('pages.informes.inventario'); })->name('inventario.informe');
 	Route::get('/informeDiagnostico', function () { return view('pages.informes.generalDiagno'); })->name('general.informe');
+
+	//Soporte
+	Route::get('/guiaUsuario', function () {
+		return view('pages.soporte.guiausuario');
+	});
 });
