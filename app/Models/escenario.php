@@ -23,7 +23,8 @@ class escenario extends Model
         'estado',
         'descripcion'
     ];
-    public function parque(){
+    public function parque()
+    {
         return $this->belongsTo('App\Models\Parque');
-}
+    }
 }

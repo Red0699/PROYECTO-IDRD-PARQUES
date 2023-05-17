@@ -20,7 +20,7 @@ class EquipamientoController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $equipamientos = equipamiento::all();
-        return view('pages\inventario\equipamiento\index', compact('equipamientos'));
+        return view('pages.inventario.equipamiento.index', compact('equipamientos'));
     }
 
     /**
@@ -31,7 +31,7 @@ class EquipamientoController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\equipamiento\create', compact('parque'));
+        return view('pages.inventario.equipamiento.create', compact('parque'));
     }
 
     /**
@@ -46,7 +46,7 @@ class EquipamientoController extends Controller
         $data['idparque'] = $parque->id;
         $equipamiento = equipamiento::create($data);
         event(new RecursosRecord($equipamiento, "create", "equipamientos", "ALL"));
-        return redirect()->route('inventario.busqueda', $parque->id);
+        return redirect()->route('diagnostico.create', [$parque->id, $equipamiento->id, 'equipamiento']);
     
     }
     /**
@@ -69,7 +69,7 @@ class EquipamientoController extends Controller
     public function edit(equipamiento $equipamiento)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\equipamiento\edit', compact('equipamiento'));
+        return view('pages.inventario.equipamiento.edit', compact('equipamiento'));
     }
 
     /**

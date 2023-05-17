@@ -8029,9 +8029,12 @@ button.bg-dark:focus
     background-color: #0a0c0d !important;
 }
 
-.bg-default
-{
-    background-color: #172b4d !important;
+.bg-default {
+    background-color: #542c86 !important;
+}
+
+.bg-default-short {
+    background-color: whitesmoke !important;
 }
 
 a.bg-default:hover,

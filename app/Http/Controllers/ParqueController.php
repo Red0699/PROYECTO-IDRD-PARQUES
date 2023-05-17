@@ -74,19 +74,20 @@ class ParqueController extends Controller
     {
         //
         abort_if(Gate::denies('parques_module'), 403);
-        $data = $parque->id;
-        $juegos = Juegos::all()->where('idParque', '=', $data);
-        $canchas = cancha_deportiva::all()->where('id_parque', '=', $data);
-        $equipamientos = equipamiento::all()->where('idparque', '=', $data);
-        $escenarios = escenario::all()->where('id_parque', '=', $data);
-        $mobiliarios = mobiliario::all()->where('idparque', '=', $data);
+        $data = Parque::find($parque->id);
+        $juegos = Juegos::all()->where('idParque', '=', $data->id);
+        $canchas = cancha_deportiva::all()->where('id_parque', '=', $data->id);
+        $equipamientos = equipamiento::all()->where('idparque', '=', $data->id);
+        $escenarios = escenario::all()->where('id_parque', '=', $data->id);
+        $mobiliarios = mobiliario::all()->where('idparque', '=', $data->id);
         return view('pages.parques.show', compact(
             'parque',
             'juegos',
             'canchas',
             'equipamientos',
             'escenarios',
-            'mobiliarios'
+            'mobiliarios',
+            'data'
         ));
     }
 

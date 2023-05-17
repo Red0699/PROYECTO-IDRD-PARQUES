@@ -19,23 +19,24 @@
                         <label class="form-control-label">{{ __('Tipo de Cancha Deportiva') }}</label>
                         <select name="tipocancha" id="tipocancha" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="arcos" {{ old('tipocancha',$cancha->tipocancha) == 'arcos' ? 'selected' : '' }}>arcos</option>
-                            <option value="baloncesto" {{ old('tipocancha',$cancha->tipocancha) == 'baloncesto' ? 'selected' : '' }}>baloncesto</option>
-                            <option value="banquitas" {{ old('tipocancha',$cancha->tipocancha) == 'banquitas' ? 'selected' : '' }}>banquitas</option>
-                            <option value="beisbol" {{ old('tipocancha',$cancha->tipocancha) == 'beisbol' ? 'selected' : '' }}>beisbol</option>
-                            <option value="canchas multiples" {{ old('tipocancha',$cancha->tipocancha) == 'canchas multiples' ? 'selected' : '' }}>canchas multiples</option>
-                            <option value="fronton" {{ old('tipocancha',$cancha->tipocancha) == 'fronton' ? 'selected' : '' }}>fronton</option>
-                            <option value="futbol" {{ old('tipocancha',$cancha->tipocancha) == 'futbol' ? 'selected' : '' }}>futbol</option>
-                            <option value="microfutbol" {{ old('tipocancha',$cancha->tipocancha) == 'microfutbol' ? 'selected' : '' }}>microfutbol</option>
-                            <option value="mini baloncesto" {{ old('tipocancha',$cancha->tipocancha) == 'mini baloncesto' ? 'selected' : '' }}>mini baloncesto</option>
-                            <option value="mini tejo" {{ old('tipocancha',$cancha->tipocancha) == 'mini tejo' ? 'selected' : '' }}>mini tejo</option>
-                            <option value="mini tennis" {{ old('tipocancha',$cancha->tipocancha) == 'mini tennis' ? 'selected' : '' }}>mini tennis</option>
-                            <option value="mini voleibol" {{ old('tipocancha',$cancha->tipocancha) == 'mini voleibol' ? 'selected' : '' }}>mini voleibol</option>
-                            <option value="otra cancha deportiva" {{ old('tipocancha',$cancha->tipocancha) == 'otra cancha deportiva' ? 'selected' : '' }}>otra cancha deportiva</option>
-                            <option value="squash" {{ old('tipocancha',$cancha->tipocancha) == 'squash' ? 'selected' : '' }}>squash</option>
-                            <option value="tablero" {{ old('tipocancha',$cancha->tipocancha) == 'tablero' ? 'selected' : '' }}>tablero</option>
-                            <option value="tejo" {{ old('tipocancha',$cancha->tipocancha) == 'tejo' ? 'selected' : '' }}>tejo</option>
-                            
+                            <option value="Arcos" {{ old('tipocancha', $cancha->tipocancha) == 'Arcos' ? 'selected' : '' }}>Arcos</option>
+                            <option value="Baloncesto" {{ old('tipocancha', $cancha->tipocancha) == 'Baloncesto' ? 'selected' : '' }}>Baloncesto</option>
+                            <option value="Banquitas" {{ old('tipocancha', $cancha->tipocancha) == 'Banquitas' ? 'selected' : '' }}>Banquitas</option>
+                            <option value="Béisbol" {{ old('tipocancha', $cancha->tipocancha) == 'Béisbol' ? 'selected' : '' }}>Béisbol</option>
+                            <option value="Canchas múltiples" {{ old('tipocancha', $cancha->tipocancha) == 'Canchas múltiples' ? 'selected' : '' }}>Canchas múltiples</option>
+                            <option value="Frontón" {{ old('tipocancha', $cancha->tipocancha) == 'Frontón' ? 'selected' : '' }}>Frontón</option>
+                            <option value="Fútbol" {{ old('tipocancha', $cancha->tipocancha) == 'Fútbol' ? 'selected' : '' }}>Fútbol</option>
+                            <option value="Microfútbol" {{ old('tipocancha', $cancha->tipocancha) == 'Microfútbol' ? 'selected' : '' }}>Microfútbol</option>
+                            <option value="Mini baloncesto" {{ old('tipocancha', $cancha->tipocancha) == 'Mini baloncesto' ? 'selected' : '' }}>Mini baloncesto</option>
+                            <option value="Mini tejo" {{ old('tipocancha', $cancha->tipocancha) == 'Mini tejo' ? 'selected' : '' }}>Mini tejo</option>
+                            <option value="Mini tenis" {{ old('tipocancha', $cancha->tipocancha) == 'Mini tenis' ? 'selected' : '' }}>Mini tenis</option>
+                            <option value="Mini voleibol" {{ old('tipocancha', $cancha->tipocancha) == 'Mini voleibol' ? 'selected' : '' }}>Mini voleibol</option>
+                            <option value="Otra cancha deportiva" {{ old('tipocancha', $cancha->tipocancha) == 'Otra cancha deportiva' ? 'selected' : '' }}>Otra cancha deportiva</option>
+                            <option value="Squash" {{ old('tipocancha', $cancha->tipocancha) == 'Squash' ? 'selected' : '' }}>Squash</option>
+                            <option value="Tablero" {{ old('tipocancha', $cancha->tipocancha) == 'Tablero' ? 'selected' : '' }}>Tablero</option>
+                            <option value="Tejo" {{ old('tipocancha', $cancha->tipocancha) == 'Tejo' ? 'selected' : '' }}>Tejo</option>
+
+
                         </select>
                         @if ($errors->has('tipocancha'))
                         <span class="error text-danger" for="input-tipocancha">{{ $errors->first('tipocancha') }}</span>
@@ -48,25 +49,27 @@
                                 <label class="form-control-label">{{ __('Material') }}</label>
                                 <select name="material" id="material" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
-                                    <option value="Adoquin arcilla" {{ old('material',$cancha->material) == 'Adoquin arcilla' ? 'selected' : '' }}>Adoquin arcilla</option>
-                                    <option value="Acero" {{ old('material',$cancha->material) == 'Acero' ? 'selected' : '' }}>Acero</option>
-                                    <option value="Adoquin ecológico" {{ old('material',$cancha->material) == 'Adoquin ecológico' ? 'selected' : '' }}>Adoquin ecológico</option>
-                                    <option value="Arena" {{ old('material',$cancha->material) == 'Arena' ? 'selected' : '' }}>Arena</option>
-                                    <option value="Asfalto con sintetico" {{ old('material',$cancha->material) == 'Asfalto con sintetico' ? 'selected' : '' }}>Asfalto con sintetico</option>
-                                    <option value="Asfalto sin sintetico" {{ old('material',$cancha->material) == 'Asfalto sin sintetico' ? 'selected' : '' }}>Asfalto sin sintetico</option>
-                                    <option value="Baldosa" {{ old('material',$cancha->material) == 'Baldosa' ? 'selected' : '' }}>Baldosa</option>
-                                    <option value="Carboncillo" {{ old('material',$cancha->material) == 'Carboncillo' ? 'selected' : '' }}>Carboncillo</option>
-                                    <option value="Cemento" {{ old('material',$cancha->material) == 'Cemento' ? 'selected' : '' }}>Cemento</option>
-                                    <option value="Concreto" {{ old('material',$cancha->material) == 'Concreto' ? 'selected' : '' }}>Concreto</option>
-                                    <option value="Fibra vidrio" {{ old('material',$cancha->material) == 'Fibra vidrio' ? 'selected' : '' }}>Fibra vidrio</option>
-                                    <option value="Grama natural" {{ old('material',$cancha->material) == 'Grama natural' ? 'selected' : '' }}>Grama natural</option>
-                                    <option value="Grama sintetica" {{ old('material',$cancha->material) == 'Grama sintetica' ? 'selected' : '' }}>Grama sintetica</option>
-                                    <option value="Granito" {{ old('material',$cancha->material) == 'Granito' ? 'selected' : '' }}>Granito</option>
-                                    <option value="Hierro" {{ old('material',$cancha->material) == 'Hierro' ? 'selected' : '' }}>Hierro</option>
-                                    <option value="Madera" {{ old('material',$cancha->material) == 'Madera' ? 'selected' : '' }}>Madera</option>
-                                    <option value="Mamposteria" {{ old('material',$cancha->material) == 'Mamposteria' ? 'selected' : '' }}>Mamposteria</option>
-                                    <option value="Metal" {{ old('material',$cancha->material) == 'Metal' ? 'selected' : '' }}>Metal</option>
-                                    <option value="Mixto(Madera/Metal)" {{ old('material',$cancha->material) == 'Mixto(Madera/Metal)' ? 'selected' : '' }}>Mixto(Madera/Metal)</option>
+                                    <option value="Adoquín arcilla" {{ old('material', $cancha->material) == 'Adoquín arcilla' ? 'selected' : '' }}>Adoquín arcilla</option>
+                                    <option value="Acero" {{ old('material', $cancha->material) == 'Acero' ? 'selected' : '' }}>Acero</option>
+                                    <option value="Adoquín ecológico" {{ old('material', $cancha->material) == 'Adoquín ecológico' ? 'selected' : '' }}>Adoquín ecológico</option>
+                                    <option value="Arena" {{ old('material', $cancha->material) == 'Arena' ? 'selected' : '' }}>Arena</option>
+                                    <option value="Asfalto con sintético" {{ old('material', $cancha->material) == 'Asfalto con sintético' ? 'selected' : '' }}>Asfalto con sintético</option>
+                                    <option value="Asfalto sin sintético" {{ old('material', $cancha->material) == 'Asfalto sin sintético' ? 'selected' : '' }}>Asfalto sin sintético</option>
+                                    <option value="Baldosa" {{ old('material', $cancha->material) == 'Baldosa' ? 'selected' : '' }}>Baldosa</option>
+                                    <option value="Carboncillo" {{ old('material', $cancha->material) == 'Carboncillo' ? 'selected' : '' }}>Carboncillo</option>
+                                    <option value="Cemento" {{ old('material', $cancha->material) == 'Cemento' ? 'selected' : '' }}>Cemento</option>
+                                    <option value="Concreto" {{ old('material', $cancha->material) == 'Concreto' ? 'selected' : '' }}>Concreto</option>
+                                    <option value="Fibra vidrio" {{ old('material', $cancha->material) == 'Fibra vidrio' ? 'selected' : '' }}>Fibra vidrio</option>
+                                    <option value="Grama natural" {{ old('material', $cancha->material) == 'Grama natural' ? 'selected' : '' }}>Grama natural</option>
+                                    <option value="Grama sintética" {{ old('material', $cancha->material) == 'Grama sintética' ? 'selected' : '' }}>Grama sintética</option>
+                                    <option value="Granito" {{ old('material', $cancha->material) == 'Granito' ? 'selected' : '' }}>Granito</option>
+                                    <option value="Hierro" {{ old('material', $cancha->material) == 'Hierro' ? 'selected' : '' }}>Hierro</option>
+                                    <option value="Madera" {{ old('material', $cancha->material) == 'Madera' ? 'selected' : '' }}>Madera</option>
+                                    <option value="Mampostería" {{ old('material', $cancha->material) == 'Mampostería' ? 'selected' : '' }}>Mampostería</option>
+                                    <option value="Metal" {{ old('material', $cancha->material) == 'Metal' ? 'selected' : '' }}>Metal</option>
+                                    <option value="Mixto (Madera/Metal)" {{ old('material', $cancha->material) == 'Mixto (Madera/Metal)' ? 'selected' : '' }}>Mixto (Madera/Metal)</option>
+
+
                                 </select>
                                 @if ($errors->has('material'))
                                 <span class="error text-danger" for="input-material">{{ $errors->first('material') }}</span>
@@ -121,8 +124,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Largo en metros') }}</label>
-                                <input type="number" name="largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo',$cancha->largo) }}" autofocus>
+                                <label class="form-control-label" for="input-largo">{{ __('Largo en metros') }}</label>
+                                <input type="number" name="largo" id="input-largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo', $cancha->largo) }}" autofocus>
                                 @if ($errors->has('largo'))
                                 <span class="error text-danger" for="input-largo">{{ $errors->first('largo') }}</span>
                                 @endif
@@ -131,7 +134,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-ancho">{{ __('Ancho en metros') }}</label>
-                                <input type="number" name="ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho',$cancha->ancho) }}" autofocus>
+                                <input type="number" name="ancho" id="input-ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho', $cancha->ancho) }}" autofocus>
                                 @if ($errors->has('ancho'))
                                 <span class="error text-danger" for="input-ancho">{{ $errors->first('ancho') }}</span>
                                 @endif
@@ -139,14 +142,31 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area',$cancha->area) }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" id="input-area" class="form-control" placeholder="{{ __('Área del Parque') }}" value="{{ old('area', $cancha->area) }}" autofocus readonly>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        // Calcular el área en tiempo real
+                        document.getElementById('input-largo').addEventListener('input', calcularArea);
+                        document.getElementById('input-ancho').addEventListener('input', calcularArea);
+
+                        function calcularArea() {
+                            const largo = parseFloat(document.getElementById('input-largo').value);
+                            const ancho = parseFloat(document.getElementById('input-ancho').value);
+                            const area = largo * ancho;
+                            if (!isNaN(area)) {
+                                document.getElementById('input-area').value = area.toFixed(2);
+                            }
+                        }
+                    </script>
+
+
 
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Descripción') }}</label>

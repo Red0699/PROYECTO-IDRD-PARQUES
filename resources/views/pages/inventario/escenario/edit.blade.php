@@ -20,24 +20,22 @@
                         <label class="form-control-label">{{ __('Tipo de escenario deportivo') }}</label>
                         <select name="tipoescenariodeportivo" id="tipoescenariodeportivo" class="form-control">
                             <option value="" selected>Seleccione una opción</option>
-                            <option value="" selected>Seleccione una opción</option>
-                            <option value="aula multiple" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'aula multiple' ? 'selected' : '' }}>aula multiple</option>
-                            <option value="bolera" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'bolera' ? 'selected' : '' }}>bolera</option>
-                            <option value="coliseo" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'coliseo' ? 'selected' : '' }}>coliseo</option>
-                            <option value="coliseo auxiliar" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'coliseo auxiliar' ? 'selected' : '' }}>coliseo auxiliar</option>
-                            <option value="coliceo cubierto" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'coliceo cubierto' ? 'selected' : '' }}>coliceo cubierto</option>
-                            <option value="dunt" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'dunt' ? 'selected' : '' }}>dunt</option>
-                            <option value="estadio de atletismo" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'estadio de atletismo' ? 'selected' : '' }}>estadio de atletismo</option>
-                            <option value="estadio de beisbol" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'estadio de beisbol' ? 'selected' : '' }}>estadio de beisbol</option>
-                            <option value="gimnasio aire libre" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'gimnasio aire libre' ? 'selected' : '' }}>gimnasio aire libre</option>
-                            <option value="golfito" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'golfito' ? 'selected' : '' }}>golfito</option>
-                            <option value="hookey" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'hookey' ? 'selected' : '' }}>hookey</option>
-                            <option value="lago" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'lago' ? 'selected' : '' }}>lago</option>
-                            <option value="media torta" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'media torta' ? 'selected' : '' }}>media torta</option>
-                            <option value="patinaje reacreativo" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'patinaje reacreativo' ? 'selected' : '' }}>patinaje reacreativo</option>
-                            <option value="patinodromo" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'patinodromo' ? 'selected' : '' }}>patinodromo</option>
-                            <option value="patinaje extremo" {{ old('tipoescenariodeportivo',$escenario->tipoescenariodeportivo) == 'patinaje extremo' ? 'selected' : '' }}>patinaje extremo</option>
-
+                            <option value="Aula multiple" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Aula multiple' ? 'selected' : '' }}>Aula múltiple</option>
+                            <option value="Bolera" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Bolera' ? 'selected' : '' }}>Bolera</option>
+                            <option value="Coliseo" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Coliseo' ? 'selected' : '' }}>Coliseo</option>
+                            <option value="Coliseo auxiliar" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Coliseo auxiliar' ? 'selected' : '' }}>Coliseo auxiliar</option>
+                            <option value="Coliseo cubierto" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Coliseo cubierto' ? 'selected' : '' }}>Coliseo cubierto</option>
+                            <option value="Dunt" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Dunt' ? 'selected' : '' }}>Dunt</option>
+                            <option value="Estadio de atletismo" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Estadio de atletismo' ? 'selected' : '' }}>Estadio de atletismo</option>
+                            <option value="Estadio de béisbol" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Estadio de béisbol' ? 'selected' : '' }}>Estadio de béisbol</option>
+                            <option value="Gimnasio aire libre" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Gimnasio aire libre' ? 'selected' : '' }}>Gimnasio aire libre</option>
+                            <option value="Golfito" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Golfito' ? 'selected' : '' }}>Golfito</option>
+                            <option value="Hookey" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Hookey' ? 'selected' : '' }}>Hookey</option>
+                            <option value="Lago" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Lago' ? 'selected' : '' }}>Lago</option>
+                            <option value="Media torta" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Media torta' ? 'selected' : '' }}>Media torta</option>
+                            <option value="Patinaje recreativo" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Patinaje recreativo' ? 'selected' : '' }}>Patinaje recreativo</option>
+                            <option value="Patinódromo" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Patinódromo' ? 'selected' : '' }}>Patinódromo</option>
+                            <option value="Patinaje extremo" {{ old('tipoescenariodeportivo', $escenario->tipoescenariodeportivo) == 'Patinaje extremo' ? 'selected' : '' }}>Patinaje extremo</option>
                         </select>
                         @if ($errors->has('tipoescenariodeportivo'))
                         <span class="error text-danger" for="input-tipoescenariodeportivo">{{ $errors->first('tipoescenariodeportivo') }}</span>
@@ -48,7 +46,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-area">{{ __('Largo en metros') }}</label>
-                                <input type="number" name="largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo',$escenario->largo) }}" autofocus>
+                                <input type="number" name="largo" id="input-largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo', $escenario->largo) }}" autofocus>
                                 @if ($errors->has('largo'))
                                 <span class="error text-danger" for="input-largo">{{ $errors->first('largo') }}</span>
                                 @endif
@@ -58,27 +56,47 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-ancho">{{ __('Ancho en metros') }}</label>
-                                <input type="number" name="ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho',$escenario->ancho) }}" autofocus>
+                                <input type="number" name="ancho" id="input-ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho', $escenario->ancho) }}" autofocus>
                                 @if ($errors->has('ancho'))
                                 <span class="error text-danger" for="input-ancho">{{ $errors->first('ancho') }}</span>
                                 @endif
                             </div>
-
                         </div>
+
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('area del Parque') }}" value="{{ old('area',$escenario->area) }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" id="input-area" class="form-control" placeholder="{{ __('Área del Parque') }}" value="{{ old('area', $escenario->area) }}" autofocus readonly>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        // Calcular el área en tiempo real
+                        document.getElementById('input-largo').addEventListener('input', calcularArea);
+                        document.getElementById('input-ancho').addEventListener('input', calcularArea);
+
+                        function calcularArea() {
+                            const largo = parseFloat(document.getElementById('input-largo').value);
+                            const ancho = parseFloat(document.getElementById('input-ancho').value);
+                            const area = largo * ancho;
+                            if (!isNaN(area)) {
+                                document.getElementById('input-area').value = area.toFixed(2);
+                            } else {
+                                document.getElementById('input-area').value = '';
+                            }
+                        }
+                    </script>
+
+
+
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('luz') }}</label>
+                                <label class="form-control-label">{{ __('Luz') }}</label>
                                 <select name="luz" id="luz" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('luz',$escenario->luz) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -93,7 +111,7 @@
 
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('agua') }}</label>
+                                <label class="form-control-label">{{ __('Agua') }}</label>
                                 <select name="agua" id="agua" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('agua',$escenario->agua) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -107,7 +125,7 @@
 
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label">{{ __('gas') }}</label>
+                                <label class="form-control-label">{{ __('Gas') }}</label>
                                 <select name="gas" id="gas" class="form-control">
                                     <option value="" selected>Seleccione una opción</option>
                                     <option value="Si" {{ old('gas',$escenario->gas) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -120,7 +138,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-control-label">{{ __('camerinos') }}</label>
+                            <label class="form-control-label">{{ __('Camerinos') }}</label>
                             <select name="camerinos" id="camerinos" class="form-control">
                                 <option value="" selected>Seleccione una opción</option>
                                 <option value="Si" {{ old('camerinos',$escenario->camerinos) == 'Si' ? 'selected' : '' }}>Si</option>
@@ -146,8 +164,8 @@
 
                     <div>
                         <div class="form-group">
-                            <label class="form-control-label" for="input-nbaños">{{ __('numero de baños') }}<sup>2</sup></label>
-                            <input type="number" name="nbaños" class="form-control" placeholder="{{ __('nbaños del Parque') }}" value="{{ old('nbaños',$escenario->nbaños) }}" autofocus>
+                            <label class="form-control-label" for="input-nbaños">{{ __('Número de baños') }}</label>
+                            <input type="number" name="nbaños" class="form-control" placeholder="{{ __('Ejemplo: 123') }}" value="{{ old('nbaños',$escenario->nbaños) }}" autofocus>
                             @if ($errors->has('nbaños'))
                             <span class="error text-danger" for="input-nbaños">{{ $errors->first('nbaños') }}</span>
                             @endif
@@ -156,8 +174,8 @@
 
 
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('Descripcion') }}</label>
-                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion',$escenario->descripcion) }}" autofocus>
+                        <label class="form-control-label">{{ __('Descripción') }}</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Ingrese texto') }}" value="{{ old('descripcion',$escenario->descripcion) }}" autofocus>
                         @if ($errors->has('descripcion'))
                         <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
                         @endif

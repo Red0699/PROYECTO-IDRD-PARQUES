@@ -81,7 +81,7 @@ class HistoricoController extends Controller
         $informeMobiliarios = $informeMobiliarios->get();
         $informeEscenarios = $informeEscenarios->get();
 
-        return view('pages\informes\historicos\historicoInventario', compact(
+        return view('pages.informes.historicos.historicoInventario', compact(
             'informeJuegos',
             'informeCanchas',
             'informeEquipamientos',
@@ -120,7 +120,7 @@ class HistoricoController extends Controller
 
         //dd($informeUsuario);
 
-        return view('pages\informes\historicos\historicoUsuario', compact(
+        return view('pages.informes.historicos.historicoUsuario', compact(
             'informeUsuario',
             'user',
             'now',
@@ -229,7 +229,7 @@ class HistoricoController extends Controller
             }
         } else if ($event->tipo == "canchas") {
             $data["nombreHistorico"] = "Historico Cancha Deportiva";
-            $data["tabla"] = "cancha_deportivas";
+            $data["tabla"] = "canchas";
             $data["id_inventario"] = $event->recurso->id_parque;
             $data["resultado"] = "En construcción";
             if ($event->accion == 'create') {
@@ -241,7 +241,7 @@ class HistoricoController extends Controller
             }
         } else if ($event->tipo == "equipamientos") {
             $data["nombreHistorico"] = "Historico Equipamiento";
-            $data["tabla"] = "juegos";
+            $data["tabla"] = "equipamientos";
             $data["id_inventario"] = $event->recurso->idparque;
             $data["resultado"] = "En construcción";
             if ($event->accion == 'create') {
@@ -285,4 +285,6 @@ class HistoricoController extends Controller
         $data["updated_at"] = $event->recurso->updated_at;
         $data->save();
     }
+
+    
 }

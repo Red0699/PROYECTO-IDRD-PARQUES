@@ -14,10 +14,15 @@
         background-color: #542c86;
         border-radius: 50%;
     }
+
+    .navbar {
+        border-bottom: 5px solid #5b2d6d;
+        height: 100px;
+    }
 </style>
 
 
-<nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+<nav class="navbar navbar-top navbar-horizontal bg-purple navbar-expand-md navbar-dark">
     <div class="container px-4">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('argon') }}/img/brand/logo.png" />
@@ -51,6 +56,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="{{ route('vista') }}">
+                        <i class="ni ni-world circle"></i>
+                        <span class="nav-link-inner--text">{{ __('Parques') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('register') }}">
                         <i class="ni ni-circle-08 circle"></i>
                         <span class="nav-link-inner--text">{{ __('Registro') }}</span>
@@ -62,12 +73,7 @@
                         <span class="nav-link-inner--text">{{ __('Login') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02 circle"></i>
-                        <span class="nav-link-inner--text">{{ __('Ver perfil') }}</span>
-                    </a>
-                </li>
+                
             </ul>
         </div>
     </div>

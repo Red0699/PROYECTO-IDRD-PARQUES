@@ -31,7 +31,9 @@ class ParqueRequest extends FormRequest
             'escala' => 'required',
             'estrato' => 'required',
             'direccion' => 'required | min: 5',
-            'foto' => "mimes:jpeg,png,jpg"
+            'foto' => "mimes:jpeg,png,jpg",
+            'latitud' => 'required',
+            'longitud' => 'required'
         ];
     }
 

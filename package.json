@@ -16,7 +16,5 @@
         "vite": "^3.0.0",
         "vue": "^3.2.37"
     },
-    "dependencies": {
-        "sweetalert2": "^11.7.3"
-    }
+    "dependencies": {}
 }

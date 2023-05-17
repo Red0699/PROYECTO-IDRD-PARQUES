@@ -21,7 +21,7 @@ class JuegosController extends Controller
         //
         abort_if(Gate::denies('inventario_module'), 403);
         $juegos = Juegos::all();
-        return view('pages\inventario\juegos\index', compact('juegos'));
+        return view('pages.inventario.juegos.index', compact('juegos'));
     }
 
     /**
@@ -33,7 +33,7 @@ class JuegosController extends Controller
     {
         //
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\juegos\create', compact('parque'));
+        return view('pages.inventario.juegos.create', compact('parque'));
     }
 
     /**
@@ -49,8 +49,8 @@ class JuegosController extends Controller
         $data['idParque'] = $parque->id;
         //dd($parque->id);
         $juego = Juegos::create($data);
-        event(new RecursosRecord($juego, "create", "juegos","ALL"));
-        return redirect()->route('inventario.busqueda', $parque->id);
+        event(new RecursosRecord($juego, "create", "juegos", "ALL"));
+        return redirect()->route('diagnostico.create', [$parque->id, $juego->id, 'juego']);
     }
 
     /**
@@ -74,7 +74,7 @@ class JuegosController extends Controller
     {
         //
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\juegos\edit', compact('juego', 'parque'));
+        return view('pages.inventario.juegos.edit', compact('juego', 'parque'));
     }
 
     /**

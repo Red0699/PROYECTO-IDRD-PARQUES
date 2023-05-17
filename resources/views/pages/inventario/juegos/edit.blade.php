@@ -22,7 +22,7 @@
                             <option value="Animales" {{ old('tipojuego', $juego->tipojuego, $juego->tipojuego) == 'Animales' ? 'selected' : '' }}>Animales</option>
                             <option value="Araña" {{ old('tipojuego', $juego->tipojuego, $juego->tipojuego) == 'Araña' ? 'selected' : '' }}>Araña</option>
                             <option value="Arenera" {{ old('tipojuego', $juego->tipojuego) == 'Arenera' ? 'selected' : '' }}>Arenera</option>
-                            <option value="Balancin" {{ old('tipojuego', $juego->tipojuego) == 'Balancin' ? 'selected' : '' }}>Balancin</option>
+                            <option value="Balancín" {{ old('tipojuego', $juego->tipojuego) == 'Balancín' ? 'selected' : '' }}>Balancín</option>
                             <option value="Balanza" {{ old('tipojuego', $juego->tipojuego) == 'Balanza' ? 'selected' : '' }}>Balanza</option>
                             <option value="Barandas" {{ old('tipojuego', $juego->tipojuego) == 'Barandas' ? 'selected' : '' }}>Barandas</option>
                             <option value="Barras" {{ old('tipojuego', $juego->tipojuego) == 'Barras' ? 'selected' : '' }}>Barras</option>
@@ -30,7 +30,7 @@
                             <option value="Casa" {{ old('tipojuego', $juego->tipojuego) == 'Casa' ? 'selected' : '' }}>Casa</option>
                             <option value="Cilindro" {{ old('tipojuego', $juego->tipojuego) == 'Cilindro' ? 'selected' : '' }}>Cilindro</option>
                             <option value="Columpio" {{ old('tipojuego', $juego->tipojuego) == 'Columpio' ? 'selected' : '' }}>Columpio</option>
-                            <option value="Cupula" {{ old('tipojuego', $juego->tipojuego) == 'Cupula' ? 'selected' : '' }}>Cupula</option>
+                            <option value="Cúpula" {{ old('tipojuego', $juego->tipojuego) == 'Cúpula' ? 'selected' : '' }}>Cúpula</option>
                             <option value="Escalador" {{ old('tipojuego', $juego->tipojuego) == 'Escalador' ? 'selected' : '' }}>Escalador</option>
                             <option value="Escalera de Troncos" {{ old('tipojuego', $juego->tipojuego) == 'Escalera de Troncos' ? 'selected' : '' }}>Escalera de Troncos</option>
                             <option value="Estructura de metal" {{ old('tipojuego', $juego->tipojuego) == 'Estructura de metal' ? 'selected' : '' }}>Estructura de metal</option>
@@ -68,6 +68,7 @@
                                     <option value="Mamposteria" {{ old('material', $juego->material) == 'Mamposteria' ? 'selected' : '' }}>Mamposteria</option>
                                     <option value="Metal" {{ old('material', $juego->material) == 'Metal' ? 'selected' : '' }}>Metal</option>
                                     <option value="Mixto(Madera/Metal)" {{ old('material', $juego->material) == 'Mixto(Madera/Metal)' ? 'selected' : '' }}>Mixto(Madera/Metal)</option>
+
                                 </select>
                                 @if ($errors->has('material'))
                                 <span class="error text-danger" for="input-material">{{ $errors->first('material') }}</span>
@@ -79,7 +80,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">{{ __('Material de Superficie') }}</label>
                                 <select name="materialsuperficie" id="materialsuperficie" class="form-control">
-                                <option value="" selected>Seleccione una opción</option>
+                                    <option value="" selected>Seleccione una opción</option>
                                     <option value="Adoquin arcilla" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Adoquin arcilla' ? 'selected' : '' }}>Adoquin arcilla</option>
                                     <option value="Acero" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Acero' ? 'selected' : '' }}>Acero</option>
                                     <option value="Adoquin ecológico" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Adoquin ecológico' ? 'selected' : '' }}>Adoquin ecológico</option>
@@ -99,6 +100,7 @@
                                     <option value="Mamposteria" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Mamposteria' ? 'selected' : '' }}>Mamposteria</option>
                                     <option value="Metal" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Metal' ? 'selected' : '' }}>Metal</option>
                                     <option value="Mixto(Madera/Metal)" {{ old('materialsuperficie', $juego->materialsuperficie) == 'Mixto(Madera/Metal)' ? 'selected' : '' }}>Mixto(Madera/Metal)</option>
+
                                 </select>
                                 @if ($errors->has('materialsuperficie'))
                                 <span class="error text-danger" for="input-materialsuperficie">{{ $errors->first('materialsuperficie') }}</span>
@@ -143,13 +145,14 @@
                         <select name="altura" id="altura" class="form-control">
                             <option value="" selected>Selecciona una opción</option>
                             <option value="Ninguno" {{ old('altura', $juego->altura) == 'Ninguno' ? 'selected' : '' }}>Ninguno</option>
-                            <option value="Solo metalico (Contraimpacto, malla eslabonada)" {{ old('altura', $juego->altura) == 'Solo metalico (Contraimpacto, malla eslabonada)' ? 'selected' : '' }}>Solo metalico (Contraimpacto, malla eslabonada)</option>
-                            <option value="Mixto (Mampostería y metalico en malla eslabonada)" {{ old('altura', $juego->altura) == 'Mixto (Mampostería y metalico en malla eslabonada)' ? 'selected' : '' }}>Mixto (Mampostería y metalico en malla eslabonada)</option>
+                            <option value="Solo metálico (Contraimpacto, malla eslabonada)" {{ old('altura', $juego->altura) == 'Solo metálico (Contraimpacto, malla eslabonada)' ? 'selected' : '' }}>Solo metálico (Contraimpacto, malla eslabonada)</option>
+                            <option value="Mixto (Mampostería y metálico en malla eslabonada)" {{ old('altura', $juego->altura) == 'Mixto (Mampostería y metálico en malla eslabonada)' ? 'selected' : '' }}>Mixto (Mampostería y metálico en malla eslabonada)</option>
                         </select>
                         @if ($errors->has('altura'))
                         <span class="error text-danger" for="input-altura">{{ $errors->first('altura') }}</span>
                         @endif
                     </div>
+
 
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Cerramiento') }}</label>
@@ -167,8 +170,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Largo en metros') }}</label>
-                                <input type="number" name="largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo', $juego->largo) }}" autofocus>
+                                <label class="form-control-label" for="input-largo">{{ __('Largo en metros') }}</label>
+                                <input type="number" name="largo" id="input-largo" class="form-control" placeholder="{{ __('Largo') }}" value="{{ old('largo', $juego->largo) }}" autofocus>
                                 @if ($errors->has('largo'))
                                 <span class="error text-danger" for="input-largo">{{ $errors->first('largo') }}</span>
                                 @endif
@@ -177,7 +180,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label class="form-control-label" for="input-ancho">{{ __('Ancho en metros') }}</label>
-                                <input type="number" name="ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho', $juego->ancho) }}" autofocus>
+                                <input type="number" name="ancho" id="input-ancho" class="form-control" placeholder="{{ __('Ancho') }}" value="{{ old('ancho', $juego->ancho) }}" autofocus>
                                 @if ($errors->has('ancho'))
                                 <span class="error text-danger" for="input-ancho">{{ $errors->first('ancho') }}</span>
                                 @endif
@@ -185,8 +188,8 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label class="form-control-label" for="input-area">{{ __('Area en metros') }}<sup>2</sup></label>
-                                <input type="number" name="area" class="form-control" placeholder="{{ __('Area del Parque') }}" value="{{ old('area', $juego->area) }}" autofocus>
+                                <label class="form-control-label" for="input-area">{{ __('Área en metros') }}<sup>2</sup></label>
+                                <input type="number" name="area" id="input-area" class="form-control" placeholder="{{ __('Área del Parque') }}" value="{{ old('area', $juego->area) }}" readonly>
                                 @if ($errors->has('area'))
                                 <span class="error text-danger" for="input-area">{{ $errors->first('area') }}</span>
                                 @endif
@@ -194,13 +197,35 @@
                         </div>
                     </div>
 
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const inputLargo = document.getElementById('input-largo');
+                            const inputAncho = document.getElementById('input-ancho');
+                            const inputArea = document.getElementById('input-area');
+
+                            inputLargo.addEventListener('input', calcularArea);
+                            inputAncho.addEventListener('input', calcularArea);
+
+                            function calcularArea() {
+                                const largo = parseFloat(inputLargo.value);
+                                const ancho = parseFloat(inputAncho.value);
+                                const area = largo * ancho || 0;
+
+                                inputArea.value = area.toFixed(2);
+                            }
+                        });
+                    </script>
+
+
+
                     <div class="form-group">
-                        <label class="form-control-label">{{ __('Descripcion') }}</label>
-                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripcion') }}" value="{{ old('descripcion', $juego->descripcion) }}" autofocus>
+                        <label class="form-control-label">{{ __('Descripción') }}</label>
+                        <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="{{ __('Descripción') }}" value="{{ old('descripcion', $juego->descripcion) }}" autofocus>
                         @if ($errors->has('descripcion'))
-                        <span class="error text-danger" for="input-descripcion">{{ $errors->first('descripcion') }}</span>
+                        <span class="error text-danger" for="descripcion">{{ $errors->first('descripcion') }}</span>
                         @endif
                     </div>
+
 
                     <div class="form-group">
                         <label class="form-control-label">{{ __('Estado') }}</label>
@@ -225,5 +250,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    const inputLargo = document.getElementById('input-largo');
+    const inputAncho = document.getElementById('input-ancho');
+    const inputArea = document.getElementById('input-area');
+
+    inputLargo.addEventListener('input', calcularArea);
+    inputAncho.addEventListener('input', calcularArea);
+
+    function calcularArea() {
+        const largo = parseFloat(inputLargo.value);
+        const ancho = parseFloat(inputAncho.value);
+        const area = largo * ancho;
+
+        if (!isNaN(area)) {
+            inputArea.value = area.toFixed(2);
+        } else {
+            inputArea.value = '';
+        }
+    }
+</script>
 
 @endsection

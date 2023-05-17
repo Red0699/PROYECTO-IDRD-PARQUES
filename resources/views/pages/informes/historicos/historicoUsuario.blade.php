@@ -92,7 +92,7 @@
                             <td>{{ $informe->name }}</td>
                             <td>{{ $informe->id_record }}</td>
                             <td>{{ $informe->tabla }}</td>
-                            @if(isset($informeUsuario->id_inventario))
+                            @if(isset($informe->id_inventario))
                             <td>{{ $informe->id_inventario }}</td>
                             @else
                             <td>NULL</td>

@@ -10,14 +10,22 @@
                         <div class="card">
 
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Parques</h4>
-                                <p class="card-category">Parques registrados</p>
-                                <div class="col-12 text-right">
+                                <h2 class="card-title">Modulo de parques</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="mt-3 mb-0">Bienvenido al módulo de gestión de parques. Aquí puedes realizar un CRUD (Crear, Leer, Actualizar y Eliminar) de los parques registrados en el sistema. ¡Agrega, edita y elimina parques según sea necesario!</p>
+                                    </div>
+                                </div>
+                                <div class="row py-4 justify-content-left">
 
-                                    <a type="button" class="btn btn-primary" href="{{ url('/parque/create') }}">Añadir Parque</a>
+                                    <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/parque/create') }}">Añadir Parque</a>
+
+
+                                    <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/informeParques') }}"><i class="fa fa-bar-chart"></i> Ver Informe</a>
 
                                 </div>
                             </div>
+
                             <div class="card-body">
                                 <div class="row">
 
@@ -53,7 +61,7 @@
                                                 <th>{{ $parque->escala }}</th>
 
                                                 <td class="td-actions text-right">
-                                                    <a href="{{ route('parque.show', $parque->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                                    <a href="{{ route('parque.show', $parque->id) }}" class="btn bg-purple text-white btn-sm"><i class="fas fa-eye"></i></a>
                                                     <a href="{{ route('parque.edit', $parque->id) }}" class="btn bg-yellow btn-sm text-white"><i class="fas fa-edit"></i></a>
                                                     <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
                                                         @csrf

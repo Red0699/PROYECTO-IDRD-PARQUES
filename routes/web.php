@@ -24,8 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('parquesIDRD', 'App\Http\Controllers\VistaParqueController@index')->name('vista');
+Route::get('parques/{parque}', ['as' => 'vista.show', 'uses' =>'App\Http\Controllers\VistaParqueController@show']);
 
 Route::group(['middleware' => 'auth'], function () {
+
+	//Usuario registrado
+	Route::post('rating/{parque}', ['as' => 'rating.store', 'uses' =>'App\Http\Controllers\RatingController@store']);
+	Route::put('rating/{rating}/{parque}', ['as' => 'rating.update', 'uses' =>'App\Http\Controllers\RatingController@update']);
+	Route::resource('opiniones', 'App\Http\Controllers\OpinionController', ['except' => ['edit', 'update', 'destroy']]);
 
 	//Usuario Administrador
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['edit']]);
@@ -82,12 +89,23 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('mobiliario/{parque}', ['as' => 'mobiliario.store', 'uses' => 'App\Http\Controllers\MobiliarioController@store']);
 
 	//Diagnostico
-	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store', 'index']]);
+	Route::resource('diagnostico', 'App\Http\Controllers\DiagnosticoController', ['except' => ['create', 'store']]);
+	Route::get('diagnosticos', 'App\Http\Controllers\DiagnosticoController@index')->name('diagnostico.index');
 	Route::get('diagnostico', 'App\Http\Controllers\DiagnosticoController@validar')->name('diagnostico');
-	Route::get('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
-	Route::post('diagnostico/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
+	Route::get('diagnostico/{idParque}/{id}/{tabla}', ['as' => 'diagnostico.create', 'uses' => 'App\Http\Controllers\DiagnosticoController@create']);
+	Route::post('diagnostico/{idParque}/{id}/{tabla}', ['as' => 'diagnostico.store', 'uses' => 'App\Http\Controllers\DiagnosticoController@store']);
 
-	//Informe
+	//Informes
 	Route::get('historicoInventario/{parque}', ['as' => 'historico.index', 'uses' => 'App\Http\Controllers\HistoricoController@index']);
 	Route::get('historicoUsuario/{user}', ['as' => 'historico.usuario', 'uses' => 'App\Http\Controllers\HistoricoController@verUsuario']);
+	Route::get('informeDiagnostico/{parque}', ['as' => 'diagnostico.informe', 'uses' => 'App\Http\Controllers\DiagnosticoController@informe']);
+	Route::get('/informeParques', function () { return view('pages.informes.parques'); })->name('parques.informe');
+	Route::get('/informeUsuarios', function () { return view('pages.informes.usuarios'); })->name('usuarios.informe');
+	Route::get('/informeInventario', function () { return view('pages.informes.inventario'); })->name('inventario.informe');
+	Route::get('/informeDiagnostico', function () { return view('pages.informes.generalDiagno'); })->name('general.informe');
+
+	//Soporte
+	Route::get('/guiaUsuario', function () {
+		return view('pages.soporte.guiausuario');
+	});
 });

@@ -20,7 +20,7 @@ class EscenarioController extends Controller
     {
         abort_if(Gate::denies('inventario_module'), 403);
         $escenarios = escenario::all();
-        return view('pages\inventario\escenario\index', compact('escenarios'));
+        return view('pages.inventario.escenario.index', compact('escenarios'));
     }
 
     /**
@@ -31,7 +31,7 @@ class EscenarioController extends Controller
     public function create(Parque $parque)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\escenario\create', compact('parque'));
+        return view('pages.inventario.escenario.create', compact('parque'));
     }
 
     /**
@@ -46,7 +46,7 @@ class EscenarioController extends Controller
         $data['id_parque'] = $parque->id;
         $escenario = escenario::create($data);
         event(new RecursosRecord($escenario, "create", "escenarios", "ALL"));
-        return redirect()->route('inventario.busqueda', $parque->id);
+        return redirect()->route('diagnostico.create', [$parque->id, $escenario->id, 'escenario']);
     }
 
     /**
@@ -69,7 +69,7 @@ class EscenarioController extends Controller
     public function edit(escenario $escenario)
     {
         abort_if(Gate::denies('inventario_module'), 403);
-        return view('pages\inventario\escenario\edit', compact('escenario'));
+        return view('pages.inventario.escenario.edit', compact('escenario'));
     }
 
     /**
