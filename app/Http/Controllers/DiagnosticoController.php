@@ -68,7 +68,7 @@ class DiagnosticoController extends Controller
         }
         $data['tipoRecurso'] = $tabla;
         Diagnostico::create($data);
-        return redirect()->route('parque.index');
+        return redirect('inventario');
 
     }
 
