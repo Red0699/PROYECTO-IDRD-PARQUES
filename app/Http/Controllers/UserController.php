@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
-class UserController extends Controller 
+class UserController extends Controller
 {
     /**
      * Display a listing of the users
@@ -34,7 +34,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $user = User::create($request->only('name', 'email') + [
             'password' => bcrypt($request->input('password')),
         ]);
@@ -46,7 +46,8 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function show(User $user){
+    public function show(User $user)
+    {
         abort_if(Gate::denies('users_module'), 403);
         return view('users.show', compact('user'));
     }
@@ -58,15 +59,25 @@ class UserController extends Controller
         $user->load('roles');
         //dd($user);
         //dd($roles);
+
+        if (auth()->user()->hasRole('Administrador')) {
+            // Verificar y desencriptar la contraseña
+            $user->password = Hash::check('secret', $user->password) ? 'secret' : '';
+        } else  {
+            // Desencriptar la contraseña
+            $user->password = bcrypt($user->password);
+        }
+        //dd($user->password);
+
         return view('users.edit', compact('user', 'roles'));
     }
 
     public function update(Request $request, User $user)
     {
         $data = $request->only('name', 'email');
-        $password=$request->input('password');
+        $password = $request->input('password');
 
-        if($password)
+        if ($password)
             $data['password'] = bcrypt($password);
         // if(trim($request->password)=='')
         // {
@@ -81,7 +92,7 @@ class UserController extends Controller
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
         $updated_fields = $user->getChanges(); // Campos que han sido modificados
-        
+
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new UserRecord($user, "update", $campos));
         return redirect()->route('user.index');
@@ -96,6 +107,5 @@ class UserController extends Controller
         event(new UserRecord($user, "delete", "ALL"));
         $user->delete();
         return back()->with('success', 'Usuario eliminado correctamente');
-        
     }
 }
