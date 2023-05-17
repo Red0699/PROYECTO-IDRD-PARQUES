@@ -22,10 +22,10 @@
 </style>
 
 
-<nav class="navbar navbar-top navbar-horizontal bg-purple navbar-expand-md navbar-dark">
-    <div class="container px-4">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/logo.png" />
+<nav class="navbar bg-purple navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('argon') }}/img/brand/logoBlanco.png" class="navbar-brand-img" alt="...">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,7 +73,7 @@
                         <span class="nav-link-inner--text">{{ __('Login') }}</span>
                     </a>
                 </li>
-                
+
             </ul>
         </div>
     </div>
