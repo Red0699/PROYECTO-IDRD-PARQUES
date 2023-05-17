@@ -10,6 +10,10 @@
     }
 </style>
 
+@push('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" integrity="sha512-gOQQLjHRpD3/SEOtalVq50iDn4opLVup2TF8c4QPI3/NmUPNZOk2FG0ihi8oCU/qYEsw4P6nuEZT2lAG0UNYaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endpush
+
 <div class="container-fluid">
     <div class="col-xl-11 order-xl-1 py-5">
         <div class="card bg-white contenedor">
@@ -172,8 +176,13 @@
 @push('js')
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOCm_Uov0IyKa71QmTBO9VHFWjWK7pDOY"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" integrity="sha512-7VTiy9AhpazBeKQAlhaLRUk+kAMAb8oczljuyJHPsVPWox/QIXDFOnT9DUk1UC8EbnHKRdQowT7sOBe7LAjajQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
 <script>
-    
+    swal("Felicidades!", "{!!Session::get('success')!!}", "success", {
+        button: "Ok"
+    });
 </script>
 
 @endpush
