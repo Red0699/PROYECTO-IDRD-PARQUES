@@ -162,6 +162,6 @@ class ParqueController extends Controller
         }
         event(new ParqueRecord($parque, "delete", "ALL"));
         $parque->delete();
-        return redirect()->route('parque.index');
+        return redirect()->route('parque.index')->with('success', 'Se ha eliminado el parque');
     }
 }
