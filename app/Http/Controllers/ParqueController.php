@@ -61,7 +61,7 @@ class ParqueController extends Controller
         $parque = Parque::create($data);
         //dd($parque);
         event(new ParqueRecord($parque, "create", "ALL")); //Evento para capturar la información y enviar los datos a la tabla de Historicos
-        return redirect()->route('parque.index');
+        return redirect()->route('parque.index')->with('success', 'El elemento se ha guardado exitosamente.');
     }
 
     /**
