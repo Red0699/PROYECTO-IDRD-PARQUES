@@ -52,7 +52,7 @@ class RolController extends Controller
 
         $rol->permissions()->sync($request->input('permissions', []));
         event(new RolRecord($rol, "create", "ALL"));
-        return redirect()->route('rol.index');
+        return redirect()->route('rol.index')->with('success', 'Se ha registrado el rol correctamente');
     }
 
     /**
@@ -98,7 +98,7 @@ class RolController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RolRecord($rol, "update", $campos));
-        return redirect()->route('rol.index');
+        return redirect()->route('rol.index')->with('success', 'Se ha editado el rol correctamente');
     }
 
     /**
@@ -113,6 +113,6 @@ class RolController extends Controller
         event(new RolRecord($rol, "delete", "ALL"));
         $rol->delete();
 
-        return redirect()->route('rol.index');
+        return redirect()->route('rol.index')->with('success', 'Se ha eliminado el rol '.$rol->name);
     }
 }

@@ -64,7 +64,7 @@
                                                     <a href="{{ route('user.show', $user->id) }}" class="btn bg-purple text-white btn-sm"><i class="fas fa-user"></i></a>
                                                     <a href="{{ route('userEdit.edit', $user->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">

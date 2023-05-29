@@ -33,9 +33,9 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        @can('role_create')
+
                                         <a type="button" class="btn btn-primary" href="{{ url('/rol/create') }}">Añadir Rol</a>
-                                        @endcan
+
                                     </div>
                                 </div>
                                 <div class="table-responsive m-2">
@@ -62,20 +62,22 @@
                                                     <span class="badge badge-danger">No tiene permisos</span>
                                                     @endforelse
                                                 </td>
+                                                @if($rol->id != 1)
                                                 <td class="td-actions text-right">
-                                                    
+
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
-                                                
-                                                    
-                                                    <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+
+
+                                                    <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-                                        
+
                                                 </td>
+                                                @endif
                                             </tr>
                                             @empty
 
