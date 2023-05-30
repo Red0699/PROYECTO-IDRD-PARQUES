@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $user->syncRoles($roles);
         event(new UserRecord($user, "create", "ALL"));
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Se ha registrado el usuario correctamente');
     }
 
     public function show(User $user)
@@ -95,7 +95,7 @@ class UserController extends Controller
 
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new UserRecord($user, "update", $campos));
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'Se ha editado el usuario correctamente');
     }
 
     public function destroy(User $user)

@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 text-right">
-                                        @can('role_create')
+                                        @can('roles_module')
                                         <a type="button" class="btn btn-primary" href="{{ url('/rol/create') }}">Añadir Rol</a>
                                         @endcan
                                     </div>
@@ -62,20 +62,22 @@
                                                     <span class="badge badge-danger">No tiene permisos</span>
                                                     @endforelse
                                                 </td>
+                                                @if($rol->id != 1)
                                                 <td class="td-actions text-right">
                                                     
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
                                                 
                                                     
-                                                    <form action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form id="delete-rol" action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip" onclick="confirmDeleteRol()">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
                                         
                                                 </td>
+                                                @endif
                                             </tr>
                                             @empty
 
@@ -99,3 +101,30 @@
 
 
 @endsection
+
+@push('js')
+    
+<script>
+    function confirmDeleteRol() {
+        swal({
+            title: "Confirmar eliminación",
+            text: "¿Estás seguro de que deseas eliminar este parque?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirmed) {
+            if (isConfirmed) {
+                document.getElementById('delete-rol').submit();
+
+            } else {
+                swal("Cancelado", "La acción ha sido cancelada.", "error");
+            }
+        });
+    }
+</script>
+
+@endpush

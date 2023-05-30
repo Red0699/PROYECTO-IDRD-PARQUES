@@ -61,7 +61,7 @@ class ParqueController extends Controller
         $parque = Parque::create($data);
         //dd($parque);
         event(new ParqueRecord($parque, "create", "ALL")); //Evento para capturar la información y enviar los datos a la tabla de Historicos
-        return redirect()->route('parque.index');
+        return redirect()->route('parque.index')->with('success', 'Se ha registrado el parque correctamente');
     }
 
     /**
@@ -143,7 +143,7 @@ class ParqueController extends Controller
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         //dd($campos);
         event(new ParqueRecord($parque, "update", $campos));
-        return redirect()->route('parque.index');
+        return redirect()->route('parque.index')->with('success', 'Se ha editado el parque correctamente');
     }
 
     /**
@@ -162,6 +162,6 @@ class ParqueController extends Controller
         }
         event(new ParqueRecord($parque, "delete", "ALL"));
         $parque->delete();
-        return redirect()->route('parque.index');
+        return redirect()->route('parque.index')->with('success', 'Se ha eliminado el parque');
     }
 }

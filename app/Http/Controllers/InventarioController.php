@@ -50,6 +50,7 @@ class InventarioController extends Controller
         $equipamientos = equipamiento::all()->where('idparque', '=', $data->id);
         $escenarios = escenario::all()->where('id_parque', '=', $data->id);
         $mobiliarios = mobiliario::all()->where('idparque', '=', $data->id);
+        
         $historico = Historico::where('id_inventario', $data->id)
             ->orWhere(function ($query) use ($data) {
                 $query->where('id_record', $data->id)

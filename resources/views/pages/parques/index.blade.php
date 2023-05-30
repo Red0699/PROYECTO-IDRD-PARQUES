@@ -10,7 +10,7 @@
                         <div class="card">
 
                             <div class="card-header card-header-primary">
-                                <h2 class="card-title">Modulo de parques</h2>
+                                <h2 class="card-title">Módulo de parques</h2>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p class="mt-3 mb-0">Bienvenido al módulo de gestión de parques. Aquí puedes realizar un CRUD (Crear, Leer, Actualizar y Eliminar) de los parques registrados en el sistema. ¡Agrega, edita y elimina parques según sea necesario!</p>
@@ -19,7 +19,6 @@
                                 <div class="row py-4 justify-content-left">
 
                                     <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/parque/create') }}">Añadir Parque</a>
-
 
                                     <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/informeParques') }}"><i class="fa fa-bar-chart"></i> Ver Informe</a>
 
@@ -63,14 +62,13 @@
                                                 <td class="td-actions text-right">
                                                     <a href="{{ route('parque.show', $parque->id) }}" class="btn bg-purple text-white btn-sm"><i class="fas fa-eye"></i></a>
                                                     <a href="{{ route('parque.edit', $parque->id) }}" class="btn bg-yellow btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                                    <form action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form id="delete-form" action="{{ route('parque.destroy', $parque->id) }}" method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="button" rel="tooltip" onclick="confirmDelete()">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
-
                                                 </td>
                                             </tr>
                                             @empty
@@ -166,6 +164,29 @@
             },
         });
     });
+</script>
+
+<script>
+    function confirmDelete() {
+        swal({
+            title: "Confirmar eliminación",
+            text: "¿Estás seguro de que deseas eliminar este parque?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirmed) {
+            if (isConfirmed) {
+                document.getElementById('delete-form').submit();
+
+            } else {
+                swal("Cancelado", "La acción ha sido cancelada.", "error");
+            }
+        });
+    }
 </script>
 @endpush
 
