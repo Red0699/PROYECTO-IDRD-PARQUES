@@ -64,10 +64,10 @@
                                                     <a href="{{ route('user.show', $user->id) }}" class="btn bg-purple text-white btn-sm"><i class="fas fa-user"></i></a>
                                                     <a href="{{ route('userEdit.edit', $user->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                                    <form id="delete-form" action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip" onclick="confirmDelete()">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -95,6 +95,7 @@
 
 
 @push('js')
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
@@ -129,6 +130,29 @@
             },
         });
     });
+</script>
+
+<script>
+    function confirmDelete() {
+        swal({
+            title: "Confirmar eliminación",
+            text: "¿Estás seguro de que deseas eliminar este parque?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirmed) {
+            if (isConfirmed) {
+                document.getElementById('delete-form').submit();
+
+            } else {
+                swal("Cancelado", "La acción ha sido cancelada.", "error");
+            }
+        });
+    }
 </script>
 @endpush
 

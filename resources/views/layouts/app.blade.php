@@ -23,8 +23,9 @@
     <!-- <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/argon.css?v=1.2.0" type="text/css">
     
+
     @stack('css')
-    
+
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -33,7 +34,7 @@
         @csrf
     </form>
     @if(auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Funcionario'))
-        @include('layouts.navbars.sidebar')
+    @include('layouts.navbars.sidebar')
     @endif
     @endauth
 
@@ -52,11 +53,21 @@
     @stack('js')
 
     <!-- Argon JS -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="{{ asset('argon') }}/js/argon.js"></script>
     <script src="{{ asset('argon') }}/js/map.js"></script>
 
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" integrity="sha512-7VTiy9AhpazBeKQAlhaLRUk+kAMAb8oczljuyJHPsVPWox/QIXDFOnT9DUk1UC8EbnHKRdQowT7sOBe7LAjajQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> -->
+
+
+    @if(Session::has('success'))
+    <script>
+        swal("Datos actualizados", "{!!Session::get('success')!!}", "success", {
+            button: "Ok"
+        });
+    </script>
+    @endif
 </body>
 
 </html>
