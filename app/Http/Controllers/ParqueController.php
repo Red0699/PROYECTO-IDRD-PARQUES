@@ -168,6 +168,7 @@ class ParqueController extends Controller
 
     public function verOpiniones(Request $request)
     {
+        abort_if(Gate::denies('parques_module'), 403);
         $fecha = $request->input('fecha');
 
         $opiniones = Opinion::query();
