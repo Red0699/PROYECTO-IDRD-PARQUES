@@ -24,12 +24,12 @@ class PhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'photo' => ['required | mimes:jpeg,png,jpg ']
+            'photo' => ['required', 'mimes:jpeg,png,jpg']
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
             'photo.mimes' => 'El archivo debe ser tipo JPG, JPEG, PNG'
         ];

@@ -87,7 +87,7 @@ class EscenarioController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RecursosRecord($escenario, "update", "escenarios", $campos));
-        return redirect()->route('inventario.busqueda', $escenario->id_parque);
+        return redirect()->route('inventario.busqueda', $escenario->id_parque)->with('success', 'Se ha editado el escenario deportivo correctamente');
     }
 
     /**
@@ -101,6 +101,6 @@ class EscenarioController extends Controller
         $dataId = $escenario->id_parque;
         event(new RecursosRecord($escenario, "delete", "escenarios", "ALL"));
         $escenario->delete();
-        return redirect()->route('inventario.busqueda', $dataId);
+        return redirect()->route('inventario.busqueda', $dataId)->with('success', 'Se ha eliminado el escenario deportivo');
     }
 }

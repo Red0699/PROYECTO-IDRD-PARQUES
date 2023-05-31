@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 class ProfileController extends Controller
@@ -67,28 +68,30 @@ class ProfileController extends Controller
     }
 
     public function photo(PhotoRequest $request)
-    {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
-        }
-        //$datos = request()->except('_token','_method');
-
-        $user = User::findOrFail(auth()->user()->id);
-        //$user = $datos; 
-
-        if($request->hasFile('photo')){
-            $ruta = public_path().'/assets/img/featureds/users/'.$user->foto;
-            unlink($ruta);
-            $file = $request->file('photo');
-            //$userData = User::findOrFail(auth()->user()->id);
-            $destinationPath = 'assets/img/featureds/users/';
-            $filename = $file->getClientOriginalName();
-            $uploadSuccess = $request->file('photo')->move($destinationPath, $filename);
-            $user->photo = $destinationPath . $filename;
-        }
-        $user->save();
-        event(new UserRecord($user, "photo", "foto"));
-       //User::where('id','=',auth()->user()->id)->update($user);
-        return back()->withStatus(__('Datos actualizados correctamente'));
+{
+    if (auth()->user()->id == 1) {
+        return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
     }
+
+    $user = User::findOrFail(auth()->user()->id);
+
+    if ($request->hasFile('photo')) {
+        $oldFilePath = public_path($user->photo);
+        if (File::exists($oldFilePath)) {
+            File::delete($oldFilePath);
+        }
+
+        $file = $request->file('photo');
+        $destinationPath = 'images/users/';
+        $filename = $file->getClientOriginalName();
+        $uploadSuccess = $request->file('photo')->move(public_path($destinationPath), $filename);
+        $user->photo = $destinationPath . $filename;
+    }
+
+    $user->save();
+    event(new UserRecord($user, "photo", "foto"));
+
+    return back()->withStatus(__('Datos actualizados correctamente'));
+}
+
 }

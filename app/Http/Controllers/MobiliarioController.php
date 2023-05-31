@@ -87,7 +87,7 @@ class MobiliarioController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RecursosRecord($mobiliario, "update", "mobiliarios", $campos));
-        return redirect()->route('inventario.busqueda', $mobiliario->idparque);
+        return redirect()->route('inventario.busqueda', $mobiliario->idparque)->with('success', 'Se ha editado el mobiliario urbano correctamente');
     }
 
     /**
@@ -101,6 +101,6 @@ class MobiliarioController extends Controller
         $dataId = $mobiliario->idparque;
         event(new RecursosRecord($mobiliario, "delete", "mobiliarios", "ALL"));
         $mobiliario->delete();
-        return redirect()->route('inventario.busqueda', $dataId);
+        return redirect()->route('inventario.busqueda', $dataId)->with('success', 'Se ha eliminado el mobiliario urbano');
     }
 }

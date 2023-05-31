@@ -93,7 +93,7 @@ class JuegosController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RecursosRecord($juego,"update", "juegos", $campos));
-        return redirect()->route('inventario.busqueda', $juego->idParque);
+        return redirect()->route('inventario.busqueda', $juego->idParque)->with('success', 'Se ha editado el juego infantil correctamente');
     }
 
     /**
@@ -108,6 +108,6 @@ class JuegosController extends Controller
         $dataId = $juego->idParque;
         event(new RecursosRecord($juego,"delete", "juegos", "ALL"));
         $juego->delete();
-        return redirect()->route('inventario.busqueda', $dataId);
+        return redirect()->route('inventario.busqueda', $dataId)->with('success', 'Se ha eliminado el juego infatil');
     }
 }

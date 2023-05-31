@@ -10,11 +10,12 @@ use App\Models\equipamiento;
 use App\Models\escenario;
 use App\Models\Juegos;
 use App\Models\mobiliario;
+use App\Models\Opinion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Storage;
-use File;
-use RealRashid\SweetAlert\Facades\Alert;
+
+use Carbon\Carbon;
+
 class ParqueController extends Controller
 {
     /**
@@ -53,8 +54,8 @@ class ParqueController extends Controller
     {
         //$parque = new Parque();
         $data = $request->validated();
-        if(isset($data["foto"])){
-            $data["foto"] = $filename = time().".".$data["foto"]->extension();
+        if (isset($data["foto"])) {
+            $data["foto"] = $filename = time() . "." . $data["foto"]->extension();
             $request->foto->move(public_path("images/parques"), $filename);
         }
         //
@@ -113,32 +114,32 @@ class ParqueController extends Controller
      */
     public function update(ParqueRequest $request, Parque $parque)
     {
-        
+
         $data = $request->validated();
-        
+
         //dd($fileFoto);
-        if(isset($data["foto"])){
+        if (isset($data["foto"])) {
             $fileFoto = Parque::findOrFail($parque->id);
             //$ruta = asset('images/parques').'/'.$fileFoto->foto;
-            
+
             //dd($fileFoto->foto);
-            
+
             //Storage::delete($ruta);
-            if($parque->foto != NULL){
-                $ruta = public_path().'/images/parques/'.$fileFoto->foto;
+            if ($parque->foto != NULL) {
+                $ruta = public_path() . '/images/parques/' . $fileFoto->foto;
                 unlink($ruta);
             }
-            
-            $data["foto"] = $filename = time().".".$data["foto"]->extension();
+
+            $data["foto"] = $filename = time() . "." . $data["foto"]->extension();
             $request->foto->move(public_path("images/parques"), $filename);
 
             //$data["foto"] = $request->file('foto')->store('uploads','public');
         }
 
-                
+
         $parque->update($data);
         $updated_fields = $parque->getChanges(); // Campos que han sido modificados
-        
+
         //dd($updated_fields);
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         //dd($campos);
@@ -156,12 +157,31 @@ class ParqueController extends Controller
     {
         //
         //dd($parque->foto);
-        if(isset($parque->foto)){
-            $ruta = public_path().'/images/parques/'.$parque->foto;
+        if (isset($parque->foto)) {
+            $ruta = public_path() . '/images/parques/' . $parque->foto;
             unlink($ruta);
         }
         event(new ParqueRecord($parque, "delete", "ALL"));
         $parque->delete();
         return redirect()->route('parque.index')->with('success', 'Se ha eliminado el parque');
+    }
+
+    public function verOpiniones(Request $request)
+    {
+        $fecha = $request->input('fecha');
+
+        $opiniones = Opinion::query();
+
+        if ($fecha === 'hoy') {
+            $opiniones->whereDate('created_at', Carbon::today());
+        } elseif ($fecha === 'semana') {
+            $opiniones->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+        } elseif ($fecha === 'mes') {
+            $opiniones->whereMonth('created_at', Carbon::now()->month);
+        }
+
+        $opiniones = $opiniones->get();
+
+        return view('pages.parques.showOpiniones', compact('opiniones'));
     }
 }

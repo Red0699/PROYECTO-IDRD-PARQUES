@@ -22,6 +22,8 @@
 
                                     <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/informeParques') }}"><i class="fa fa-bar-chart"></i> Ver Informe</a>
 
+                                    <a type="button" class="btn btn-primary float-right mx-2" href="{{ url('/opiniones') }}"><i class="fa fa-bar-chart"></i>Ver opiniones y sugerencias</a>
+
                                 </div>
                             </div>
 
@@ -38,7 +40,7 @@
                                             <th>Dirección</th>
                                             <th>Escala</th>
 
-                                            <th class="text-center">Acciones</th>
+                                            <th>Acciones</th>
                                         </thead>
                                         <tbody class="list">
                                             @forelse ($parques as $parque)

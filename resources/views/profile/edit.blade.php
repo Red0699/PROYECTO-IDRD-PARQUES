@@ -7,6 +7,13 @@
 'class' => 'col-lg-12'
 ])
 
+<style>
+    .fixed-size-image {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
 <div class="container-fluid mt--7">
     <div class="row">
         <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -21,7 +28,7 @@
                                     @if(auth()->user()->photo == null)
                                     <img src="../assets/img/theme/default-user-image.png" class="rounded-circle">
                                     @else
-                                    <img src="{{ auth()->user()->photo }}" class="img-fluid rounded-circle avatar-lg" >
+                                    <img src="{{ auth()->user()->photo }}" class="img-fluid rounded-circle avatar-lg fixed-size-image">
                                     @endif
                                 </a>
                             </div>

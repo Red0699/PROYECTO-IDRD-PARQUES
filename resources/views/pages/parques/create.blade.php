@@ -41,26 +41,26 @@
                             <label class="form-control-label" for="input-localidad">{{ __('Localidad') }}</label>
                             <select name="localidad" id="localidad" class="form-control">
                                 <option value="" selected>Seleccione una opción</option>
-                                <option value="Antonio Nariño">Antonio Nariño</option>
-                                <option value="Barrios Unidos">Barrios Unidos</option>
-                                <option value="Bosa">Bosa</option>
-                                <option value="Chapinero">Chapinero</option>
-                                <option value="Ciudad Bolívar">Ciudad Bolívar</option>
-                                <option value="Engativá">Engativá</option>
-                                <option value="Fontibón">Fontibón</option>
-                                <option value="Kennedy">Kennedy</option>
-                                <option value="La Candelaria">La Candelaria</option>
-                                <option value="Los Mártires">Los Mártires</option>
-                                <option value="Puente Aranda">Puente Aranda</option>
-                                <option value="Rafael Uribe Uribe">Rafael Uribe Uribe</option>
-                                <option value="San Cristóbal">San Cristóbal</option>
-                                <option value="Santa Fe">Santa Fe</option>
-                                <option value="Suba">Suba</option>
-                                <option value="Sumapaz">Sumapaz</option>
-                                <option value="Teusaquillo">Teusaquillo</option>
-                                <option value="Tunjuelito">Tunjuelito</option>
-                                <option value="Usaquén">Usaquén</option>
-                                <option value="Usme">Usme</option>
+                                <option value="Antonio Nariño" {{ old('localidad') == 'Antonio Nariño' ? 'selected' : '' }}>Antonio Nariño</option>
+                                <option value="Barrios Unidos" {{ old('localidad') == 'Barrios Unidos' ? 'selected' : '' }}>Barrios Unidos</option>
+                                <option value="Bosa" {{ old('localidad') == 'Bosa' ? 'selected' : '' }}>Bosa</option>
+                                <option value="Chapinero" {{ old('localidad') == 'Chapinero' ? 'selected' : '' }}>Chapinero</option>
+                                <option value="Ciudad Bolívar" {{ old('localidad') == 'Ciudad Bolívar' ? 'selected' : '' }}>Ciudad Bolívar</option>
+                                <option value="Engativá" {{ old('localidad') == 'Engativá' ? 'selected' : '' }}>Engativá</option>
+                                <option value="Fontibón" {{ old('localidad') == 'Fontibón' ? 'selected' : '' }}>Fontibón</option>
+                                <option value="Kennedy" {{ old('localidad') == 'Kennedy' ? 'selected' : '' }}>Kennedy</option>
+                                <option value="La Candelaria" {{ old('localidad') == 'La Candelaria' ? 'selected' : '' }}>La Candelaria</option>
+                                <option value="Los Mártires" {{ old('localidad') == 'Los Mártires' ? 'selected' : '' }}>Los Mártires</option>
+                                <option value="Puente Aranda" {{ old('localidad') == 'Puente Aranda' ? 'selected' : '' }}>Puente Aranda</option>
+                                <option value="Rafael Uribe Uribe" {{ old('localidad') == 'Rafael Uribe Uribe' ? 'selected' : '' }}>Rafael Uribe Uribe</option>
+                                <option value="San Cristóbal" {{ old('localidad') == 'San Cristóbal' ? 'selected' : '' }}>San Cristóbal</option>
+                                <option value="Santa Fe" {{ old('localidad') == 'Santa Fe' ? 'selected' : '' }}>Santa Fe</option>
+                                <option value="Suba" {{ old('localidad') == 'Suba' ? 'selected' : '' }}>Suba</option>
+                                <option value="Sumapaz" {{ old('localidad') == 'Sumapaz' ? 'selected' : '' }}>Sumapaz</option>
+                                <option value="Teusaquillo" {{ old('localidad') == 'Teusaquillo' ? 'selected' : '' }}>Teusaquillo</option>
+                                <option value="Tunjuelito" {{ old('localidad') == 'Tunjuelito' ? 'selected' : '' }}>Tunjuelito</option>
+                                <option value="Usaquén" {{ old('localidad') == 'Usaquén' ? 'selected' : '' }}>Usaquén</option>
+                                <option value="Usme" {{ old('localidad') == 'Usme' ? 'selected' : '' }}>Usme</option>
                             </select>
                             @if ($errors->has('localidad'))
                             <span class="error text-danger" for="input-localidad">{{ $errors->first('localidad') }}</span>
@@ -82,11 +82,11 @@
                                     <label class="form-control-label" for="input-escala">{{ __('Escala') }}</label>
                                     <select name="escala" id="escala" class="form-control">
                                         <option value="" selected>Seleccione una opción</option>
-                                        <option value="Parque de Bolsillo">Parque de Bolsillo</option>
-                                        <option value="Parque Metropolitano">Parque Metropolitano</option>
-                                        <option value="Parque Vecinal">Parque Vecinal</option>
-                                        <option value="Parque Zonal">Parque Zonal</option>
-                                        <option value="Parque Regional">Parque Regional</option>
+                                        <option value="Parque de Bolsillo" {{ old('escala') == 'Parque de Bolsillo' ? 'selected' : '' }}>Parque de Bolsillo</option>
+                                        <option value="Parque Metropolitano" {{ old('escala') == 'Parque Metropolitano' ? 'selected' : '' }}>Parque Metropolitano</option>
+                                        <option value="Parque Vecinal" {{ old('escala') == 'Parque Vecinal' ? 'selected' : '' }}>Parque Vecinal</option>
+                                        <option value="Parque Zonal" {{ old('escala') == 'Parque Zonal' ? 'selected' : '' }}>Parque Zonal</option>
+                                        <option value="Parque Regional" {{ old('escala') == 'Parque Regional' ? 'selected' : '' }}>Parque Regional</option>
                                     </select>
                                     @if ($errors->has('escala'))
                                     <span class="error text-danger" for="input-escala">{{ $errors->first('escala') }}</span>
@@ -99,11 +99,11 @@
                             <label class="form-control-label" for="input-estrato">{{ __('Estrato') }}</label>
                             <select name="estrato" id="estrato" class="form-control">
                                 <option value="" selected>Seleccione una opción</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
+                                <option value="1" {{ old('estrato') == '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ old('estrato') == '2' ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ old('estrato') == '3' ? 'selected' : '' }}>3</option>
+                                <option value="4" {{ old('estrato') == '4' ? 'selected' : '' }}>4</option>
+                                <option value="5" {{ old('estrato') == '5' ? 'selected' : '' }}>5</option>
                             </select>
                             @if ($errors->has('estrato'))
                             <span class="error text-danger" for="input-estrato">{{ $errors->first('estrato') }}</span>

@@ -62,6 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Parque
 	Route::resource('parque', 'App\Http\Controllers\ParqueController', ['except' => ['edit']]);
 	Route::get('parque/{parque}/editar', ['as' => 'parque.edit', 'uses' => 'App\Http\Controllers\ParqueController@edit']);
+	Route::get('/opiniones', ['as' => 'vistaOpinion.show', 'uses' => 'App\Http\Controllers\ParqueController@verOpiniones']);
 
 	//Implementos Inventarios
 	Route::get('inventario', 'App\Http\Controllers\InventarioController@index')->name('inventario');
@@ -107,5 +108,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//Soporte
 	Route::get('/guiaUsuario', function () {
 		return view('pages.soporte.guiausuario');
+	});
+
+	Route::get('/soporte', function () {
+		return view('pages.soporte.contacto');
 	});
 });

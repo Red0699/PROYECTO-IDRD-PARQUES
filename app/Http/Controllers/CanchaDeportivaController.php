@@ -88,7 +88,7 @@ class CanchaDeportivaController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RecursosRecord($cancha, "update", "canchas", $campos));
-        return redirect()->route('inventario.busqueda', $cancha->id_parque);
+        return redirect()->route('inventario.busqueda', $cancha->id_parque)->with('success', 'Se ha editado la cancha deportiva correctamente');
     }
 
     /**
@@ -102,6 +102,6 @@ class CanchaDeportivaController extends Controller
         $dataId = $cancha->id_parque;
         event(new RecursosRecord($cancha, "delete", "canchas", "ALL"));
         $cancha->delete();
-        return redirect()->route('inventario.busqueda', $dataId);
+        return redirect()->route('inventario.busqueda', $dataId)->with('success', 'Se ha eliminado la cancha deportiva');
     }
 }

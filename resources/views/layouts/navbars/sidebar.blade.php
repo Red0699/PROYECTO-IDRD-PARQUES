@@ -150,18 +150,18 @@
                 </h6>
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
-                     <li class="nav-item">
-                    <a class="nav-link" href="/guiaUsuario">
-                        <i class="ni ni-spaceship text-purple"></i> Guía de Usuario
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/foundation/colors.html">
-                        <i class="ni ni-palette text-purple"></i> Documentación
-                    </a>
-                </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/guiaUsuario">
+                            <i class="ni ni-spaceship text-purple"></i> Guía de Usuario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ asset('pdf/Modelado.pdf') }}" download>
+                            <i class="ni ni-palette text-purple"></i> Documentación
+                        </a>
+                    </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{ route('map') }}">
+                        <a class="nav-link" href="/soporte">
                             <i class="ni ni-support-16 text-purple"></i> {{ __('Soporte') }}
                         </a>
                     </li>

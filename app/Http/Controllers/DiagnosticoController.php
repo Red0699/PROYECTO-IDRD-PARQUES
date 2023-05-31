@@ -88,7 +88,7 @@ class DiagnosticoController extends Controller
         $data['id_recurso'] = $id;
         $data['tipoRecurso'] = $tabla;
         Diagnostico::create($data);
-        return redirect()->route('inventario.busqueda', $idParque);
+        return redirect()->route('inventario.busqueda', $idParque)->with('success', 'Se ha registrado el diagnóstico del recurso correctamente');
     }
 
     /**
@@ -127,7 +127,7 @@ class DiagnosticoController extends Controller
         //
         $data = $request->validated();
         $diagnostico->update($data);
-        return redirect('inventario');
+        return redirect('inventario')->with('success', 'Se ha editado el diagnóstico del recurso correctamente');
     }
 
     public function informe(Parque $parque)

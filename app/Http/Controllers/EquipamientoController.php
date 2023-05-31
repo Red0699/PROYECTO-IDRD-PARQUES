@@ -87,7 +87,7 @@ class EquipamientoController extends Controller
         
         $campos = implode(',', $updated_fields); //Se pasa el array a un string
         event(new RecursosRecord($equipamiento, "update", "equipamientos", $campos));
-        return redirect()->route('inventario.busqueda', $equipamiento->idparque);
+        return redirect()->route('inventario.busqueda', $equipamiento->idparque)->with('success', 'Se ha editado el equipamiento correctamente');
     }
 
     /**
@@ -101,6 +101,6 @@ class EquipamientoController extends Controller
         $dataId = $equipamiento->idparque;
         event(new RecursosRecord($equipamiento, "delete", "equipamientos", "ALL"));
         $equipamiento->delete();
-        return redirect()->route('inventario.busqueda', $dataId);
+        return redirect()->route('inventario.busqueda', $dataId)->with('success', 'Se ha eliminado el equipamiento');
     }
 }
