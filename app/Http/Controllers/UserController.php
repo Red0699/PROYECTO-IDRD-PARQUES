@@ -57,9 +57,8 @@ class UserController extends Controller
         abort_if(Gate::denies('users_module'), 403);
         $roles = Role::all();
         $user->load('roles');
-        //dd($user);
-        //dd($roles);
 
+        
         if (auth()->user()->hasRole('Administrador')) {
             // Verificar y desencriptar la contraseña
             $user->password = Hash::check('secret', $user->password) ? 'secret' : '';
@@ -68,8 +67,9 @@ class UserController extends Controller
             $user->password = bcrypt($user->password);
         }
         //dd($user->password);
-
-        return view('users.edit', compact('user', 'roles'));
+        if($user->id != 1){
+            return view('users.edit', compact('user', 'roles'));
+        }
     }
 
     public function update(Request $request, User $user)

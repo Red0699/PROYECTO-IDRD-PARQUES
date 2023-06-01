@@ -102,6 +102,7 @@ class ParqueController extends Controller
     {
         //
         abort_if(Gate::denies('parques_module'), 403);
+        
         return view('pages.parques.edit', compact('parque'));
     }
 

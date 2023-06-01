@@ -68,10 +68,10 @@
                                                     <a href="{{ route('rolEdit.edit', $rol->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
                                                 
                                                     
-                                                    <form id="delete-rol" action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;">
+                                                    <form id="delete-rol" action="{{ route('rol.destroy', $rol->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip" onclick="confirmDeleteRol()">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
@@ -102,29 +102,3 @@
 
 @endsection
 
-@push('js')
-    
-<script>
-    function confirmDeleteRol() {
-        swal({
-            title: "Confirmar eliminación",
-            text: "¿Estás seguro de que deseas eliminar este parque?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sí, eliminar",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function(isConfirmed) {
-            if (isConfirmed) {
-                document.getElementById('delete-rol').submit();
-
-            } else {
-                swal("Cancelado", "La acción ha sido cancelada.", "error");
-            }
-        });
-    }
-</script>
-
-@endpush

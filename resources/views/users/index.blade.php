@@ -12,6 +12,14 @@
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Usuarios</h4>
                                 <p class="card-category">Usuarios registrados</p>
+                                @if (session('status'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
                                 <div class="row">
 
                                     <a type="button" class="btn btn-primary" href="{{ url('/user/create') }}">Añadir Usuario</a>
@@ -35,6 +43,7 @@
                                         <tbody class="list">
                                             @forelse ($users as $user)
                                             <tr>
+                                                @if($user->id != 1)
                                                 <td>{{ $user->id }}</td>
                                                 @if($user->photo == null)
                                                 <td>
@@ -64,15 +73,16 @@
                                                     <a href="{{ route('user.show', $user->id) }}" class="btn bg-purple text-white btn-sm"><i class="fas fa-user"></i></a>
                                                     <a href="{{ route('userEdit.edit', $user->id) }}" class="btn bg-yellow text-white btn-sm"><i class="fas fa-edit"></i></a>
 
-                                                    <form id="delete-form" action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;">
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip" onclick="confirmDelete()">
+                                                        <button class="btn btn-danger btn-sm" type="submit" rel="tooltip">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     </form>
 
                                                 </td>
+                                                @endif
                                             </tr>
                                             @empty
 
@@ -132,28 +142,7 @@
     });
 </script>
 
-<script>
-    function confirmDelete() {
-        swal({
-            title: "Confirmar eliminación",
-            text: "¿Estás seguro de que deseas eliminar este parque?",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Sí, eliminar",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function(isConfirmed) {
-            if (isConfirmed) {
-                document.getElementById('delete-form').submit();
 
-            } else {
-                swal("Cancelado", "La acción ha sido cancelada.", "error");
-            }
-        });
-    }
-</script>
 @endpush
 
 

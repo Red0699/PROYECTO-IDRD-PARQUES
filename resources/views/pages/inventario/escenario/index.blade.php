@@ -51,7 +51,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <a class="dropdown-item" href="{{ route('escenario.edit', $escenario->id) }}">Editar</a>
 
-                            <form action="{{ route('escenario.destroy', $escenario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                            <form action="{{ route('escenario.destroy', $escenario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="dropdown-item" type="submit">Eliminar</button>

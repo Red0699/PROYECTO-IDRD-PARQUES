@@ -38,7 +38,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                             <a class="dropdown-item" href="{{ route('mobiliario.edit', $mobiliario->id) }}">Editar</a>
 
-                            <form action="{{ route('mobiliario.destroy', $mobiliario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                            <form action="{{ route('mobiliario.destroy', $mobiliario->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('¿Está seguro que desea realizar esta acción?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="dropdown-item" type="submit">Eliminar</button>
